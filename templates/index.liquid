@@ -1,219 +1,392 @@
-<!-- Navigation -->
-<nav class="navbar">
+{%- comment -%} ===================== ICON / MOCKUP SNIPPETS ===================== {%- endcomment -%}
+
+{%- capture star_svg -%}<svg class="star" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>{%- endcapture -%}
+
+{%- capture check_svg -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>{%- endcapture -%}
+
+{%- capture cross_svg -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>{%- endcapture -%}
+
+{%- capture arrow_svg -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>{%- endcapture -%}
+
+{%- capture verified_svg -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>{%- endcapture -%}
+
+{%- comment -%} Premium product packaging mockup (box + whitening strip) {%- endcomment -%}
+{%- capture product_mockup -%}
+<svg class="product-mockup" viewBox="0 0 360 360" role="img" aria-label="{{ shop.name }} premium teeth whitening kit packaging">
+  <defs>
+    <linearGradient id="boxFront" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#F3ECDF"/>
+    </linearGradient>
+    <linearGradient id="boxTop" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#FBF7EF"/>
+      <stop offset="1" stop-color="#EDE2CE"/>
+    </linearGradient>
+    <linearGradient id="boxSide" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#E7DBC4"/>
+      <stop offset="1" stop-color="#D8C8A8"/>
+    </linearGradient>
+    <linearGradient id="goldBand" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#E3C580"/>
+      <stop offset="0.5" stop-color="#C9A24B"/>
+      <stop offset="1" stop-color="#A8822F"/>
+    </linearGradient>
+    <linearGradient id="stripG" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#E9F2F4"/>
+    </linearGradient>
+  </defs>
+
+  <!-- soft floor shadow -->
+  <ellipse cx="185" cy="330" rx="120" ry="16" fill="#000000" opacity="0.10"/>
+
+  <!-- box: top face -->
+  <polygon points="96,96 250,96 296,66 142,66" fill="url(#boxTop)" stroke="#D9C9AC" stroke-width="1"/>
+  <!-- box: right side -->
+  <polygon points="250,96 296,66 296,276 250,306" fill="url(#boxSide)"/>
+  <!-- box: front face -->
+  <rect x="96" y="96" width="154" height="210" rx="10" fill="url(#boxFront)" stroke="#E4D6BC" stroke-width="1"/>
+
+  <!-- gold top band -->
+  <rect x="96" y="120" width="154" height="34" fill="url(#goldBand)"/>
+  <polygon points="250,120 296,90 296,124 250,154" fill="#B5923C"/>
+
+  <!-- brand emblem -->
+  <circle cx="173" cy="196" r="26" fill="none" stroke="url(#goldBand)" stroke-width="2.5"/>
+  <path d="M173 180 l3.6 7.4 8.1 1.2 -5.9 5.7 1.4 8.1 -7.2 -3.8 -7.2 3.8 1.4 -8.1 -5.9 -5.7 8.1 -1.2 z" fill="url(#goldBand)"/>
+
+  <!-- brand text -->
+  <text x="173" y="246" text-anchor="middle" font-family="'Playfair Display', Georgia, serif" font-size="15" font-weight="700" fill="#2C261E" letter-spacing="1">WHITENING KIT</text>
+  <text x="173" y="265" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" font-weight="600" fill="#A8822F" letter-spacing="3">PROFESSIONAL · ENAMEL SAFE</text>
+
+  <!-- 28 strips tag -->
+  <rect x="138" y="278" width="70" height="16" rx="8" fill="#F0E2C2"/>
+  <text x="173" y="289" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" font-weight="700" fill="#A8822F" letter-spacing="1">28 STRIPS · 14 DAYS</text>
+
+  <!-- whitening strip leaning in front -->
+  <g transform="rotate(-14 70 250)">
+    <rect x="34" y="206" width="120" height="40" rx="20" fill="url(#stripG)" stroke="#DCE7EA" stroke-width="1" opacity="0.96"/>
+    <rect x="46" y="218" width="96" height="16" rx="8" fill="#FFFFFF" opacity="0.7"/>
+  </g>
+</svg>
+{%- endcapture -%}
+
+{%- comment -%} ===================== NAVIGATION ===================== {%- endcomment -%}
+<nav class="navbar" id="navbar">
   <div class="container">
-    <div class="logo">
-      <div class="logo-icon">✨</div>
+    <a href="/" class="logo">
+      <span class="logo-icon">{{ star_svg }}</span>
       <span>{{ shop.name }}</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#benefits">Benefits</a></li>
+      <li><a href="#compare">Compare</a></li>
+      <li><a href="#how-it-works">How It Works</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="#pricing" class="btn btn-primary">Shop Now {{ arrow_svg }}</a>
     </div>
-    <a href="/cart" class="btn btn-primary">Shop Now</a>
   </div>
 </nav>
 
-<!-- Hero Section -->
+{%- comment -%} ===================== HERO ===================== {%- endcomment -%}
 <section class="hero">
-  <div class="container">
-    <div class="hero-content">
-      <div class="hero-text">
-        <div class="hero-badge">✓ Dentist Recommended</div>
-        <h1>Whiter Teeth in Just <span class="highlight">7 Days</span></h1>
-        <p class="hero-description">Professional-grade whitening strips that remove years of stains from coffee, tea, wine, and smoking — without sensitivity.</p>
-        
-        <div class="trust-badges">
-          <div class="trust-badge">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
-            <span>Dentist Recommended</span>
-          </div>
-          <div class="trust-badge">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
-            <span>Enamel Safe</span>
-          </div>
-          <div class="trust-badge">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
-            <span>30-Day Guarantee</span>
-          </div>
-          <div class="trust-badge">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
-            <span>Free Shipping</span>
-          </div>
-        </div>
+  <div class="container hero-grid">
+    <div class="hero-text reveal">
+      <div class="eyebrow">{{ check_svg }} Dentist Recommended · Clinically Proven</div>
 
-        <form method="post" action="/cart/add" class="cta-form">
-          <button type="submit" class="cta-button">
-            Get Your Whitening Kit
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 1.25rem; height: 1.25rem;">
-              <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
-          </button>
-        </form>
-
-        <div class="social-proof">
-          <div class="avatars">
-            <div class="avatar">1</div>
-            <div class="avatar">2</div>
-            <div class="avatar">3</div>
-          </div>
-          <div class="proof-text">
-            <h4>Over 50,000 Happy Customers</h4>
-            <p>Rated 4.9/5 by verified buyers</p>
-          </div>
-        </div>
+      <div class="rating-widget">
+        <span class="stars">{{ star_svg }}{{ star_svg }}{{ star_svg }}{{ star_svg }}{{ star_svg }}</span>
+        <span class="rating-widget-divider"></span>
+        <span class="rating-widget-meta">
+          <span class="rating-widget-score">4.9<span>/5</span></span>
+          <span class="rating-widget-count">{{ verified_svg }} 12,400+ verified reviews</span>
+        </span>
       </div>
 
-      <div class="product-showcase">
-        <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663743569624/amyPSPrF2HUmPeJK9rK5RK/product-showcase-K8meYjWUxGZjQjXQB37PeW.webp" alt="Luxury teeth whitening strips in premium packaging">
-        <div class="product-badge">
-          <div class="product-badge-stars">
-            <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          </div>
-          <div class="product-badge-text">
-            <h4>5.0 Rating</h4>
-            <p>10,000+ verified reviews</p>
-          </div>
+      <h1>A Brighter, Whiter Smile in Just <span class="highlight">7 Days</span></h1>
+      <p class="hero-description">Professional-grade whitening strips that lift years of coffee, wine, and tea stains — gently, with zero sensitivity.</p>
+
+      <ul class="hero-benefits">
+        <li><span class="check">{{ check_svg }}</span> Removes deep-set stains</li>
+        <li><span class="check">{{ check_svg }}</span> Sensitivity-free formula</li>
+        <li><span class="check">{{ check_svg }}</span> Enamel-safe &amp; vegan</li>
+        <li><span class="check">{{ check_svg }}</span> Visible results in 7 days</li>
+      </ul>
+
+      <div class="hero-cta-group">
+        <a href="#pricing" class="cta-button">Get Your Whitening Kit {{ arrow_svg }}</a>
+        <a href="#how-it-works" class="btn btn-ghost">See How It Works</a>
+      </div>
+      <div class="cta-note">{{ check_svg }} Free shipping · 30-day money-back guarantee</div>
+
+      <div class="social-proof">
+        <div class="avatars">
+          <span class="avatar">SM</span>
+          <span class="avatar">JL</span>
+          <span class="avatar">ER</span>
+          <span class="avatar avatar-more">50k+</span>
         </div>
+        <div class="proof-text">
+          <h4>Over 50,000 brighter smiles</h4>
+          <p>Loved by customers in 30+ countries</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual reveal">
+      <div class="product-stage">
+        {{ product_mockup }}
+      </div>
+      <div class="float-card float-card-rating">
+        <span class="float-card-icon gold">{{ star_svg }}</span>
+        <span>
+          <span class="float-card-title">4.9 · Excellent</span>
+          <span class="float-card-sub">12,400+ reviews</span>
+        </span>
+      </div>
+      <div class="float-card float-card-results">
+        <span class="float-card-icon green">{{ check_svg }}</span>
+        <span>
+          <span class="float-card-title">Up to 8 shades</span>
+          <span class="float-card-sub">whiter in 7 days</span>
+        </span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Benefits Section -->
-<section class="benefits">
+{%- comment -%} ===================== TRUST BAR ===================== {%- endcomment -%}
+<div class="trust-bar">
   <div class="container">
-    <div class="section-header">
-      <h2>Why Choose Our Whitening?</h2>
-      <p>Engineered for results. Designed for comfort. Trusted by professionals.</p>
+    <div class="trust-bar-track">
+      <span class="trust-bar-item">{{ check_svg }} Dentist Recommended</span>
+      <span class="trust-bar-item">{{ check_svg }} Enamel Safe</span>
+      <span class="trust-bar-item">{{ check_svg }} Sensitivity-Free</span>
+      <span class="trust-bar-item">{{ check_svg }} Cruelty-Free &amp; Vegan</span>
+      <span class="trust-bar-item">{{ check_svg }} Free Worldwide Shipping</span>
+    </div>
+  </div>
+</div>
+
+{%- comment -%} ===================== BENEFITS ===================== {%- endcomment -%}
+<section class="section bg-ivory" id="benefits">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-eyebrow">Why Choose Us</span>
+      <h2>Engineered for Results, Designed for Comfort</h2>
+      <p>Dentist-grade whitening technology, refined for an effortless at-home routine.</p>
     </div>
     <div class="benefits-grid">
-      <div class="benefit-card">
-        <div class="benefit-icon">⚡</div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
         <h3>Removes Deep Stains</h3>
-        <p>Targets years of coffee, tea, wine, and smoking stains</p>
+        <p>Targets years of coffee, tea, red wine, and smoking stains at the source.</p>
       </div>
-      <div class="benefit-card">
-        <div class="benefit-icon">🛡️</div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
         <h3>Safe for Sensitive Teeth</h3>
-        <p>Gentle formula that whitens without irritation</p>
+        <p>A gentle, pH-balanced formula that brightens without the sting or irritation.</p>
       </div>
-      <div class="benefit-card">
-        <div class="benefit-icon">⏱️</div>
-        <h3>Visible Results in 7 Days</h3>
-        <p>See dramatic improvements in just one week</p>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg></div>
+        <h3>Visible in 7 Days</h3>
+        <p>See a noticeably brighter smile in one week — up to 8 shades whiter.</p>
       </div>
-      <div class="benefit-card">
-        <div class="benefit-icon">🏥</div>
-        <h3>Professional Results at Home</h3>
-        <p>Dentist-grade technology in convenient strips</p>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4-6.3-4.6L5.7 21.4 8 14 2 9.4h7.6z"/></svg></div>
+        <h3>Salon Results at Home</h3>
+        <p>Professional whitening power, without the dentist's chair or the price tag.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Before & After -->
-<section class="before-after">
+{%- comment -%} ===================== PRODUCT FEATURE (packaging) ===================== {%- endcomment -%}
+<section class="section bg-white">
   <div class="container">
-    <div class="section-header">
+    <div class="feature-split">
+      <div class="feature-visual reveal">
+        <div class="feature-frame">{{ product_mockup }}</div>
+      </div>
+      <div class="feature-content reveal">
+        <span class="feature-tag">{{ star_svg }} The Complete Kit</span>
+        <h2>Everything You Need in One Elegant Box</h2>
+        <p>Each kit is thoughtfully packaged with 28 precision-cut strips — a full 14-day treatment designed to fit seamlessly into your day.</p>
+        <ul class="feature-list">
+          <li><span class="check">{{ check_svg }}</span> 28 enamel-safe whitening strips (14 upper + 14 lower)</li>
+          <li><span class="check">{{ check_svg }}</span> Advanced no-slip grip — apply and go in 30 minutes</li>
+          <li><span class="check">{{ check_svg }}</span> Sensitivity-free, peroxide-balanced gel</li>
+          <li><span class="check">{{ check_svg }}</span> Recyclable, travel-friendly packaging</li>
+        </ul>
+        <a href="#pricing" class="cta-button">Choose Your Kit {{ arrow_svg }}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{%- comment -%} ===================== BEFORE & AFTER ===================== {%- endcomment -%}
+<section class="section bg-gradient">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-eyebrow">Real Results</span>
       <h2>See the Transformation</h2>
-      <p>Real results from real customers after one treatment cycle</p>
+      <p>Real results from real customers after a single treatment cycle.</p>
     </div>
-    <div class="comparison-image">
-      <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663743569624/amyPSPrF2HUmPeJK9rK5RK/before-after-comparison-X9GBvVf2LvMU5MUHgjePtJ.webp" alt="Before and after teeth whitening results">
+    <div class="comparison-image reveal">
+      <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663743569624/amyPSPrF2HUmPeJK9rK5RK/before-after-comparison-X9GBvVf2LvMU5MUHgjePtJ.webp" alt="Before and after teeth whitening results" loading="lazy" width="960" height="480">
+    </div>
+    <div style="text-align:center;">
+      <span class="before-after-note">{{ verified_svg }} Unretouched photos from verified customers</span>
     </div>
   </div>
 </section>
 
-<!-- How It Works -->
-<section class="how-it-works">
+{%- comment -%} ===================== COMPARISON TABLE ===================== {%- endcomment -%}
+<section class="section bg-white compare" id="compare">
   <div class="container">
-    <div class="section-header">
-      <h2>Simple 3-Step Process</h2>
+    <div class="section-header reveal">
+      <span class="section-eyebrow">The Difference</span>
+      <h2>Why We Outshine the Rest</h2>
+      <p>See how {{ shop.name }} compares to ordinary whitening products and pricey dentist visits.</p>
+    </div>
+
+    <div class="compare-table-wrap reveal">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th class="feature-col" scope="col">Feature</th>
+            <th class="col-ours" scope="col">
+              <span class="compare-brand"><span class="pill">Best Choice</span>{{ shop.name }}</span>
+            </th>
+            <th scope="col">Other Strips</th>
+            <th scope="col">Dentist Visit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Whitening Results</th>
+            <td class="col-ours"><span class="compare-icon yes">{{ check_svg }}</span></td>
+            <td><span class="compare-icon partial">{{ check_svg }}</span></td>
+            <td><span class="compare-icon yes">{{ check_svg }}</span></td>
+          </tr>
+          <tr>
+            <th scope="row">Sensitivity-Free Formula</th>
+            <td class="col-ours"><span class="compare-icon yes">{{ check_svg }}</span></td>
+            <td><span class="compare-icon no">{{ cross_svg }}</span></td>
+            <td><span class="compare-icon no">{{ cross_svg }}</span></td>
+          </tr>
+          <tr>
+            <th scope="row">Dentist Recommended</th>
+            <td class="col-ours"><span class="compare-icon yes">{{ check_svg }}</span></td>
+            <td><span class="compare-icon no">{{ cross_svg }}</span></td>
+            <td><span class="compare-icon yes">{{ check_svg }}</span></td>
+          </tr>
+          <tr>
+            <th scope="row">Enamel Safe</th>
+            <td class="col-ours"><span class="compare-icon yes">{{ check_svg }}</span></td>
+            <td><span class="compare-icon partial">{{ check_svg }}</span></td>
+            <td><span class="compare-icon yes">{{ check_svg }}</span></td>
+          </tr>
+          <tr>
+            <th scope="row">Fast Results (7 Days)</th>
+            <td class="col-ours"><span class="compare-icon yes">{{ check_svg }}</span></td>
+            <td><span class="compare-icon no">{{ cross_svg }}</span></td>
+            <td><span class="compare-icon partial">{{ check_svg }}</span></td>
+          </tr>
+          <tr>
+            <th scope="row">Affordable Price</th>
+            <td class="col-ours"><span class="compare-icon yes">{{ check_svg }}</span></td>
+            <td><span class="compare-icon yes">{{ check_svg }}</span></td>
+            <td><span class="compare-icon no">{{ cross_svg }}</span></td>
+          </tr>
+          <tr>
+            <th scope="row">Easy Home Use</th>
+            <td class="col-ours"><span class="compare-icon yes">{{ check_svg }}</span></td>
+            <td><span class="compare-icon yes">{{ check_svg }}</span></td>
+            <td><span class="compare-icon no">{{ cross_svg }}</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="compare-cta reveal">
+      <a href="#pricing" class="cta-button">Make the Smart Choice {{ arrow_svg }}</a>
+    </div>
+  </div>
+</section>
+
+{%- comment -%} ===================== HOW IT WORKS ===================== {%- endcomment -%}
+<section class="section bg-ivory" id="how-it-works">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-eyebrow">Simple Routine</span>
+      <h2>Brighter in 3 Easy Steps</h2>
+      <p>No mess, no appointments — just a few minutes a day.</p>
     </div>
     <div class="steps-grid">
-      <div class="step-card">
+      <div class="step-card reveal">
         <div class="step-number">1</div>
-        <h3>Apply Strips</h3>
-        <p>Apply strips for 30 minutes</p>
+        <h3>Apply</h3>
+        <p>Place the strips on your upper and lower teeth. They grip instantly — no slipping.</p>
       </div>
-      <div class="step-card">
+      <div class="step-card reveal">
         <div class="step-number">2</div>
         <h3>Relax</h3>
-        <p>Whitening technology works while you relax</p>
+        <p>Wear them for 30 minutes while the gentle whitening gel goes to work.</p>
       </div>
-      <div class="step-card">
+      <div class="step-card reveal">
         <div class="step-number">3</div>
         <h3>Reveal</h3>
-        <p>Remove and reveal a brighter smile</p>
+        <p>Peel off, rinse, and smile. Repeat daily to reveal a visibly brighter smile.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Testimonials -->
-<section class="testimonials">
+{%- comment -%} ===================== TESTIMONIALS ===================== {%- endcomment -%}
+<section class="section bg-gradient" id="testimonials">
   <div class="container">
-    <div class="section-header">
-      <h2>What Customers Say</h2>
-      <p>Rated 4.9/5 by 10,000+ verified customers</p>
+    <div class="section-header reveal">
+      <span class="section-eyebrow">Loved by Thousands</span>
+      <h2>What Our Customers Say</h2>
+      <p>Rated 4.9 / 5 by more than 12,400 verified customers.</p>
     </div>
     <div class="testimonials-grid">
-      <div class="testimonial-card">
-        <div class="stars">
-          <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        </div>
-        <p class="testimonial-text">"My teeth are noticeably whiter after only one week. Highly recommend!"</p>
+      <div class="testimonial-card reveal">
+        <div class="quote-mark">&ldquo;</div>
+        <span class="stars">{{ star_svg }}{{ star_svg }}{{ star_svg }}{{ star_svg }}{{ star_svg }}</span>
+        <p class="testimonial-text">My teeth are noticeably whiter after only one week, and I felt zero sensitivity. Genuinely impressed.</p>
         <div class="testimonial-author">
-          <div class="author-avatar">S</div>
+          <div class="author-avatar">SM</div>
           <div class="author-info">
             <h4>Sarah M.</h4>
-            <p>Verified Buyer</p>
+            <p>{{ verified_svg }} Verified Buyer</p>
           </div>
         </div>
       </div>
-      <div class="testimonial-card">
-        <div class="stars">
-          <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        </div>
-        <p class="testimonial-text">"Better than expensive dental treatments. Love the results!"</p>
+      <div class="testimonial-card reveal">
+        <div class="quote-mark">&ldquo;</div>
+        <span class="stars">{{ star_svg }}{{ star_svg }}{{ star_svg }}{{ star_svg }}{{ star_svg }}</span>
+        <p class="testimonial-text">Better results than the expensive dentist treatment I tried last year — at a fraction of the cost.</p>
         <div class="testimonial-author">
-          <div class="author-avatar">J</div>
+          <div class="author-avatar">JL</div>
           <div class="author-info">
             <h4>Jessica L.</h4>
-            <p>Verified Buyer</p>
+            <p>{{ verified_svg }} Verified Buyer</p>
           </div>
         </div>
       </div>
-      <div class="testimonial-card">
-        <div class="stars">
-          <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        </div>
-        <p class="testimonial-text">"No sensitivity and amazing results. Best purchase ever!"</p>
+      <div class="testimonial-card reveal">
+        <div class="quote-mark">&ldquo;</div>
+        <span class="stars">{{ star_svg }}{{ star_svg }}{{ star_svg }}{{ star_svg }}{{ star_svg }}</span>
+        <p class="testimonial-text">No sensitivity, easy to use, and the packaging feels so premium. Best purchase I've made all year.</p>
         <div class="testimonial-author">
-          <div class="author-avatar">E</div>
+          <div class="author-avatar">ER</div>
           <div class="author-info">
             <h4>Emily R.</h4>
-            <p>Verified Buyer</p>
+            <p>{{ verified_svg }} Verified Buyer</p>
           </div>
         </div>
       </div>
@@ -221,114 +394,140 @@
   </div>
 </section>
 
-<!-- Pricing -->
-<section class="pricing">
+{%- comment -%} ===================== PRICING ===================== {%- endcomment -%}
+<section class="section bg-white" id="pricing">
   <div class="container">
-    <div class="section-header">
-      <h2>Simple Pricing</h2>
-      <p>Choose the plan that works for you</p>
+    <div class="section-header reveal">
+      <span class="section-eyebrow">Choose Your Kit</span>
+      <h2>Simple, Honest Pricing</h2>
+      <p>Bundle and save — every order ships free with a 30-day guarantee.</p>
     </div>
     <div class="pricing-grid">
-      <div class="pricing-card">
-        <h3>1 Box</h3>
-        <div class="price">$29.99</div>
-        <button class="btn btn-primary" onclick="addToCart(1)">Choose Plan</button>
+      <div class="pricing-card reveal">
+        <h3>Starter</h3>
+        <p class="plan-sub">1 Box · 14-day supply</p>
+        <div class="price">$29<span class="price-unit">.99</span></div>
+        <span class="savings">Try it risk-free</span>
+        <ul class="pricing-features">
+          <li>{{ check_svg }} 28 whitening strips</li>
+          <li>{{ check_svg }} Free shipping</li>
+          <li>{{ check_svg }} 30-day guarantee</li>
+        </ul>
+        <button class="btn btn-ghost btn-block" data-add-to-cart data-quantity="1">Choose Starter</button>
       </div>
-      <div class="pricing-card popular">
-        <div class="popular-badge">Most Popular</div>
-        <h3>2 Boxes</h3>
-        <div class="price">$49.99</div>
-        <div class="savings">Save $10</div>
-        <button class="btn btn-primary" onclick="addToCart(2)">Choose Plan</button>
+      <div class="pricing-card popular reveal">
+        <span class="popular-badge">Most Popular</span>
+        <h3>Glow Up</h3>
+        <p class="plan-sub">2 Boxes · 28-day supply</p>
+        <div class="price">$49<span class="price-unit">.99</span></div>
+        <div class="price-was">$59.98</div>
+        <span class="savings">Save $10</span>
+        <ul class="pricing-features">
+          <li>{{ check_svg }} 56 whitening strips</li>
+          <li>{{ check_svg }} Free priority shipping</li>
+          <li>{{ check_svg }} 30-day guarantee</li>
+          <li>{{ check_svg }} Best value per strip</li>
+        </ul>
+        <button class="btn btn-primary btn-block" data-add-to-cart data-quantity="2">Choose Glow Up</button>
       </div>
-      <div class="pricing-card">
-        <h3>3 Boxes</h3>
-        <div class="price">$69.99</div>
-        <div class="savings">Save $20</div>
-        <button class="btn btn-primary" onclick="addToCart(3)">Choose Plan</button>
+      <div class="pricing-card reveal">
+        <h3>Radiant</h3>
+        <p class="plan-sub">3 Boxes · 42-day supply</p>
+        <div class="price">$69<span class="price-unit">.99</span></div>
+        <div class="price-was">$89.97</div>
+        <span class="savings">Save $20</span>
+        <ul class="pricing-features">
+          <li>{{ check_svg }} 84 whitening strips</li>
+          <li>{{ check_svg }} Free priority shipping</li>
+          <li>{{ check_svg }} 30-day guarantee</li>
+          <li>{{ check_svg }} Maximum results</li>
+        </ul>
+        <button class="btn btn-ghost btn-block" data-add-to-cart data-quantity="3">Choose Radiant</button>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Guarantee -->
-<section class="guarantee">
+{%- comment -%} ===================== GUARANTEE ===================== {%- endcomment -%}
+<section class="section bg-gradient guarantee">
   <div class="container">
-    <div class="guarantee-content">
-      <div class="guarantee-icon">🛡️</div>
-      <h2>30-Day Money Back Guarantee</h2>
-      <p>We're confident you'll love your results or we'll refund your purchase. No questions asked. Your satisfaction is our priority.</p>
-      <button class="cta-button" onclick="window.location.href='/cart'">Start Whitening Today</button>
+    <div class="guarantee-content reveal">
+      <div class="guarantee-seal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div>
+      <h2>Love It or Your Money Back</h2>
+      <p>We're confident you'll love your brighter smile. If you're not completely satisfied within 30 days, we'll refund every penny — no questions asked.</p>
+      <a href="#pricing" class="cta-button">Start Whitening Today {{ arrow_svg }}</a>
     </div>
   </div>
 </section>
 
-<!-- FAQ -->
-<section class="faq">
+{%- comment -%} ===================== FAQ ===================== {%- endcomment -%}
+<section class="section bg-white">
   <div class="container">
-    <div class="section-header">
+    <div class="section-header reveal">
+      <span class="section-eyebrow">Good to Know</span>
       <h2>Frequently Asked Questions</h2>
     </div>
-    <div class="faq-list">
+    <div class="faq-list reveal">
       <div class="faq-item">
-        <button class="faq-question active" onclick="toggleFaq(this)">
+        <button class="faq-question active" type="button" aria-expanded="true">
           <span>How long do results last?</span>
-          <svg class="faq-toggle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          <svg class="faq-toggle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
-        <div class="faq-answer open">
-          <p>Results typically last 6-12 months with proper maintenance. Touch-up treatments can extend results indefinitely.</p>
-        </div>
+        <div class="faq-answer open"><p>Results typically last 6–12 months with everyday care. Occasional touch-up treatments keep your smile bright indefinitely.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
+        <button class="faq-question" type="button" aria-expanded="false">
           <span>Is it safe for sensitive teeth?</span>
-          <svg class="faq-toggle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          <svg class="faq-toggle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
-        <div class="faq-answer">
-          <p>Yes! Our formula is specifically designed for sensitive teeth with a lower peroxide concentration and protective compounds.</p>
-        </div>
+        <div class="faq-answer"><p>Yes. Our formula is specially balanced for sensitive teeth, using a lower-concentration gel with protective compounds for a comfortable, sting-free experience.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
+        <button class="faq-question" type="button" aria-expanded="false">
           <span>How quickly will I see results?</span>
-          <svg class="faq-toggle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          <svg class="faq-toggle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
-        <div class="faq-answer">
-          <p>Most users see visible results within 3-5 days, with optimal results after 7 days of consistent use.</p>
-        </div>
+        <div class="faq-answer"><p>Most people notice a difference within 3–5 days, with optimal results after a full 7-day cycle of consistent use.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
-          <span>Can I drink coffee afterward?</span>
-          <svg class="faq-toggle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        <button class="faq-question" type="button" aria-expanded="false">
+          <span>Can I eat or drink afterward?</span>
+          <svg class="faq-toggle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
-        <div class="faq-answer">
-          <p>We recommend waiting 30 minutes after application before eating or drinking to maximize effectiveness.</p>
-        </div>
+        <div class="faq-answer"><p>We recommend waiting about 30 minutes after each treatment before eating or drinking to lock in the best possible results.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
-          <span>Is shipping free?</span>
-          <svg class="faq-toggle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        <button class="faq-question" type="button" aria-expanded="false">
+          <span>Is shipping really free?</span>
+          <svg class="faq-toggle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
-        <div class="faq-answer">
-          <p>Yes! All orders include free shipping worldwide. Orders typically arrive within 5-7 business days.</p>
-        </div>
+        <div class="faq-answer"><p>Absolutely. Every order ships free worldwide and typically arrives within 5–7 business days.</p></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Final CTA -->
-<section class="final-cta">
+{%- comment -%} ===================== FINAL CTA ===================== {%- endcomment -%}
+<section class="section final-cta">
   <div class="container">
-    <h2>Ready for a Brighter Smile?</h2>
-    <p>Join thousands of customers who transformed their smile.</p>
-    <button class="cta-button" onclick="window.location.href='/cart'">
-      Start Whitening Today
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 1.25rem; height: 1.25rem;">
-        <polyline points="9 18 15 12 9 6"></polyline>
-      </svg>
-    </button>
+    <span class="stars" style="justify-content:center; margin-bottom:1rem; display:flex;">{{ star_svg }}{{ star_svg }}{{ star_svg }}{{ star_svg }}{{ star_svg }}</span>
+    <h2>Ready for Your Brightest Smile?</h2>
+    <p>Join over 50,000 customers who transformed their smile with {{ shop.name }}.</p>
+    <a href="#pricing" class="cta-button">Start Whitening Today {{ arrow_svg }}</a>
+    <div class="final-cta-trust">
+      <span>{{ check_svg }} 30-Day Guarantee</span>
+      <span>{{ check_svg }} Free Shipping</span>
+      <span>{{ check_svg }} Dentist Recommended</span>
+      <span>{{ check_svg }} 12,400+ 5-Star Reviews</span>
+    </div>
   </div>
 </section>
+
+{%- comment -%} ===================== STICKY MOBILE CTA ===================== {%- endcomment -%}
+<div class="sticky-cta" id="stickyCta">
+  <div class="sticky-cta-info">
+    <div class="sticky-cta-price">$49.99 <s>$59.98</s></div>
+    <div class="sticky-cta-sub">Most Popular · Free Shipping</div>
+  </div>
+  <a href="#pricing" class="cta-button">Shop Now {{ arrow_svg }}</a>
+</div>
