@@ -58,26 +58,57 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  // Animate elements on scroll
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  };
-
-  const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
+  // Navbar shadow on scroll
+  const navbar = document.querySelector('.navbar');
+  if (navbar) {
+    const onScroll = function() {
+      if (window.scrollY > 20) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
       }
-    });
-  }, observerOptions);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
 
-  // Observe all sections
-  document.querySelectorAll('section').forEach(section => {
-    section.style.opacity = '0';
-    section.style.transform = 'translateY(20px)';
-    section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(section);
+  // Modern scroll-reveal with staggered entrances
+  // Auto-tag grid children so cards animate in sequence
+  const staggerGroups = document.querySelectorAll(
+    '.benefits-grid, .steps-grid, .testimonials-grid, .pricing-grid, .lifestyle-grid'
+  );
+  staggerGroups.forEach(group => {
+    Array.from(group.children).forEach((child, index) => {
+      child.classList.add('reveal');
+      child.style.transitionDelay = (index * 0.1) + 's';
+    });
   });
+
+  // Tag standalone elements for reveal
+  document.querySelectorAll(
+    '.section-header, .comparison-image, .guarantee-content, .faq-item'
+  ).forEach(el => el.classList.add('reveal'));
+
+  document.querySelectorAll('.faq-item').forEach((el, i) => {
+    el.style.transitionDelay = (i * 0.08) + 's';
+  });
+
+  // Observe everything tagged for reveal
+  const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+
+  if ('IntersectionObserver' in window) {
+    const revealObserver = new IntersectionObserver(function(entries, obs) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+
+    revealEls.forEach(el => revealObserver.observe(el));
+  } else {
+    // Fallback: show everything if IntersectionObserver is unsupported
+    revealEls.forEach(el => el.classList.add('in-view'));
+  }
 });

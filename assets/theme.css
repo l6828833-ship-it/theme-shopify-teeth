@@ -773,3 +773,377 @@ h3 {
     transform: scale(1);
   }
 }
+
+
+/* ============================================
+   MODERN ANIMATIONS & ENHANCEMENTS
+   ============================================ */
+
+/* Scroll reveal system */
+.reveal,
+.reveal-left,
+.reveal-right {
+  opacity: 0;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal { transform: translateY(45px); }
+.reveal-left { transform: translateX(-60px); }
+.reveal-right { transform: translateX(60px); }
+
+.reveal.in-view,
+.reveal-left.in-view,
+.reveal-right.in-view {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal-left, .reveal-right {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .product-badge,
+  .product-badge-stars .star,
+  .feature-blob,
+  .feature-float-tag { animation: none !important; }
+}
+
+/* Gradient text accent */
+.hero-text h1 .highlight,
+.product-feature .highlight {
+  background: linear-gradient(120deg, #D4B06A, #B8956A 60%, #E6C887);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--color-gold);
+}
+
+/* Hero decorative floating blobs */
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before,
+.hero::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero::before {
+  width: 24rem;
+  height: 24rem;
+  background: radial-gradient(circle, rgba(212, 176, 106, 0.25), transparent 70%);
+  top: -6rem;
+  right: -4rem;
+  animation: blob-float 12s ease-in-out infinite;
+}
+
+.hero::after {
+  width: 18rem;
+  height: 18rem;
+  background: radial-gradient(circle, rgba(184, 149, 106, 0.18), transparent 70%);
+  bottom: -5rem;
+  left: -3rem;
+  animation: blob-float 14s ease-in-out infinite reverse;
+}
+
+.hero .container { position: relative; z-index: 1; }
+
+@keyframes blob-float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(20px, -25px) scale(1.08); }
+}
+
+/* Navbar scroll state */
+.navbar {
+  transition: box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.navbar.scrolled {
+  box-shadow: 0 8px 30px -10px rgba(26, 26, 26, 0.15);
+  background: rgba(255, 255, 255, 0.92);
+}
+
+/* Modern button shine */
+.cta-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.6s ease;
+}
+
+.cta-button:hover::after { left: 130%; }
+
+.cta-button:hover {
+  transform: translateY(-2px);
+}
+
+/* Card hover lift */
+.benefit-card,
+.testimonial-card,
+.pricing-card,
+.step-card {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+}
+
+.benefit-card:hover,
+.testimonial-card:hover {
+  transform: translateY(-8px);
+}
+
+.benefit-card:hover .benefit-icon {
+  transform: scale(1.15) rotate(-6deg);
+}
+
+.benefit-icon {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-block;
+}
+
+.pricing-card:not(.popular):hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 25px -5px rgba(26, 26, 26, 0.12);
+}
+
+/* Comparison image zoom */
+.comparison-image img,
+.lifestyle-card img {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.comparison-image:hover img {
+  transform: scale(1.04);
+}
+
+/* ============================================
+   PRODUCT FEATURE SECTION
+   ============================================ */
+.product-feature {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(to bottom, #FAF7F2, #F1EBE2);
+  padding: 5rem 0;
+}
+
+.feature-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.feature-blob-1 {
+  width: 22rem;
+  height: 22rem;
+  background: radial-gradient(circle, rgba(212, 176, 106, 0.22), transparent 70%);
+  top: -6rem;
+  left: -4rem;
+  animation: blob-float 13s ease-in-out infinite;
+}
+
+.feature-blob-2 {
+  width: 20rem;
+  height: 20rem;
+  background: radial-gradient(circle, rgba(184, 149, 106, 0.18), transparent 70%);
+  bottom: -6rem;
+  right: -4rem;
+  animation: blob-float 16s ease-in-out infinite reverse;
+}
+
+.product-feature .container { position: relative; z-index: 1; }
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .feature-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+}
+
+.feature-visual {
+  position: relative;
+  border-radius: 1.5rem;
+}
+
+.feature-visual img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 1.5rem;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 30px 50px -20px rgba(26, 26, 26, 0.25);
+}
+
+.feature-glow {
+  position: absolute;
+  inset: -1.5rem;
+  background: radial-gradient(circle at 50% 50%, rgba(212, 176, 106, 0.35), transparent 65%);
+  filter: blur(30px);
+  z-index: 0;
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.6; transform: scale(0.96); }
+  50% { opacity: 1; transform: scale(1.04); }
+}
+
+.feature-float-tag {
+  position: absolute;
+  top: 1.5rem;
+  left: -1rem;
+  z-index: 2;
+  background: white;
+  border-radius: 1rem;
+  padding: 0.85rem 1.25rem;
+  box-shadow: 0 12px 25px -8px rgba(26, 26, 26, 0.2);
+  text-align: center;
+  animation: float-y 3.5s ease-in-out infinite;
+}
+
+.feature-float-num {
+  display: block;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-gold);
+  line-height: 1;
+}
+
+.feature-float-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-light);
+  margin-top: 0.15rem;
+}
+
+.feature-content h2 {
+  margin: 1rem 0 1.25rem;
+}
+
+.feature-lead {
+  font-size: 1.125rem;
+  color: var(--color-text-light);
+  line-height: 1.8;
+  margin-bottom: 1.75rem;
+}
+
+.feature-list {
+  list-style: none;
+  display: grid;
+  gap: 0.85rem;
+  margin-bottom: 2rem;
+}
+
+.feature-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.feature-check {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background: var(--color-gold);
+  color: white;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+/* ============================================
+   LIFESTYLE GALLERY SECTION
+   ============================================ */
+.lifestyle {
+  background: white;
+  padding: 5rem 0;
+}
+
+.lifestyle-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.lifestyle-card {
+  position: relative;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  box-shadow: 0 15px 30px -12px rgba(26, 26, 26, 0.18);
+  aspect-ratio: 3 / 4;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+
+.lifestyle-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 25px 40px -15px rgba(26, 26, 26, 0.28);
+}
+
+.lifestyle-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.lifestyle-card:hover img {
+  transform: scale(1.08);
+}
+
+.lifestyle-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  padding: 1.5rem;
+  background: linear-gradient(to top, rgba(26, 26, 26, 0.55), transparent 55%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.lifestyle-card:hover .lifestyle-overlay { opacity: 1; }
+
+.lifestyle-tag {
+  color: white;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  transform: translateY(10px);
+  transition: transform 0.4s ease;
+}
+
+.lifestyle-card:hover .lifestyle-tag { transform: translateY(0); }
