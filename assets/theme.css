@@ -257,6 +257,14 @@ h3 {
   margin-left: 0;
 }
 
+.avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
 .proof-text h4 {
   font-weight: 700;
   font-size: 1rem;
@@ -364,6 +372,13 @@ h3 {
 .benefit-icon {
   font-size: 2.5rem;
   margin-bottom: 1rem;
+}
+
+.benefit-icon img {
+  width: 3rem;
+  height: 3rem;
+  object-fit: contain;
+  display: inline-block;
 }
 
 .benefit-card h3 {
@@ -497,6 +512,16 @@ h3 {
   color: white;
   font-weight: 700;
   font-size: 0.875rem;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.author-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
 }
 
 .author-info h4 {

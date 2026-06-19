@@ -1,1 +1,141 @@
-[]
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Luxury Teeth Whitening",
+    "theme_version": "1.1.0",
+    "theme_author": "Luxury Teeth Whitening",
+    "theme_documentation_url": "https://shopify.dev/docs/themes"
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_primary",
+        "label": "Primary Color",
+        "default": "#D4B06A"
+      },
+      {
+        "type": "color",
+        "id": "color_background",
+        "label": "Background Color",
+        "default": "#FAF7F2"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Text Color",
+        "default": "#1A1A1A"
+      }
+    ]
+  },
+  {
+    "name": "Images",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Brand Logo"
+      },
+      {
+        "type": "image_picker",
+        "id": "logo_image",
+        "label": "Logo image",
+        "info": "Upload your brand logo. If left empty, a sparkle icon is shown."
+      },
+      {
+        "type": "header",
+        "content": "Hero Section"
+      },
+      {
+        "type": "image_picker",
+        "id": "hero_product_image",
+        "label": "Hero product image",
+        "info": "Recommended size: 1200x800px. Shown on the right of the hero section."
+      },
+      {
+        "type": "header",
+        "content": "Before & After"
+      },
+      {
+        "type": "image_picker",
+        "id": "before_after_image",
+        "label": "Before & after comparison image",
+        "info": "Recommended size: 1200x600px."
+      },
+      {
+        "type": "header",
+        "content": "Benefit Icons"
+      },
+      {
+        "type": "paragraph",
+        "content": "Square icons recommended (e.g. 120x120px). Leave empty to keep the default emoji."
+      },
+      {
+        "type": "image_picker",
+        "id": "benefit_icon_1",
+        "label": "Benefit 1 icon (Removes Deep Stains)"
+      },
+      {
+        "type": "image_picker",
+        "id": "benefit_icon_2",
+        "label": "Benefit 2 icon (Safe for Sensitive Teeth)"
+      },
+      {
+        "type": "image_picker",
+        "id": "benefit_icon_3",
+        "label": "Benefit 3 icon (Visible Results in 7 Days)"
+      },
+      {
+        "type": "image_picker",
+        "id": "benefit_icon_4",
+        "label": "Benefit 4 icon (Professional Results at Home)"
+      },
+      {
+        "type": "header",
+        "content": "Testimonial Customer Photos"
+      },
+      {
+        "type": "paragraph",
+        "content": "Square photos recommended. Leave empty to show the customer's initial."
+      },
+      {
+        "type": "image_picker",
+        "id": "testimonial_photo_1",
+        "label": "Testimonial 1 photo (Sarah M.)"
+      },
+      {
+        "type": "image_picker",
+        "id": "testimonial_photo_2",
+        "label": "Testimonial 2 photo (Jessica L.)"
+      },
+      {
+        "type": "image_picker",
+        "id": "testimonial_photo_3",
+        "label": "Testimonial 3 photo (Emily R.)"
+      },
+      {
+        "type": "header",
+        "content": "Hero Social Proof Avatars"
+      },
+      {
+        "type": "paragraph",
+        "content": "Small square customer photos shown near 'Over 50,000 Happy Customers'. Leave empty to show a number."
+      },
+      {
+        "type": "image_picker",
+        "id": "social_proof_avatar_1",
+        "label": "Social proof avatar 1"
+      },
+      {
+        "type": "image_picker",
+        "id": "social_proof_avatar_2",
+        "label": "Social proof avatar 2"
+      },
+      {
+        "type": "image_picker",
+        "id": "social_proof_avatar_3",
+        "label": "Social proof avatar 3"
+      }
+    ]
+  }
+]
