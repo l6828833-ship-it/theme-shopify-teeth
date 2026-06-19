@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Modern scroll-reveal with staggered entrances
   // Auto-tag grid children so cards animate in sequence
   const staggerGroups = document.querySelectorAll(
-    '.benefits-grid, .steps-grid, .testimonials-grid, .pricing-grid, .lifestyle-grid'
+    '.benefits-grid, .steps-grid, .testimonials-grid, .pricing-grid'
   );
   staggerGroups.forEach(group => {
     Array.from(group.children).forEach((child, index) => {
@@ -110,5 +110,26 @@ document.addEventListener('DOMContentLoaded', function() {
   } else {
     // Fallback: show everything if IntersectionObserver is unsupported
     revealEls.forEach(el => el.classList.add('in-view'));
+  }
+
+  // Animate stat bars: fill to their data-value when scrolled into view
+  const statBars = document.querySelectorAll('.stat-bar-fill');
+
+  if ('IntersectionObserver' in window) {
+    const barObserver = new IntersectionObserver(function(entries, obs) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const value = entry.target.getAttribute('data-value') || '0';
+          entry.target.style.width = value + '%';
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.4 });
+
+    statBars.forEach(bar => barObserver.observe(bar));
+  } else {
+    statBars.forEach(bar => {
+      bar.style.width = (bar.getAttribute('data-value') || '0') + '%';
+    });
   }
 });
