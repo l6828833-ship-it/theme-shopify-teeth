@@ -1,11 +1,14 @@
 [
   {
-    "name": "theme",
+    "name": "theme_info",
+    "theme_name": "Luxury Teeth Whitening",
+    "theme_version": "1.1.0",
+    "theme_author": "Luxury Teeth Whitening",
+    "theme_documentation_url": "https://shopify.dev/docs/themes"
+  },
+  {
+    "name": "Colors",
     "settings": [
-      {
-        "type": "header",
-        "content": "Colors"
-      },
       {
         "type": "color",
         "id": "color_primary",
@@ -23,6 +26,41 @@
         "id": "color_text",
         "label": "Text Color",
         "default": "#1A1A1A"
+      }
+    ]
+  },
+  {
+    "name": "Images",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Brand Logo"
+      },
+      {
+        "type": "image_picker",
+        "id": "logo_image",
+        "label": "Logo image",
+        "info": "Upload your brand logo. If left empty, a sparkle icon is shown."
+      },
+      {
+        "type": "header",
+        "content": "Hero Section"
+      },
+      {
+        "type": "image_picker",
+        "id": "hero_product_image",
+        "label": "Hero product image",
+        "info": "Recommended size: 1200x800px. Shown on the right of the hero section."
+      },
+      {
+        "type": "header",
+        "content": "Before & After"
+      },
+      {
+        "type": "image_picker",
+        "id": "before_after_image",
+        "label": "Before & after comparison image",
+        "info": "Recommended size: 1200x600px."
       }
     ]
   }
