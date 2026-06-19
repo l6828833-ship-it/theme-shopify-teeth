@@ -2,7 +2,11 @@
 <nav class="navbar">
   <div class="container">
     <div class="logo">
-      <div class="logo-icon">✨</div>
+      {% if settings.logo_image != blank %}
+        <img class="logo-img" src="{{ settings.logo_image | image_url: width: 200 }}" alt="{{ shop.name | escape }}" width="40" height="40">
+      {% else %}
+        <div class="logo-icon">✨</div>
+      {% endif %}
       <span>{{ shop.name }}</span>
     </div>
     <a href="/cart" class="btn btn-primary">Shop Now</a>
@@ -56,9 +60,21 @@
 
         <div class="social-proof">
           <div class="avatars">
-            <div class="avatar">1</div>
-            <div class="avatar">2</div>
-            <div class="avatar">3</div>
+            {% if settings.social_proof_avatar_1 != blank %}
+              <div class="avatar"><img src="{{ settings.social_proof_avatar_1 | image_url: width: 100 }}" alt="Happy customer" width="40" height="40"></div>
+            {% else %}
+              <div class="avatar">1</div>
+            {% endif %}
+            {% if settings.social_proof_avatar_2 != blank %}
+              <div class="avatar"><img src="{{ settings.social_proof_avatar_2 | image_url: width: 100 }}" alt="Happy customer" width="40" height="40"></div>
+            {% else %}
+              <div class="avatar">2</div>
+            {% endif %}
+            {% if settings.social_proof_avatar_3 != blank %}
+              <div class="avatar"><img src="{{ settings.social_proof_avatar_3 | image_url: width: 100 }}" alt="Happy customer" width="40" height="40"></div>
+            {% else %}
+              <div class="avatar">3</div>
+            {% endif %}
           </div>
           <div class="proof-text">
             <h4>Over 50,000 Happy Customers</h4>
@@ -68,7 +84,11 @@
       </div>
 
       <div class="product-showcase">
-        <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663743569624/amyPSPrF2HUmPeJK9rK5RK/product-showcase-K8meYjWUxGZjQjXQB37PeW.webp" alt="Luxury teeth whitening strips in premium packaging">
+        {% if settings.hero_product_image != blank %}
+          <img src="{{ settings.hero_product_image | image_url: width: 1200 }}" alt="{{ shop.name | escape }} teeth whitening kit" width="1200" height="800" loading="eager">
+        {% else %}
+          <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663743569624/amyPSPrF2HUmPeJK9rK5RK/product-showcase-K8meYjWUxGZjQjXQB37PeW.webp" alt="Luxury teeth whitening strips in premium packaging">
+        {% endif %}
         <div class="product-badge">
           <div class="product-badge-stars">
             <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
@@ -96,22 +116,38 @@
     </div>
     <div class="benefits-grid">
       <div class="benefit-card">
-        <div class="benefit-icon">⚡</div>
+        <div class="benefit-icon">
+          {% if settings.benefit_icon_1 != blank %}
+            <img src="{{ settings.benefit_icon_1 | image_url: width: 120 }}" alt="Removes Deep Stains" width="48" height="48">
+          {% else %}⚡{% endif %}
+        </div>
         <h3>Removes Deep Stains</h3>
         <p>Targets years of coffee, tea, wine, and smoking stains</p>
       </div>
       <div class="benefit-card">
-        <div class="benefit-icon">🛡️</div>
+        <div class="benefit-icon">
+          {% if settings.benefit_icon_2 != blank %}
+            <img src="{{ settings.benefit_icon_2 | image_url: width: 120 }}" alt="Safe for Sensitive Teeth" width="48" height="48">
+          {% else %}🛡️{% endif %}
+        </div>
         <h3>Safe for Sensitive Teeth</h3>
         <p>Gentle formula that whitens without irritation</p>
       </div>
       <div class="benefit-card">
-        <div class="benefit-icon">⏱️</div>
+        <div class="benefit-icon">
+          {% if settings.benefit_icon_3 != blank %}
+            <img src="{{ settings.benefit_icon_3 | image_url: width: 120 }}" alt="Visible Results in 7 Days" width="48" height="48">
+          {% else %}⏱️{% endif %}
+        </div>
         <h3>Visible Results in 7 Days</h3>
         <p>See dramatic improvements in just one week</p>
       </div>
       <div class="benefit-card">
-        <div class="benefit-icon">🏥</div>
+        <div class="benefit-icon">
+          {% if settings.benefit_icon_4 != blank %}
+            <img src="{{ settings.benefit_icon_4 | image_url: width: 120 }}" alt="Professional Results at Home" width="48" height="48">
+          {% else %}🏥{% endif %}
+        </div>
         <h3>Professional Results at Home</h3>
         <p>Dentist-grade technology in convenient strips</p>
       </div>
@@ -127,7 +163,11 @@
       <p>Real results from real customers after one treatment cycle</p>
     </div>
     <div class="comparison-image">
-      <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663743569624/amyPSPrF2HUmPeJK9rK5RK/before-after-comparison-X9GBvVf2LvMU5MUHgjePtJ.webp" alt="Before and after teeth whitening results">
+      {% if settings.before_after_image != blank %}
+        <img src="{{ settings.before_after_image | image_url: width: 1200 }}" alt="Before and after teeth whitening results" width="1200" height="600" loading="lazy">
+      {% else %}
+        <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663743569624/amyPSPrF2HUmPeJK9rK5RK/before-after-comparison-X9GBvVf2LvMU5MUHgjePtJ.webp" alt="Before and after teeth whitening results">
+      {% endif %}
     </div>
   </div>
 </section>
@@ -176,7 +216,11 @@
         </div>
         <p class="testimonial-text">"My teeth are noticeably whiter after only one week. Highly recommend!"</p>
         <div class="testimonial-author">
-          <div class="author-avatar">S</div>
+          {% if settings.testimonial_photo_1 != blank %}
+            <div class="author-avatar"><img src="{{ settings.testimonial_photo_1 | image_url: width: 120 }}" alt="Sarah M." width="48" height="48"></div>
+          {% else %}
+            <div class="author-avatar">S</div>
+          {% endif %}
           <div class="author-info">
             <h4>Sarah M.</h4>
             <p>Verified Buyer</p>
@@ -193,7 +237,11 @@
         </div>
         <p class="testimonial-text">"Better than expensive dental treatments. Love the results!"</p>
         <div class="testimonial-author">
-          <div class="author-avatar">J</div>
+          {% if settings.testimonial_photo_2 != blank %}
+            <div class="author-avatar"><img src="{{ settings.testimonial_photo_2 | image_url: width: 120 }}" alt="Jessica L." width="48" height="48"></div>
+          {% else %}
+            <div class="author-avatar">J</div>
+          {% endif %}
           <div class="author-info">
             <h4>Jessica L.</h4>
             <p>Verified Buyer</p>
@@ -210,7 +258,11 @@
         </div>
         <p class="testimonial-text">"No sensitivity and amazing results. Best purchase ever!"</p>
         <div class="testimonial-author">
-          <div class="author-avatar">E</div>
+          {% if settings.testimonial_photo_3 != blank %}
+            <div class="author-avatar"><img src="{{ settings.testimonial_photo_3 | image_url: width: 120 }}" alt="Emily R." width="48" height="48"></div>
+          {% else %}
+            <div class="author-avatar">E</div>
+          {% endif %}
           <div class="author-info">
             <h4>Emily R.</h4>
             <p>Verified Buyer</p>
