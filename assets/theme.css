@@ -1317,3 +1317,67 @@ h3 {
   .story-float-badge { right: 1rem; }
 }
 
+
+
+/* ============================================
+   CALL-TO-ACTION BUTTONS & LAYOUTS
+   ============================================ */
+.cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 1.75rem;
+  background: transparent;
+  color: var(--color-gold);
+  border: 2px solid var(--color-gold);
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cta-secondary:hover {
+  background: var(--color-gold);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 20px -8px rgba(212, 176, 106, 0.5);
+}
+
+.cta-secondary:active {
+  transform: scale(0.98);
+}
+
+/* CTA row layouts */
+.feature-cta-row,
+.story-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.75rem;
+}
+
+.section-cta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+
+@media (max-width: 480px) {
+  .feature-cta-row,
+  .story-cta,
+  .section-cta {
+    flex-direction: column;
+  }
+  .feature-cta-row .cta-button,
+  .feature-cta-row .cta-secondary,
+  .story-cta .cta-button,
+  .story-cta .cta-secondary,
+  .section-cta .cta-button,
+  .section-cta .cta-secondary {
+    width: 100%;
+  }
+}
