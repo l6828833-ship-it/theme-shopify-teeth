@@ -69,12 +69,15 @@
             {% endfor %}
           </div>
 
-          <button type="submit" name="add" class="cta-button pdp-add"{% unless product.available %} disabled{% endunless %}>
-            {% if product.available %}<span id="pdpBtnLabel">Order Now — {{ product.selected_or_first_available_variant.price | money }}</span>{% else %}Sold Out{% endif %}
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 1.25rem; height: 1.25rem;">
-              <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
-          </button>
+          <div class="pdp-add-wrap">
+            <button type="submit" name="add" class="cta-button pdp-add" id="pdpCta"{% unless product.available %} disabled{% endunless %}>
+              {% if product.available %}<span id="pdpBtnLabel">Order Now — {{ product.selected_or_first_available_variant.price | money }}</span>{% else %}Sold Out{% endif %}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 1.25rem; height: 1.25rem;">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+            <span class="cta-discount-tag" id="pdpTag" aria-hidden="true">-67%</span>
+          </div>
         {% endform %}
 
         <p class="pdp-paynote">🔒 Secure checkout · Free worldwide shipping · 7-day money-back guarantee</p>
@@ -102,6 +105,15 @@
           <div class="pdp-trust"><strong>14</strong><span>Strips per box</span></div>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- Slide-in offer notification that docks onto the Order Now button -->
+  <div class="hero-notification" id="pdpNotification" role="status" aria-live="polite">
+    <div class="hero-notif-icon">🔥</div>
+    <div class="hero-notif-body">
+      <div class="hero-notif-line">Flash Sale: now <strong class="hero-notif-now">{{ product.price | money }}</strong></div>
+      <div class="hero-notif-was">{{ product.compare_at_price | money }}</div>
     </div>
   </div>
 </section>

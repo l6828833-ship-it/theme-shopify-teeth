@@ -73,8 +73,8 @@
             </button>
             <span class="cta-discount-tag" id="ctaTag" aria-hidden="true">-67%</span>
             <div class="cta-price-drop" id="ctaPriceDrop" aria-hidden="true">
-              <span class="cta-price-now"><span class="notif-symbol">$</span>9.99</span>
-              <span class="cta-price-was"><span class="notif-symbol">$</span>29.99</span>
+              <span class="cta-price-now">{{ v1.price | money }}</span>
+              <span class="cta-price-was">{{ v1.compare_at_price | money }}</span>
             </div>
           </div>
           <button type="button" class="cta-secondary hero-order-now" {% if v2 %}onclick="buyNow({{ v2.id }}, 1)"{% else %}onclick="window.location.href='{{ ws_url }}'"{% endif %}>Order Now</button>
@@ -112,8 +112,8 @@
   <div class="hero-notification" id="heroNotification" role="status" aria-live="polite">
     <div class="hero-notif-icon">🔥</div>
     <div class="hero-notif-body">
-      <div class="hero-notif-line">Flash Sale: Whitening Kit now <strong class="hero-notif-now"><span class="notif-symbol">$</span>9.99</strong></div>
-      <div class="hero-notif-was"><span class="notif-symbol">$</span>29.99</div>
+      <div class="hero-notif-line">Flash Sale: Whitening Kit now <strong class="hero-notif-now">{{ v1.price | money }}</strong></div>
+      <div class="hero-notif-was">{{ v1.compare_at_price | money }}</div>
     </div>
   </div>
 </section>
@@ -151,9 +151,9 @@
       <div class="pricing-card">
         <h3>1 Box</h3>
         <p class="pricing-sub">14 strips · 7-day treatment</p>
-        <div class="price-was"><span class="price-amount" data-amount="29.99"></span></div>
-        <div class="price"><span class="price-amount" data-amount="9.99"></span></div>
-        <div class="savings">You save <span class="price-amount" data-amount="20"></span></div>
+        {% if v1.compare_at_price > v1.price %}<div class="price-was">{{ v1.compare_at_price | money }}</div>{% endif %}
+        <div class="price">{{ v1.price | money }}</div>
+        {% if v1.compare_at_price > v1.price %}<div class="savings">You save {{ v1.compare_at_price | minus: v1.price | money }}</div>{% endif %}
         <ul class="pricing-features">
           <li>✓ 14 enamel-safe whitening strips</li>
           <li>✓ Free worldwide shipping</li>
@@ -167,9 +167,9 @@
         <div class="popular-badge">Most Popular</div>
         <h3>2 Boxes</h3>
         <p class="pricing-sub">28 strips · 14-day treatment</p>
-        <div class="price-was"><span class="price-amount" data-amount="59.98"></span></div>
-        <div class="price"><span class="price-amount" data-amount="17.99"></span></div>
-        <div class="savings">You save <span class="price-amount" data-amount="42"></span></div>
+        {% if v2.compare_at_price > v2.price %}<div class="price-was">{{ v2.compare_at_price | money }}</div>{% endif %}
+        <div class="price">{{ v2.price | money }}</div>
+        {% if v2.compare_at_price > v2.price %}<div class="savings">You save {{ v2.compare_at_price | minus: v2.price | money }}</div>{% endif %}
         <ul class="pricing-features">
           <li>✓ 28 enamel-safe whitening strips</li>
           <li>✓ Free priority shipping</li>
@@ -183,9 +183,9 @@
         <div class="best-badge">Best Value</div>
         <h3>3 Boxes</h3>
         <p class="pricing-sub">42 strips · 21-day treatment</p>
-        <div class="price-was"><span class="price-amount" data-amount="89.97"></span></div>
-        <div class="price"><span class="price-amount" data-amount="27.99"></span></div>
-        <div class="savings">You save <span class="price-amount" data-amount="62"></span></div>
+        {% if v3.compare_at_price > v3.price %}<div class="price-was">{{ v3.compare_at_price | money }}</div>{% endif %}
+        <div class="price">{{ v3.price | money }}</div>
+        {% if v3.compare_at_price > v3.price %}<div class="savings">You save {{ v3.compare_at_price | minus: v3.price | money }}</div>{% endif %}
         <ul class="pricing-features">
           <li>✓ 42 enamel-safe whitening strips</li>
           <li>✓ Free priority shipping</li>

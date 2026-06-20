@@ -116,15 +116,19 @@
     </div>
   </footer>
 
+  {%- assign fb_product = all_products['3dwhiteningstrips-teeth-whitening-strips'] -%}
+  {%- if fb_product == blank -%}{%- assign fb_product = collections.all.products.first -%}{%- endif -%}
+  {%- assign fb_v1 = fb_product.variants.first -%}
+  {%- for fbv in fb_product.variants -%}{%- if fbv.title contains '1 Box' -%}{%- assign fb_v1 = fbv -%}{%- endif -%}{%- endfor -%}
   <div class="flash-bar" id="flashBar" role="region" aria-label="Limited time offer">
     <div class="flash-bar-inner">
       <span class="flash-bar-icon">🔥</span>
       <div class="flash-bar-text">
         <strong>Today Only — 67% Off Whitening Strips</strong>
         <span class="flash-bar-price">
-          <span class="flash-old"><span class="price-amount" data-amount="29.99"></span></span>
+          {% if fb_v1.compare_at_price > fb_v1.price %}<span class="flash-old">{{ fb_v1.compare_at_price | money }}</span>{% endif %}
           <span class="flash-arrow">→</span>
-          <span class="flash-new"><span class="flash-symbol"></span><span class="flash-num" data-from="29.99" data-to="9.99">29.99</span></span>
+          <span class="flash-new">{{ fb_v1.price | money }}</span>
         </span>
       </div>
       <div class="flash-timer flash-bar-timer" id="flashTimer" aria-label="Offer countdown timer">

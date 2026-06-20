@@ -2671,3 +2671,8 @@ body.drawer-open { overflow: hidden; }
   font-family: inherit;
 }
 .cart-drawer-viewcart:hover { text-decoration: underline; }
+
+
+/* PDP Order Now button wrapper (for docking discount tag) */
+.pdp-add-wrap { position: relative; }
+.pdp-add-wrap .cta-discount-tag { right: 0.5rem; }

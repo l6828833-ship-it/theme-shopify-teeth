@@ -148,56 +148,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // ---- Location-based currency: Europe -> EUR, UK -> GBP, rest -> USD ----
-  function detectCurrency() {
-    var tz = '';
-    try { tz = (Intl.DateTimeFormat().resolvedOptions().timeZone || ''); } catch (e) {}
-
-    // United Kingdom (and GBP-pegged territories)
-    var ukZones = ['Europe/London', 'Europe/Belfast', 'Europe/Guernsey', 'Europe/Jersey', 'Europe/Isle_of_Man', 'Europe/Gibraltar'];
-    if (ukZones.indexOf(tz) !== -1) return { code: 'GBP', symbol: '£' };
-
-    // Europe -> EUR (all Europe/* plus a few island/Cyprus zones)
-    var euExtra = ['Atlantic/Canary', 'Atlantic/Madeira', 'Atlantic/Faroe', 'Atlantic/Reykjavik', 'Atlantic/Azores', 'Asia/Nicosia', 'Asia/Famagusta'];
-    if (tz.indexOf('Europe/') === 0 || euExtra.indexOf(tz) !== -1) return { code: 'EUR', symbol: '€' };
-
-    // Fallback to browser locale
-    var loc = (navigator.language || '').toLowerCase();
-    if (loc === 'en-gb' || loc.indexOf('-gb') !== -1) return { code: 'GBP', symbol: '£' };
-
-    // Region code suffixes that map to Europe
-    var euRegions = ['-de','-fr','-es','-it','-nl','-ie','-pt','-at','-be','-fi','-gr','-ee','-lv','-lt','-sk','-si','-mt','-cy','-lu','-hr','-pl','-cz','-hu','-ro','-bg','-dk','-se','-no','-ch','-is','-li','-mc','-ad','-sm'];
-    for (var i = 0; i < euRegions.length; i++) {
-      if (loc.indexOf(euRegions[i]) !== -1) return { code: 'EUR', symbol: '€' };
-    }
-
-    // European language codes (no region) as a last hint
-    var euLangs = ['de','fr','es','it','nl','pt','el','fi','sv','da','pl','cs','hu','ro','bg','hr','sk','sl','et','lv','lt','is','no'];
-    var primary = loc.split('-')[0];
-    if (euLangs.indexOf(primary) !== -1) return { code: 'EUR', symbol: '€' };
-
-    return { code: 'USD', symbol: '$' };
-  }
-
-  var CURRENCY = detectCurrency();
-  window.CURRENCY_SYMBOL = CURRENCY.symbol;
-
-  // Apply the detected currency symbol to all static price amounts
-  document.querySelectorAll('.price-amount').forEach(function(el) {
-    var amt = el.getAttribute('data-amount');
-    if (amt !== null) el.textContent = CURRENCY.symbol + amt;
-  });
-
-  // Apply currency symbol to the flash-sale dynamic price
-  document.querySelectorAll('.flash-symbol').forEach(function(el) {
-    el.textContent = CURRENCY.symbol;
-  });
-
-  // Apply currency symbol to the hero notification
-  document.querySelectorAll('.notif-symbol').forEach(function(el) {
-    el.textContent = CURRENCY.symbol;
-  });
-
   // ---- Flash sale countdown timer ----
   var flashTimer = document.getElementById('flashTimer');
   if (flashTimer) {
@@ -223,100 +173,51 @@ document.addEventListener('DOMContentLoaded', function() {
     setInterval(updateTimer, 1000);
   }
 
-  // ---- Animated price drop (29.99 -> 9.99) on scroll into view ----
-  var flashNum = document.querySelector('.flash-num');
-  if (flashNum) {
-    var fromVal = parseFloat(flashNum.getAttribute('data-from'));
-    var toVal = parseFloat(flashNum.getAttribute('data-to'));
-    flashNum.textContent = fromVal.toFixed(2);
-    var played = false;
-    var animateDrop = function() {
-      if (played) return;
-      played = true;
-      var duration = 1600;
-      var startTs = null;
-      var frame = function(ts) {
-        if (!startTs) startTs = ts;
-        var p = Math.min((ts - startTs) / duration, 1);
-        var eased = 1 - Math.pow(1 - p, 3);
-        flashNum.textContent = (fromVal + (toVal - fromVal) * eased).toFixed(2);
-        if (p < 1) requestAnimationFrame(frame);
-        else flashNum.textContent = toVal.toFixed(2);
-      };
-      requestAnimationFrame(frame);
+  // ---- Slide-in notification that docks onto a CTA (hero + product page) ----
+  function setupDockNotification(notif, container, cta, tag, priceDrop) {
+    if (!notif || !container || !cta) return;
+    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var reveal = function () {
+      if (tag) tag.classList.add('is-visible');
+      if (priceDrop) priceDrop.classList.add('is-visible');
+      cta.classList.add('cta-docked');
     };
-    if ('IntersectionObserver' in window) {
-      var dropObs = new IntersectionObserver(function(entries, obs) {
-        entries.forEach(function(e) {
-          if (e.isIntersecting) { animateDrop(); obs.disconnect(); }
-        });
-      }, { threshold: 0.5 });
-      dropObs.observe(flashNum);
-    } else {
-      animateDrop();
-    }
+    if (reduceMotion) { notif.style.display = 'none'; reveal(); return; }
+    setTimeout(function () { notif.classList.add('is-visible'); }, 1000);
+    setTimeout(function () {
+      var cRect = container.getBoundingClientRect();
+      var nRect = notif.getBoundingClientRect();
+      var bRect = cta.getBoundingClientRect();
+      var dx = (bRect.right - cRect.left) - ((nRect.left - cRect.left) + nRect.width / 2);
+      var dy = (bRect.top - cRect.top) - ((nRect.top - cRect.top) + nRect.height / 2);
+      notif.style.transition = 'transform 1.25s cubic-bezier(0.45, 0.05, 0.2, 1), opacity 0.9s ease 0.35s';
+      notif.style.transform = 'translate(' + dx + 'px, ' + dy + 'px) scale(0.18)';
+      notif.classList.add('is-docking');
+      var docked = false;
+      var dock = function () { if (docked) return; docked = true; notif.style.display = 'none'; reveal(); };
+      notif.addEventListener('transitionend', function h(e) {
+        if (e.propertyName !== 'transform') return;
+        notif.removeEventListener('transitionend', h);
+        dock();
+      });
+      setTimeout(dock, 1600);
+    }, 1000 + 2600);
   }
 
-  // ---- Hero flash-sale notification that docks onto the CTA ----
-  var notif = document.getElementById('heroNotification');
-  var hero = document.querySelector('.hero');
-  var heroCta = document.getElementById('heroCta');
-  var ctaTag = document.getElementById('ctaTag');
-  var ctaPriceDrop = document.getElementById('ctaPriceDrop');
-  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  if (notif && hero && heroCta) {
-    if (reduceMotion) {
-      // Skip the motion: just attach the discount tag + price drop
-      notif.style.display = 'none';
-      if (ctaTag) ctaTag.classList.add('is-visible');
-      if (ctaPriceDrop) ctaPriceDrop.classList.add('is-visible');
-      heroCta.classList.add('cta-docked');
-    } else {
-      // 1) Slide the notification in gently after load
-      setTimeout(function() {
-        notif.classList.add('is-visible');
-      }, 1000);
-
-      // 2) After it has been visible for ~2.6s, dock it onto the CTA button
-      setTimeout(function() {
-        var heroRect = hero.getBoundingClientRect();
-        var notifRect = notif.getBoundingClientRect();
-        var btnRect = heroCta.getBoundingClientRect();
-
-        // Aim the notification's center at the button's top-right corner
-        var targetCenterX = btnRect.right - heroRect.left;
-        var targetCenterY = btnRect.top - heroRect.top;
-        var curCenterX = (notifRect.left - heroRect.left) + notifRect.width / 2;
-        var curCenterY = (notifRect.top - heroRect.top) + notifRect.height / 2;
-
-        var dx = targetCenterX - curCenterX;
-        var dy = targetCenterY - curCenterY;
-
-        // Slower, smoother arc as it travels and settles onto the button
-        notif.style.transition = 'transform 1.25s cubic-bezier(0.45, 0.05, 0.2, 1), opacity 0.9s ease 0.35s';
-        notif.style.transform = 'translate(' + dx + 'px, ' + dy + 'px) scale(0.18)';
-        notif.classList.add('is-docking');
-
-        var docked = false;
-        var dock = function() {
-          if (docked) return;
-          docked = true;
-          notif.style.display = 'none';
-          heroCta.classList.add('cta-docked');
-          if (ctaTag) ctaTag.classList.add('is-visible');
-          if (ctaPriceDrop) ctaPriceDrop.classList.add('is-visible');
-        };
-        notif.addEventListener('transitionend', function handler(e) {
-          if (e.propertyName !== 'transform') return;
-          notif.removeEventListener('transitionend', handler);
-          dock();
-        });
-        // Safety fallback in case transitionend doesn't fire
-        setTimeout(dock, 1500);
-      }, 1000 + 2600);
-    }
-  }
+  setupDockNotification(
+    document.getElementById('heroNotification'),
+    document.querySelector('.hero'),
+    document.getElementById('heroCta'),
+    document.getElementById('ctaTag'),
+    document.getElementById('ctaPriceDrop')
+  );
+  setupDockNotification(
+    document.getElementById('pdpNotification'),
+    document.querySelector('.pdp-hero'),
+    document.getElementById('pdpCta'),
+    document.getElementById('pdpTag'),
+    null
+  );
 
   // ---- Sticky dismissible flash-sale bar ----
   var flashBar = document.getElementById('flashBar');
