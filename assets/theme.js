@@ -18,6 +18,21 @@ function toggleFaq(button) {
   }
 }
 
+// Buy a specific variant immediately: clear cart, add it, go straight to checkout
+function buyNow(variantId, quantity) {
+  if (!variantId) { window.location.href = '/cart'; return; }
+  fetch('/cart/clear.js', { method: 'POST' })
+    .then(function () {
+      return fetch('/cart/add.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ items: [{ id: variantId, quantity: quantity || 1 }] })
+      });
+    })
+    .then(function () { window.location.href = '/checkout'; })
+    .catch(function () { window.location.href = '/cart'; });
+}
+
 // Add to cart functionality
 function addToCart(quantity) {
   // This will be connected to your Shopify product
