@@ -1856,3 +1856,112 @@ h3 {
 @media (max-width: 600px) {
   .logo-img { height: 2.75rem; max-width: 190px; }
 }
+
+
+/* ============================================
+   HERO COFFEE-STAT PROOF
+   ============================================ */
+.proof-icon {
+  flex-shrink: 0;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.9rem;
+  background: linear-gradient(135deg, #D4B06A, #B8956A);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  box-shadow: 0 8px 16px -6px rgba(212, 176, 106, 0.55);
+}
+
+.proof-highlight {
+  color: var(--color-gold);
+  font-weight: 800;
+}
+
+/* ============================================
+   JOIN OUR COMMUNITY
+   ============================================ */
+.community {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(to bottom, #FAF7F2, #F1EBE2);
+  padding: 5rem 0;
+}
+
+.community-decor {
+  position: absolute;
+  width: 26rem;
+  height: 26rem;
+  border-radius: 50%;
+  filter: blur(80px);
+  background: radial-gradient(circle, rgba(212, 176, 106, 0.22), transparent 70%);
+  top: -10rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 0;
+  pointer-events: none;
+  animation: blob-float 15s ease-in-out infinite;
+}
+
+.community .container { position: relative; z-index: 1; }
+
+.community-card {
+  max-width: 42rem;
+  margin: 0 auto;
+  text-align: center;
+  background: white;
+  border-radius: 1.75rem;
+  padding: 3rem 2rem;
+  box-shadow: 0 25px 50px -20px rgba(26, 26, 26, 0.18);
+}
+
+.community-emoji { font-size: 2.75rem; margin-bottom: 0.75rem; }
+
+.community-card h2 { margin-bottom: 1rem; }
+
+.community-card p {
+  color: var(--color-text-light);
+  line-height: 1.8;
+  max-width: 44ch;
+  margin: 0 auto 1.75rem;
+}
+
+.community-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  max-width: 32rem;
+  margin: 0 auto;
+}
+
+.community-input {
+  flex: 1 1 16rem;
+  padding: 0.95rem 1.25rem;
+  border: 2px solid #E8DFD3;
+  border-radius: 9999px;
+  font-size: 1rem;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.community-input:focus {
+  border-color: var(--color-gold);
+  box-shadow: 0 0 0 4px rgba(212, 176, 106, 0.18);
+}
+
+.community-submit { flex-shrink: 0; }
+
+.community-note {
+  margin-top: 1.1rem;
+  font-size: 0.85rem;
+  color: var(--color-text-lighter);
+}
+
+@media (max-width: 520px) {
+  .community-form { flex-direction: column; }
+  .community-input,
+  .community-submit { width: 100%; }
+}
