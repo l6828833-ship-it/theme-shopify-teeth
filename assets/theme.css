@@ -2392,3 +2392,40 @@ body.has-flash-bar { padding-bottom: 68px; }
 .pricing-details ul { list-style: none; display: grid; gap: 0.75rem; }
 .pricing-details li { font-size: 0.95rem; line-height: 1.6; color: var(--color-text-light); }
 .pricing-details strong { color: var(--color-charcoal); }
+
+
+/* ============================================
+   FOOTER INTRO + CONTACT
+   ============================================ */
+.footer-intro p { font-size: 0.9rem; line-height: 1.7; color: rgba(255, 255, 255, 0.65); }
+.footer-contact { list-style: none; margin-top: 1rem; display: grid; gap: 0.5rem; }
+.footer-contact li { font-size: 0.875rem; color: rgba(255, 255, 255, 0.65); }
+.footer-contact a { color: rgba(255, 255, 255, 0.85); text-decoration: none; }
+.footer-contact a:hover { color: #fff; }
+.footer-bottom a { color: rgba(255, 255, 255, 0.85); text-decoration: none; }
+
+/* ============================================
+   CONTACT FORM
+   ============================================ */
+.contact-form-wrap { margin-top: 2rem; }
+.contact-form-wrap label { display: block; font-weight: 600; margin: 1rem 0 0.4rem; }
+.contact-form-wrap input,
+.contact-form-wrap textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 2px solid #E8DFD3;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  font-family: inherit;
+  outline: none;
+}
+.contact-form-wrap input:focus,
+.contact-form-wrap textarea:focus { border-color: var(--color-gold); }
+.contact-form-wrap button { margin-top: 1.25rem; }
+.contact-success {
+  background: #E9F7EF;
+  color: #1E7A46;
+  padding: 1rem 1.25rem;
+  border-radius: 0.75rem;
+  margin-bottom: 1rem;
+}

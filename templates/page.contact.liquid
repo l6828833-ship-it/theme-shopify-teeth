@@ -1,0 +1,29 @@
+<section class="static-page">
+  <div class="container static-narrow">
+    <div class="section-header"><h1>{{ page.title | default: 'Contact Us' }}</h1></div>
+    <div class="rte">
+      <p>Have a question about our whitening strips, your order, or shipping? We're here to help.</p>
+      <ul>
+        <li><strong>Email:</strong> <a href="mailto:camilasousa@duck.com">camilasousa@duck.com</a></li>
+        <li><strong>Phone:</strong> <a href="tel:920715535">920715535</a></li>
+        <li><strong>Response time:</strong> within 24–48 hours, Monday to Friday</li>
+      </ul>
+    </div>
+
+    <div class="contact-form-wrap">
+      {% form 'contact' %}
+        {% if form.posted_successfully? %}
+          <p class="contact-success">Thanks for reaching out! We'll get back to you within 24–48 hours.</p>
+        {% endif %}
+        {{ form.errors | default_errors }}
+        <label for="contact_name">Name</label>
+        <input type="text" id="contact_name" name="contact[name]" value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}">
+        <label for="contact_email">Email</label>
+        <input type="email" id="contact_email" name="contact[email]" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}" required>
+        <label for="contact_body">Message</label>
+        <textarea id="contact_body" name="contact[body]" rows="5" required></textarea>
+        <button type="submit" class="cta-button">Send Message</button>
+      {% endform %}
+    </div>
+  </div>
+</section>
