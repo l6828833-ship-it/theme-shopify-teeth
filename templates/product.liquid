@@ -1,77 +1,223 @@
-<section class="product-page">
+{%- assign img_product = product.featured_image | default: 'https://pub-1271a678a52f4664aa377c2be4276e07.r2.dev/teeth%20whitening%20strips%20(4)%20(1).png' -%}
+
+<!-- PDP Hero -->
+<section class="pdp-hero">
+  <div class="pdp-blob pdp-blob-1"></div>
+  <div class="pdp-blob pdp-blob-2"></div>
   <div class="container">
-    <nav class="breadcrumb"><a href="/">Home</a> <span>/</span> <span>{{ product.title }}</span></nav>
-
-    <div class="product-layout">
-      <div class="product-gallery">
-        {% if product.featured_image %}
-          <img id="mainProductImage" class="product-main-image" src="{{ product.featured_image | image_url: width: 800 }}" alt="{{ product.featured_image.alt | escape | default: product.title }}">
-        {% endif %}
-        {% if product.images.size > 1 %}
-          <div class="product-thumbs">
-            {% for image in product.images %}
-              <button type="button" class="product-thumb" onclick="document.getElementById('mainProductImage').src='{{ image | image_url: width: 800 }}'">
-                <img src="{{ image | image_url: width: 160 }}" alt="{{ image.alt | escape | default: product.title }}">
-              </button>
-            {% endfor %}
-          </div>
-        {% endif %}
-      </div>
-
-      <div class="product-info">
+    <div class="pdp-grid">
+      <!-- Left: content + offer selector -->
+      <div class="pdp-content">
+        <div class="pdp-eyebrow">✓ Dentist Recommended Whitening Strips</div>
         <h1>{{ product.title }}</h1>
+        <p class="pdp-sub">Professional-grade, enamel-safe teeth whitening strips that lift years of coffee, tea, and wine stains for a visibly whiter smile in just 7 days — no sensitivity, no dentist bill.</p>
 
-        <div class="product-price">
-          <span class="product-price-current" id="priceCurrent">{{ product.selected_or_first_available_variant.price | money }}</span>
-          {% if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price %}
-            <span class="product-price-compare" id="priceCompare">{{ product.selected_or_first_available_variant.compare_at_price | money }}</span>
-          {% else %}
-            <span class="product-price-compare" id="priceCompare" style="display:none;"></span>
-          {% endif %}
+        <div class="pdp-rating">
+          <div class="pdp-stars">
+            <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <span class="pdp-rating-label">Enamel-safe &amp; dentist-recommended formula</span>
         </div>
 
-        {% form 'product', product %}
-          {% unless product.has_only_default_variant %}
-            <div class="product-option">
-              <label class="product-option-label" for="variantSelect">Package</label>
-              <select name="id" id="variantSelect" class="product-variant-select">
-                {% for variant in product.variants %}
-                  <option value="{{ variant.id }}"
-                          {% if variant == product.selected_or_first_available_variant %}selected{% endif %}
-                          {% unless variant.available %}disabled{% endunless %}
-                          data-price="{{ variant.price | money }}"
-                          data-compare="{{ variant.compare_at_price | money }}">
-                    {{ variant.title }} — {{ variant.price | money }}{% unless variant.available %} (Sold out){% endunless %}
-                  </option>
-                {% endfor %}
-              </select>
-            </div>
-          {% else %}
-            <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-          {% endunless %}
+        <div class="pdp-urgency">🔥 Last 48 hours of this week's free shipping offer</div>
 
-          <div class="product-qty">
-            <label for="quantity">Quantity</label>
-            <input type="number" id="quantity" name="quantity" value="1" min="1">
+        <p class="pdp-choose">Choose your package:</p>
+        {% form 'product', product %}
+          <div class="pdp-options">
+            {% for variant in product.variants %}
+              <label class="pdp-option{% if forloop.first %} selected{% endif %}">
+                <input type="radio" name="id" value="{{ variant.id }}" data-price="{{ variant.price | money }}" {% if forloop.first %}checked{% endif %}>
+                <span class="pdp-option-radio"></span>
+                <span class="pdp-option-main">
+                  <span class="pdp-option-title">{{ variant.title }}</span>
+                  <span class="pdp-option-detail">
+                    {%- case forloop.index -%}
+                      {%- when 1 -%}14 strips · 7-day treatment
+                      {%- when 2 -%}28 strips · 14-day treatment
+                      {%- when 3 -%}42 strips · 21-day treatment
+                      {%- else -%}{{ variant.title }}
+                    {%- endcase -%}
+                  </span>
+                </span>
+                <span class="pdp-option-price">
+                  {% if variant.compare_at_price > variant.price %}<span class="pdp-option-was">{{ variant.compare_at_price | money }}</span>{% endif %}
+                  <span class="pdp-option-now">{{ variant.price | money }}</span>
+                </span>
+                {% if forloop.index == 2 %}<span class="pdp-option-badge popular">Most Popular</span>{% endif %}
+                {% if forloop.index == 3 %}<span class="pdp-option-badge best">Best Value</span>{% endif %}
+              </label>
+            {% endfor %}
           </div>
 
-          <button type="submit" name="add" class="cta-button product-add"{% unless product.available %} disabled{% endunless %}>
-            {% if product.available %}Add to Cart{% else %}Sold Out{% endif %}
+          <button type="submit" name="add" class="cta-button pdp-add"{% unless product.available %} disabled{% endunless %}>
+            {% if product.available %}<span id="pdpBtnLabel">Order Now — {{ product.selected_or_first_available_variant.price | money }}</span>{% else %}Sold Out{% endif %}
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 1.25rem; height: 1.25rem;">
               <polyline points="9 18 15 12 9 6"></polyline>
             </svg>
           </button>
         {% endform %}
 
-        <ul class="product-trust">
-          <li>✓ Free shipping</li>
-          <li>✓ 7-day money-back guarantee</li>
-          <li>✓ Enamel-safe, dentist-recommended formula</li>
-        </ul>
+        <p class="pdp-paynote">🔒 Secure checkout · Free worldwide shipping · 7-day money-back guarantee</p>
+      </div>
 
-        {% if product.description != blank %}
-          <div class="product-description rte">{{ product.description }}</div>
+      <!-- Right: image + trust badges -->
+      <div class="pdp-media">
+        <div class="pdp-image">
+          <div class="pdp-glow"></div>
+          <img id="pdpMainImage" src="{{ img_product | image_url: width: 800 }}" alt="{{ product.featured_image.alt | escape | default: product.title }}">
+        </div>
+        {% if product.images.size > 1 %}
+          <div class="pdp-thumbs">
+            {% for image in product.images %}
+              <button type="button" class="pdp-thumb" onclick="document.getElementById('pdpMainImage').src='{{ image | image_url: width: 800 }}'">
+                <img src="{{ image | image_url: width: 160 }}" alt="{{ image.alt | escape | default: product.title }}">
+              </button>
+            {% endfor %}
+          </div>
         {% endif %}
+        <div class="pdp-trust-badges">
+          <div class="pdp-trust"><strong>Enamel Safe</strong><span>Gentle formula</span></div>
+          <div class="pdp-trust"><strong>Dentist</strong><span>Recommended</span></div>
+          <div class="pdp-trust"><strong>7 Days</strong><span>To results</span></div>
+          <div class="pdp-trust"><strong>14</strong><span>Strips per box</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Benefits -->
+<section class="benefits">
+  <div class="container">
+    <div class="section-header">
+      <h2>Why Choose Our Whitening Strips</h2>
+      <p>Engineered for results. Designed for comfort. Trusted by professionals.</p>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="benefit-icon">⚡</div>
+        <h3>Removes Deep Stains</h3>
+        <p>Targets years of coffee, tea, wine, and smoking stains for a visibly brighter smile.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">🛡️</div>
+        <h3>Safe for Sensitive Teeth</h3>
+        <p>A gentle, enamel-safe formula that whitens without irritation.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">⏱️</div>
+        <h3>Results in 7 Days</h3>
+        <p>See dramatic improvements in just one week of daily use.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">🏥</div>
+        <h3>Pro Results at Home</h3>
+        <p>Dentist-grade whitening technology in convenient strips.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Before & After -->
+<section class="before-after">
+  <div class="container">
+    <div class="section-header">
+      <h2>See the Transformation</h2>
+      <p>Real results from a single treatment cycle with our teeth whitening strips</p>
+    </div>
+    <div class="comparison-image">
+      <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663743569624/amyPSPrF2HUmPeJK9rK5RK/before-after-comparison-X9GBvVf2LvMU5MUHgjePtJ.webp" alt="Before and after results using 3DWhiteningStrips teeth whitening strips">
+    </div>
+  </div>
+</section>
+
+<!-- How It Works -->
+<section class="how-it-works">
+  <div class="container">
+    <div class="section-header">
+      <h2>How It Works</h2>
+      <p>A brighter smile in three effortless steps — just 30 minutes a day</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <span class="step-line"></span>
+        <div class="step-icon-ring"><span class="step-emoji">🦷</span><span class="step-number">1</span></div>
+        <h3>Apply Strips</h3>
+        <p>Peel and press a strip onto your upper and lower teeth.</p>
+        <span class="step-meta">⏱️ 30 seconds</span>
+      </div>
+      <div class="step-card">
+        <span class="step-line"></span>
+        <div class="step-icon-ring"><span class="step-emoji">😌</span><span class="step-number">2</span></div>
+        <h3>Relax</h3>
+        <p>Let the enamel-safe formula lift stains for 30 minutes.</p>
+        <span class="step-meta">⏳ 30 minutes</span>
+      </div>
+      <div class="step-card">
+        <div class="step-icon-ring"><span class="step-emoji">✨</span><span class="step-number">3</span></div>
+        <h3>Reveal</h3>
+        <p>Peel off, rinse, and reveal a visibly brighter smile.</p>
+        <span class="step-meta">🪞 Instant glow</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Ingredients / What's Inside -->
+<section class="pdp-ingredients">
+  <div class="container">
+    <div class="feature-grid">
+      <div class="feature-visual">
+        <div class="feature-glow"></div>
+        <img src="https://pub-1271a678a52f4664aa377c2be4276e07.r2.dev/teeth%20whitening%20strips.png" alt="3DWhiteningStrips whitening strips kit and formula">
+      </div>
+      <div class="feature-content">
+        <div class="hero-badge">What's Inside</div>
+        <h2>A Formula Built for <span class="highlight">Real, Gentle Results</span></h2>
+        <p class="feature-lead">Every box of 3DWhiteningStrips is designed to deliver professional whitening at home — safely and comfortably.</p>
+        <ul class="feature-list">
+          <li><span class="feature-check">✓</span> Enamel-safe whitening gel</li>
+          <li><span class="feature-check">✓</span> Advanced no-slip grip technology</li>
+          <li><span class="feature-check">✓</span> Fresh mint, low-sensitivity formula</li>
+          <li><span class="feature-check">✓</span> 14 pre-cut strips — a full 7-day treatment</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Guarantee -->
+<section class="guarantee">
+  <div class="container">
+    <div class="guarantee-content">
+      <div class="guarantee-icon">🛡️</div>
+      <h2>7-Day Money-Back Guarantee</h2>
+      <p>Try 3DWhiteningStrips completely risk-free. If you don't love your brighter smile within 7 days, we'll refund every penny — no questions asked.</p>
+      <a href="#top" class="cta-button" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Order Risk-Free Today</a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="container">
+    <div class="section-header"><h2>Frequently Asked Questions</h2></div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question active" onclick="toggleFaq(this)"><span>Do whitening strips work?</span><svg class="faq-toggle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+        <div class="faq-answer open"><p>Yes — our enamel-safe strips deliver whitening gel directly to your teeth to break down stains, with a visibly whiter smile after a single 7-day treatment.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)"><span>Are they safe for sensitive teeth?</span><svg class="faq-toggle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+        <div class="faq-answer"><p>Yes. Our balanced, enamel-safe formula is designed to minimize sensitivity. If you have dental concerns, review our Product Safety page or consult your dentist.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)"><span>How fast is shipping?</span><svg class="faq-toggle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+        <div class="faq-answer"><p>Free worldwide shipping on every order, typically arriving within 6–10 days.</p></div>
       </div>
     </div>
   </div>
@@ -79,23 +225,16 @@
 
 <script>
   (function () {
-    var sel = document.getElementById('variantSelect');
-    if (!sel) return;
-    var cur = document.getElementById('priceCurrent');
-    var cmp = document.getElementById('priceCompare');
-    sel.addEventListener('change', function () {
-      var opt = sel.options[sel.selectedIndex];
-      var price = opt.getAttribute('data-price');
-      var compare = opt.getAttribute('data-compare');
-      if (cur) cur.textContent = price;
-      if (cmp) {
-        if (compare && compare !== price && compare !== '' && compare !== '$0.00') {
-          cmp.textContent = compare;
-          cmp.style.display = '';
-        } else {
-          cmp.style.display = 'none';
-        }
-      }
+    var options = document.querySelectorAll('.pdp-option input[type="radio"]');
+    var label = document.getElementById('pdpBtnLabel');
+    var mainImg = document.getElementById('pdpMainImage');
+    options.forEach(function (input) {
+      input.addEventListener('change', function () {
+        document.querySelectorAll('.pdp-option').forEach(function (l) { l.classList.remove('selected'); });
+        var lbl = input.closest('.pdp-option');
+        if (lbl) lbl.classList.add('selected');
+        if (label) label.textContent = 'Order Now — ' + input.getAttribute('data-price');
+      });
     });
   })();
 </script>

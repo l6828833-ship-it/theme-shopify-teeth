@@ -2441,3 +2441,114 @@ body.has-flash-bar { padding-bottom: 68px; }
   gap: 1rem;
 }
 .hero-order-now { align-self: flex-start; }
+
+
+/* ============================================
+   PRODUCT PAGE — LANDING STYLE (PDP)
+   ============================================ */
+.pdp-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 3rem 0 4rem;
+  background: linear-gradient(to bottom, #FAF7F2, #F1EBE2);
+}
+.pdp-blob { position: absolute; border-radius: 50%; filter: blur(70px); z-index: 0; pointer-events: none; }
+.pdp-blob-1 { width: 22rem; height: 22rem; background: radial-gradient(circle, rgba(212,176,106,0.22), transparent 70%); top: -7rem; right: -5rem; animation: blob-float 14s ease-in-out infinite; }
+.pdp-blob-2 { width: 20rem; height: 20rem; background: radial-gradient(circle, rgba(184,149,106,0.16), transparent 70%); bottom: -7rem; left: -5rem; animation: blob-float 16s ease-in-out infinite reverse; }
+.pdp-hero .container { position: relative; z-index: 1; }
+
+.pdp-grid { display: grid; grid-template-columns: 1fr; gap: 2.5rem; align-items: center; }
+@media (min-width: 960px) { .pdp-grid { grid-template-columns: 1.05fr 1fr; gap: 3.5rem; } }
+@media (max-width: 959px) { .pdp-media { order: -1; } }
+
+.pdp-eyebrow {
+  display: inline-block;
+  padding: 0.45rem 1rem;
+  background: var(--color-beige);
+  color: var(--color-gold);
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+.pdp-content h1 { margin-bottom: 1rem; }
+.pdp-sub { font-size: 1.05rem; color: var(--color-text-light); line-height: 1.7; margin-bottom: 1.25rem; }
+
+.pdp-rating { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1rem; flex-wrap: wrap; }
+.pdp-stars { display: flex; gap: 0.15rem; }
+.pdp-stars .star { width: 1.15rem; height: 1.15rem; color: var(--color-gold); }
+.pdp-rating-label { font-size: 0.85rem; color: var(--color-text-lighter); }
+
+.pdp-urgency {
+  display: inline-block;
+  background: #FDECEC;
+  color: #D8443F;
+  border: 1px solid #F7D4D2;
+  padding: 0.45rem 0.9rem;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.pdp-choose { font-weight: 700; margin-bottom: 0.85rem; }
+
+.pdp-options { display: grid; gap: 0.85rem; }
+.pdp-option {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  border: 2px solid #E8DFD3;
+  border-radius: 1rem;
+  cursor: pointer;
+  position: relative;
+  background: white;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.pdp-option:hover { border-color: var(--color-gold); }
+.pdp-option.selected { border-color: var(--color-gold); box-shadow: 0 0 0 3px rgba(212,176,106,0.18); }
+.pdp-option input { position: absolute; opacity: 0; pointer-events: none; }
+.pdp-option-radio { width: 1.3rem; height: 1.3rem; border-radius: 50%; border: 2px solid #cdbfa6; flex-shrink: 0; position: relative; }
+.pdp-option.selected .pdp-option-radio { border-color: var(--color-gold); }
+.pdp-option.selected .pdp-option-radio::after { content: ''; position: absolute; inset: 3px; border-radius: 50%; background: var(--color-gold); }
+.pdp-option-main { flex: 1; display: flex; flex-direction: column; }
+.pdp-option-title { font-weight: 700; }
+.pdp-option-detail { font-size: 0.8rem; color: var(--color-text-lighter); }
+.pdp-option-price { text-align: right; display: flex; flex-direction: column; align-items: flex-end; }
+.pdp-option-now { font-weight: 800; color: var(--color-charcoal); font-size: 1.15rem; }
+.pdp-option-was { font-size: 0.8rem; color: var(--color-text-lighter); text-decoration: line-through; }
+.pdp-option-badge {
+  position: absolute;
+  top: -0.6rem;
+  right: 1rem;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 0.15rem 0.6rem;
+  border-radius: 9999px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.pdp-option-badge.popular { background: var(--color-gold); color: #fff; }
+.pdp-option-badge.best { background: var(--color-charcoal); color: #fff; }
+
+.pdp-add { width: 100%; justify-content: center; margin-top: 1.25rem; font-size: 1.1rem; }
+.pdp-paynote { text-align: center; font-size: 0.8rem; color: var(--color-text-lighter); margin-top: 0.85rem; }
+
+/* Media side */
+.pdp-image { position: relative; border-radius: 1.5rem; }
+.pdp-glow { position: absolute; inset: -1.5rem; background: radial-gradient(circle at 50% 50%, rgba(212,176,106,0.3), transparent 65%); filter: blur(30px); z-index: 0; animation: pulse-glow 4.5s ease-in-out infinite; }
+.pdp-image img { width: 100%; height: auto; display: block; border-radius: 1.5rem; position: relative; z-index: 1; background: white; box-shadow: 0 30px 50px -20px rgba(26,26,26,0.22); }
+.pdp-thumbs { display: flex; gap: 0.75rem; margin-top: 1rem; flex-wrap: wrap; }
+.pdp-thumb { width: 4.5rem; height: 4.5rem; border: 2px solid #E8DFD3; border-radius: 0.75rem; overflow: hidden; padding: 0; background: white; cursor: pointer; transition: border-color 0.2s ease; }
+.pdp-thumb:hover { border-color: var(--color-gold); }
+.pdp-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.pdp-trust-badges { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; margin-top: 1.5rem; }
+.pdp-trust { background: white; border-radius: 0.9rem; padding: 0.9rem 0.5rem; text-align: center; box-shadow: 0 8px 18px -12px rgba(26,26,26,0.18); }
+.pdp-trust strong { display: block; font-size: 0.95rem; color: var(--color-charcoal); }
+.pdp-trust span { display: block; font-size: 0.72rem; color: var(--color-text-lighter); margin-top: 0.15rem; }
+@media (max-width: 420px) { .pdp-trust-badges { grid-template-columns: repeat(2, 1fr); } }
+
+/* Ingredients section */
+.pdp-ingredients { padding: 4rem 0; background: white; }
