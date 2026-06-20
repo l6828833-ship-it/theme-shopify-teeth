@@ -1,13 +1,19 @@
 <section class="static-page">
   <div class="container static-narrow" style="text-align:center;">
-    <div class="section-header"><h1>Your Cart</h1></div>
-    <p>Opening your cart…</p>
-    <a href="/" class="cta-button">Continue Shopping</a>
+    <div class="section-header"><h1>Taking you to checkout…</h1></div>
+    <a href="/checkout" class="cta-button">Continue to Checkout</a>
   </div>
 </section>
 
 <script>
-  // This store uses a slide-out cart drawer instead of a cart page.
-  try { sessionStorage.setItem('openCartDrawer', '1'); } catch (e) {}
-  window.location.replace('/');
+  // This store skips the cart page entirely — go straight to checkout if there
+  // are items, otherwise back to the homepage to choose a package.
+  (function () {
+    fetch('/cart.js')
+      .then(function (r) { return r.json(); })
+      .then(function (cart) {
+        window.location.replace(cart.item_count > 0 ? '/checkout' : '/');
+      })
+      .catch(function () { window.location.replace('/'); });
+  })();
 </script>
