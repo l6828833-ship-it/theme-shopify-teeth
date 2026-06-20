@@ -72,7 +72,7 @@ h3 {
   background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid #E8DFD3;
-  padding: 1rem 0;
+  padding: 0.6rem 0;
 }
 
 .navbar .container {
@@ -1847,12 +1847,12 @@ h3 {
 
 .logo-img {
   display: block;
-  height: 2.75rem;
+  height: 3.5rem;
   width: auto;
-  max-width: 200px;
+  max-width: 260px;
   object-fit: contain;
 }
 
 @media (max-width: 600px) {
-  .logo-img { height: 2.25rem; max-width: 160px; }
+  .logo-img { height: 2.75rem; max-width: 190px; }
 }
