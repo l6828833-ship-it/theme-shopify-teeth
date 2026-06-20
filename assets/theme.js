@@ -245,12 +245,12 @@ document.addEventListener('DOMContentLoaded', function() {
       if (ctaPriceDrop) ctaPriceDrop.classList.add('is-visible');
       heroCta.classList.add('cta-docked');
     } else {
-      // 1) Slide the notification in shortly after load
+      // 1) Slide the notification in gently after load
       setTimeout(function() {
         notif.classList.add('is-visible');
-      }, 900);
+      }, 1000);
 
-      // 2) After it has been visible for ~2s, dock it onto the CTA button
+      // 2) After it has been visible for ~2.6s, dock it onto the CTA button
       setTimeout(function() {
         var heroRect = hero.getBoundingClientRect();
         var notifRect = notif.getBoundingClientRect();
@@ -265,6 +265,8 @@ document.addEventListener('DOMContentLoaded', function() {
         var dx = targetCenterX - curCenterX;
         var dy = targetCenterY - curCenterY;
 
+        // Slower, smoother arc as it travels and settles onto the button
+        notif.style.transition = 'transform 1.25s cubic-bezier(0.45, 0.05, 0.2, 1), opacity 0.9s ease 0.35s';
         notif.style.transform = 'translate(' + dx + 'px, ' + dy + 'px) scale(0.18)';
         notif.classList.add('is-docking');
 
@@ -283,8 +285,8 @@ document.addEventListener('DOMContentLoaded', function() {
           dock();
         });
         // Safety fallback in case transitionend doesn't fire
-        setTimeout(dock, 900);
-      }, 900 + 2000);
+        setTimeout(dock, 1500);
+      }, 1000 + 2600);
     }
   }
 });
