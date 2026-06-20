@@ -2429,3 +2429,15 @@ body.has-flash-bar { padding-bottom: 68px; }
   border-radius: 0.75rem;
   margin-bottom: 1rem;
 }
+
+
+/* ============================================
+   HERO CTA ROW (two buttons side by side)
+   ============================================ */
+.hero-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 1rem;
+}
+.hero-order-now { align-self: flex-start; }
