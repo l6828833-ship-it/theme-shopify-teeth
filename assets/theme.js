@@ -63,16 +63,6 @@ function addToCart(quantity) {
 
 // Smooth scroll for CTA buttons
 document.addEventListener('DOMContentLoaded', function() {
-  // Initialize CTA buttons
-  const ctaButtons = document.querySelectorAll('.cta-button');
-  ctaButtons.forEach(button => {
-    if (!button.hasAttribute('onclick')) {
-      button.addEventListener('click', function() {
-        window.location.href = '/cart';
-      });
-    }
-  });
-
   // Navbar shadow on scroll
   const navbar = document.querySelector('.navbar');
   if (navbar) {
