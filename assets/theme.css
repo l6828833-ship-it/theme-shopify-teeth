@@ -2378,7 +2378,7 @@ body.has-flash-bar { padding-bottom: 68px; }
   justify-content: center;
 }
 .pricing-info-item strong { display: block; font-size: 0.95rem; }
-.pricing-info-item span { display: block; font-size: 0.8rem; color: var(--color-text-lighter); }
+.pricing-info-item div span { display: block; font-size: 0.8rem; color: var(--color-text-lighter); }
 
 /* Product details */
 .pricing-details {
