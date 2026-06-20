@@ -289,4 +289,25 @@ document.addEventListener('DOMContentLoaded', function() {
       }, 1000 + 2600);
     }
   }
+
+  // ---- Sticky dismissible flash-sale bar ----
+  var flashBar = document.getElementById('flashBar');
+  var flashBarClose = document.getElementById('flashBarClose');
+  if (flashBar) {
+    var barDismissed = false;
+    try { barDismissed = sessionStorage.getItem('flashBarDismissed') === '1'; } catch (e) {}
+    if (!barDismissed) {
+      setTimeout(function () {
+        flashBar.classList.add('is-visible');
+        document.body.classList.add('has-flash-bar');
+      }, 1200);
+    }
+    if (flashBarClose) {
+      flashBarClose.addEventListener('click', function () {
+        flashBar.classList.remove('is-visible');
+        document.body.classList.remove('has-flash-bar');
+        try { sessionStorage.setItem('flashBarDismissed', '1'); } catch (e) {}
+      });
+    }
+  }
 });

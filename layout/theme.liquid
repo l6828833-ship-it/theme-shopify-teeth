@@ -90,6 +90,25 @@
     </div>
   </footer>
 
+  <div class="flash-bar" id="flashBar" role="region" aria-label="Limited time offer">
+    <div class="flash-bar-inner">
+      <span class="flash-bar-icon">🔥</span>
+      <div class="flash-bar-text">
+        <strong>Today Only — 67% Off Whitening Strips</strong>
+        <span class="flash-bar-price">
+          <span class="flash-old"><span class="price-amount" data-amount="29.99"></span></span>
+          <span class="flash-arrow">→</span>
+          <span class="flash-new"><span class="flash-symbol"></span><span class="flash-num" data-from="29.99" data-to="9.99">29.99</span></span>
+        </span>
+      </div>
+      <div class="flash-timer flash-bar-timer" id="flashTimer" aria-label="Offer countdown timer">
+        <span class="timer-num" data-unit="hours">00</span><span class="timer-colon">:</span><span class="timer-num" data-unit="minutes">00</span><span class="timer-colon">:</span><span class="timer-num" data-unit="seconds">00</span>
+      </div>
+      <a href="/products/3dwhiteningstrips-teeth-whitening-strips" class="flash-bar-cta">Claim 67% Off</a>
+      <button class="flash-bar-close" id="flashBarClose" type="button" aria-label="Dismiss offer">✕</button>
+    </div>
+  </div>
+
   {{ 'theme.js' | asset_url | script_tag }}
 </body>
 </html>
