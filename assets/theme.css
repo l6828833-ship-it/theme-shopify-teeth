@@ -1649,3 +1649,126 @@ h3 {
   font-weight: 600;
   margin-bottom: 1rem;
 }
+
+
+/* ============================================
+   HERO FLASH-SALE NOTIFICATION + DOCKING TAG
+   ============================================ */
+.hero-notification {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 290px;
+  max-width: calc(100% - 3rem);
+  background: rgba(255, 255, 255, 0.96);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 1rem;
+  padding: 0.85rem 1rem;
+  box-shadow: 0 18px 40px -12px rgba(26, 26, 26, 0.35);
+  transform: translate(130%, -10%) scale(0.92);
+  opacity: 0;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+  will-change: transform, opacity;
+  pointer-events: none;
+}
+
+.hero-notification.is-visible {
+  transform: translate(0, 0) scale(1);
+  opacity: 1;
+}
+
+.hero-notification.is-docking {
+  opacity: 0;
+}
+
+.hero-notif-icon {
+  flex-shrink: 0;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 0.7rem;
+  background: linear-gradient(135deg, #FF7A45, #FF5252);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  box-shadow: 0 6px 14px -4px rgba(255, 82, 82, 0.5);
+}
+
+.hero-notif-body { line-height: 1.35; }
+
+.hero-notif-line {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-charcoal);
+}
+
+.hero-notif-now { color: #E0413F; font-weight: 800; white-space: nowrap; }
+
+.hero-notif-was {
+  font-size: 0.78rem;
+  color: var(--color-text-lighter);
+  text-decoration: line-through;
+  margin-top: 0.1rem;
+}
+
+/* CTA wrapper + docked discount tag */
+.cta-form {
+  position: relative;
+  display: inline-block;
+}
+
+.cta-discount-tag {
+  position: absolute;
+  top: -0.7rem;
+  right: -0.9rem;
+  z-index: 3;
+  background: linear-gradient(135deg, #FF7A45, #FF5252);
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+  padding: 0.32rem 0.6rem;
+  border-radius: 0.6rem;
+  box-shadow: 0 8px 16px -5px rgba(255, 82, 82, 0.6);
+  transform: scale(0) rotate(-12deg);
+  opacity: 0;
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.cta-discount-tag.is-visible {
+  transform: scale(1) rotate(-12deg);
+  opacity: 1;
+}
+
+/* Button pop when the tag connects */
+@keyframes cta-pop {
+  0% { transform: scale(1); }
+  55% { transform: scale(1.09); }
+  100% { transform: scale(1.05); }
+}
+
+#heroCta.cta-docked {
+  animation: cta-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@media (max-width: 600px) {
+  .hero-notification {
+    width: 250px;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.7rem 0.85rem;
+  }
+  .hero-notif-line { font-size: 0.8rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-notification { display: none; }
+  .cta-discount-tag { transition: none; }
+}

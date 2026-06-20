@@ -46,12 +46,13 @@
         </div>
 
         <form method="post" action="/cart/add" class="cta-form">
-          <button type="submit" class="cta-button">
+          <button type="submit" class="cta-button" id="heroCta">
             Get Your Whitening Kit
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 1.25rem; height: 1.25rem;">
               <polyline points="9 18 15 12 9 6"></polyline>
             </svg>
           </button>
+          <span class="cta-discount-tag" id="ctaTag" aria-hidden="true">-67%</span>
         </form>
 
         <div class="social-proof">
@@ -83,6 +84,15 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- Slide-in flash sale notification that docks onto the CTA -->
+  <div class="hero-notification" id="heroNotification" role="status" aria-live="polite">
+    <div class="hero-notif-icon">🔥</div>
+    <div class="hero-notif-body">
+      <div class="hero-notif-line">Flash Sale: Whitening Kit now <strong class="hero-notif-now"><span class="notif-symbol">$</span>9.99</strong></div>
+      <div class="hero-notif-was"><span class="notif-symbol">$</span>29.99</div>
     </div>
   </div>
 </section>

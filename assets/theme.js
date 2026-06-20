@@ -165,6 +165,11 @@ document.addEventListener('DOMContentLoaded', function() {
     el.textContent = CURRENCY.symbol;
   });
 
+  // Apply currency symbol to the hero notification
+  document.querySelectorAll('.notif-symbol').forEach(function(el) {
+    el.textContent = CURRENCY.symbol;
+  });
+
   // ---- Flash sale countdown timer ----
   var flashTimer = document.getElementById('flashTimer');
   if (flashTimer) {
@@ -221,6 +226,62 @@ document.addEventListener('DOMContentLoaded', function() {
       dropObs.observe(flashNum);
     } else {
       animateDrop();
+    }
+  }
+
+  // ---- Hero flash-sale notification that docks onto the CTA ----
+  var notif = document.getElementById('heroNotification');
+  var hero = document.querySelector('.hero');
+  var heroCta = document.getElementById('heroCta');
+  var ctaTag = document.getElementById('ctaTag');
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (notif && hero && heroCta) {
+    if (reduceMotion) {
+      // Skip the motion: just attach the discount tag
+      notif.style.display = 'none';
+      if (ctaTag) ctaTag.classList.add('is-visible');
+      heroCta.classList.add('cta-docked');
+    } else {
+      // 1) Slide the notification in shortly after load
+      setTimeout(function() {
+        notif.classList.add('is-visible');
+      }, 900);
+
+      // 2) After it has been visible for ~2s, dock it onto the CTA button
+      setTimeout(function() {
+        var heroRect = hero.getBoundingClientRect();
+        var notifRect = notif.getBoundingClientRect();
+        var btnRect = heroCta.getBoundingClientRect();
+
+        // Aim the notification's center at the button's top-right corner
+        var targetCenterX = btnRect.right - heroRect.left;
+        var targetCenterY = btnRect.top - heroRect.top;
+        var curCenterX = (notifRect.left - heroRect.left) + notifRect.width / 2;
+        var curCenterY = (notifRect.top - heroRect.top) + notifRect.height / 2;
+
+        var dx = targetCenterX - curCenterX;
+        var dy = targetCenterY - curCenterY;
+
+        notif.style.transform = 'translate(' + dx + 'px, ' + dy + 'px) scale(0.18)';
+        notif.classList.add('is-docking');
+
+        var docked = false;
+        var dock = function() {
+          if (docked) return;
+          docked = true;
+          notif.style.display = 'none';
+          heroCta.classList.add('cta-docked');
+          if (ctaTag) ctaTag.classList.add('is-visible');
+        };
+        notif.addEventListener('transitionend', function handler(e) {
+          if (e.propertyName !== 'transform') return;
+          notif.removeEventListener('transitionend', handler);
+          dock();
+        });
+        // Safety fallback in case transitionend doesn't fire
+        setTimeout(dock, 900);
+      }, 900 + 2000);
     }
   }
 });
