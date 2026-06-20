@@ -1,56 +1,13 @@
-<section class="cart-page">
-  <div class="container">
-    <div class="section-header">
-      <h1>Your Cart</h1>
-    </div>
-
-    {% if cart.item_count > 0 %}
-      <form action="/cart" method="post" novalidate class="cart-form">
-        <div class="cart-items">
-          {% for item in cart.items %}
-            <div class="cart-item">
-              <a href="{{ item.url }}" class="cart-item-img">
-                {% if item.image %}<img src="{{ item.image | image_url: width: 160 }}" alt="{{ item.title | escape }}">{% endif %}
-              </a>
-              <div class="cart-item-info">
-                <a href="{{ item.url }}" class="cart-item-title">{{ item.product.title }}</a>
-                {% unless item.variant.title contains 'Default' %}
-                  <p class="cart-item-variant">{{ item.variant.title }}</p>
-                {% endunless %}
-                <p class="cart-item-price">{{ item.final_price | money }} each</p>
-                <a href="/cart/change?line={{ forloop.index }}&quantity=0" class="cart-remove">Remove</a>
-              </div>
-              <div class="cart-item-qty">
-                <input type="number" name="updates[]" value="{{ item.quantity }}" min="0" aria-label="Quantity">
-              </div>
-              <div class="cart-item-line">{{ item.final_line_price | money }}</div>
-            </div>
-          {% endfor %}
-        </div>
-
-        <div class="cart-footer">
-          <div class="cart-subtotal">
-            <span>Subtotal</span>
-            <strong>{{ cart.total_price | money }}</strong>
-          </div>
-          <p class="cart-note">Shipping &amp; taxes calculated at checkout. Free shipping included.</p>
-          <div class="cart-actions">
-            <button type="submit" name="update" class="cta-secondary">Update Cart</button>
-            <button type="submit" name="checkout" class="cta-button">
-              Checkout
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 1.25rem; height: 1.25rem;">
-                <polyline points="9 18 15 12 9 6"></polyline>
-              </svg>
-            </button>
-          </div>
-        </div>
-      </form>
-    {% else %}
-      <div class="cart-empty">
-        <div class="cart-empty-icon">🛒</div>
-        <p>Your cart is empty.</p>
-        <a href="/collections/all" class="cta-button">Shop Whitening Strips</a>
-      </div>
-    {% endif %}
+<section class="static-page">
+  <div class="container static-narrow" style="text-align:center;">
+    <div class="section-header"><h1>Your Cart</h1></div>
+    <p>Opening your cart…</p>
+    <a href="/" class="cta-button">Continue Shopping</a>
   </div>
 </section>
+
+<script>
+  // This store uses a slide-out cart drawer instead of a cart page.
+  try { sessionStorage.setItem('openCartDrawer', '1'); } catch (e) {}
+  window.location.replace('/');
+</script>

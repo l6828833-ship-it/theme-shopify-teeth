@@ -2655,3 +2655,19 @@ body.drawer-open { overflow: hidden; }
   display: inline-block;
 }
 .timer-colon { padding: 0 0.05rem; }
+
+
+/* Cart drawer 'continue shopping' button reset */
+.cart-drawer-viewcart {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-top: 0.75rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--color-gold);
+  font-size: 0.9rem;
+  font-family: inherit;
+}
+.cart-drawer-viewcart:hover { text-decoration: underline; }

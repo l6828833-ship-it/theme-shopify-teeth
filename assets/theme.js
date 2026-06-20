@@ -408,7 +408,17 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   if (cartDrawerClose) cartDrawerClose.addEventListener('click', closeCart);
   if (drawerOverlay) drawerOverlay.addEventListener('click', closeCart);
+  var cartContinue = document.getElementById('cartDrawerContinue');
+  if (cartContinue) cartContinue.addEventListener('click', closeCart);
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeCart(); });
+
+  // If redirected from /cart, open the drawer instead of showing a cart page
+  try {
+    if (sessionStorage.getItem('openCartDrawer') === '1') {
+      sessionStorage.removeItem('openCartDrawer');
+      openCart();
+    }
+  } catch (e) {}
 
   // Intercept product add-to-cart forms: add via AJAX and open the drawer
   document.querySelectorAll('form[action*="/cart/add"]').forEach(function (form) {
