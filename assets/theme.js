@@ -234,13 +234,15 @@ document.addEventListener('DOMContentLoaded', function() {
   var hero = document.querySelector('.hero');
   var heroCta = document.getElementById('heroCta');
   var ctaTag = document.getElementById('ctaTag');
+  var ctaPriceDrop = document.getElementById('ctaPriceDrop');
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   if (notif && hero && heroCta) {
     if (reduceMotion) {
-      // Skip the motion: just attach the discount tag
+      // Skip the motion: just attach the discount tag + price drop
       notif.style.display = 'none';
       if (ctaTag) ctaTag.classList.add('is-visible');
+      if (ctaPriceDrop) ctaPriceDrop.classList.add('is-visible');
       heroCta.classList.add('cta-docked');
     } else {
       // 1) Slide the notification in shortly after load
@@ -273,6 +275,7 @@ document.addEventListener('DOMContentLoaded', function() {
           notif.style.display = 'none';
           heroCta.classList.add('cta-docked');
           if (ctaTag) ctaTag.classList.add('is-visible');
+          if (ctaPriceDrop) ctaPriceDrop.classList.add('is-visible');
         };
         notif.addEventListener('transitionend', function handler(e) {
           if (e.propertyName !== 'transform') return;

@@ -1758,6 +1758,34 @@ h3 {
   animation: cta-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
+/* Price-drop reveal under the CTA */
+.cta-price-drop {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-top: 0.65rem;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 0.4s ease, transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cta-price-drop.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cta-price-now {
+  font-weight: 800;
+  font-size: 1.2rem;
+  color: #E0413F;
+}
+
+.cta-price-was {
+  font-size: 0.9rem;
+  color: var(--color-text-lighter);
+  text-decoration: line-through;
+}
+
 @media (max-width: 600px) {
   .hero-notification {
     width: 250px;
