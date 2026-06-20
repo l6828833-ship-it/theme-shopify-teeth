@@ -1835,3 +1835,24 @@ h3 {
 }
 
 .seo-article strong { color: var(--color-charcoal); }
+
+
+/* ============================================
+   SITE LOGO
+   ============================================ */
+.logo {
+  text-decoration: none;
+  color: inherit;
+}
+
+.logo-img {
+  display: block;
+  height: 2.75rem;
+  width: auto;
+  max-width: 200px;
+  object-fit: contain;
+}
+
+@media (max-width: 600px) {
+  .logo-img { height: 2.25rem; max-width: 160px; }
+}
