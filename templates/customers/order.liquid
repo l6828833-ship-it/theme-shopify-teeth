@@ -1,0 +1,24 @@
+<section class="static-page">
+  <div class="container static-narrow auth-page">
+    <div class="section-header"><h1>Order {{ order.name }}</h1></div>
+    <p>Placed on {{ order.created_at | date: "%B %d, %Y" }}</p>
+
+    <table class="account-orders">
+      <thead><tr><th>Product</th><th>Qty</th><th>Price</th></tr></thead>
+      <tbody>
+        {% for line_item in order.line_items %}
+          <tr>
+            <td>{{ line_item.title }}</td>
+            <td>{{ line_item.quantity }}</td>
+            <td>{{ line_item.final_line_price | money }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <p class="order-total">Subtotal: {{ order.line_items_subtotal_price | money }}</p>
+    <p class="order-total">Shipping: {{ order.shipping_price | money }}</p>
+    <p class="order-total"><strong>Total: {{ order.total_price | money }}</strong></p>
+    <p><a href="/account">← Back to my account</a></p>
+  </div>
+</section>

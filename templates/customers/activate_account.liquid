@@ -1,0 +1,14 @@
+<section class="static-page">
+  <div class="container static-narrow auth-page">
+    <div class="section-header"><h1>Activate Account</h1></div>
+    {% form 'activate_customer_password' %}
+      {{ form.errors | default_errors }}
+      <label for="password">Password</label>
+      <input type="password" name="customer[password]" id="password" autocomplete="new-password">
+      <label for="password_confirmation">Confirm password</label>
+      <input type="password" name="customer[password_confirmation]" id="password_confirmation" autocomplete="new-password">
+      <button type="submit" class="cta-button">Activate Account</button>
+      <button type="submit" name="decline" class="cta-secondary">Decline Invitation</button>
+    {% endform %}
+  </div>
+</section>

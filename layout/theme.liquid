@@ -33,15 +33,20 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   {{ 'theme.css' | asset_url | stylesheet_tag }}
-
-  {% if template == 'index' %}
-    {{ 'home.css' | asset_url | stylesheet_tag }}
-  {% endif %}
 </head>
 <body>
   <div class="shopify-section" id="shopify-section-header">
     {{ content_for_header }}
   </div>
+
+  <nav class="navbar">
+    <div class="container">
+      <a href="/" class="logo" aria-label="3DWhiteningStrips home">
+        <img src="https://pub-1271a678a52f4664aa377c2be4276e07.r2.dev/3dwhiteningstrips%20logo.png" alt="3DWhiteningStrips teeth whitening strips logo" class="logo-img">
+      </a>
+      <a href="/collections/all" class="btn btn-primary">Shop Whitening Strips</a>
+    </div>
+  </nav>
 
   <main role="main">
     {{ content_for_layout }}

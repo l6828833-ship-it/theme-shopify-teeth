@@ -1,0 +1,101 @@
+<section class="product-page">
+  <div class="container">
+    <nav class="breadcrumb"><a href="/">Home</a> <span>/</span> <span>{{ product.title }}</span></nav>
+
+    <div class="product-layout">
+      <div class="product-gallery">
+        {% if product.featured_image %}
+          <img id="mainProductImage" class="product-main-image" src="{{ product.featured_image | image_url: width: 800 }}" alt="{{ product.featured_image.alt | escape | default: product.title }}">
+        {% endif %}
+        {% if product.images.size > 1 %}
+          <div class="product-thumbs">
+            {% for image in product.images %}
+              <button type="button" class="product-thumb" onclick="document.getElementById('mainProductImage').src='{{ image | image_url: width: 800 }}'">
+                <img src="{{ image | image_url: width: 160 }}" alt="{{ image.alt | escape | default: product.title }}">
+              </button>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="product-info">
+        <h1>{{ product.title }}</h1>
+
+        <div class="product-price">
+          <span class="product-price-current" id="priceCurrent">{{ product.selected_or_first_available_variant.price | money }}</span>
+          {% if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price %}
+            <span class="product-price-compare" id="priceCompare">{{ product.selected_or_first_available_variant.compare_at_price | money }}</span>
+          {% else %}
+            <span class="product-price-compare" id="priceCompare" style="display:none;"></span>
+          {% endif %}
+        </div>
+
+        {% form 'product', product %}
+          {% unless product.has_only_default_variant %}
+            <div class="product-option">
+              <label class="product-option-label" for="variantSelect">Package</label>
+              <select name="id" id="variantSelect" class="product-variant-select">
+                {% for variant in product.variants %}
+                  <option value="{{ variant.id }}"
+                          {% if variant == product.selected_or_first_available_variant %}selected{% endif %}
+                          {% unless variant.available %}disabled{% endunless %}
+                          data-price="{{ variant.price | money }}"
+                          data-compare="{{ variant.compare_at_price | money }}">
+                    {{ variant.title }} — {{ variant.price | money }}{% unless variant.available %} (Sold out){% endunless %}
+                  </option>
+                {% endfor %}
+              </select>
+            </div>
+          {% else %}
+            <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+          {% endunless %}
+
+          <div class="product-qty">
+            <label for="quantity">Quantity</label>
+            <input type="number" id="quantity" name="quantity" value="1" min="1">
+          </div>
+
+          <button type="submit" name="add" class="cta-button product-add"{% unless product.available %} disabled{% endunless %}>
+            {% if product.available %}Add to Cart{% else %}Sold Out{% endif %}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 1.25rem; height: 1.25rem;">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        {% endform %}
+
+        <ul class="product-trust">
+          <li>✓ Free shipping</li>
+          <li>✓ 7-day money-back guarantee</li>
+          <li>✓ Enamel-safe, dentist-recommended formula</li>
+        </ul>
+
+        {% if product.description != blank %}
+          <div class="product-description rte">{{ product.description }}</div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    var sel = document.getElementById('variantSelect');
+    if (!sel) return;
+    var cur = document.getElementById('priceCurrent');
+    var cmp = document.getElementById('priceCompare');
+    sel.addEventListener('change', function () {
+      var opt = sel.options[sel.selectedIndex];
+      var price = opt.getAttribute('data-price');
+      var compare = opt.getAttribute('data-compare');
+      if (cur) cur.textContent = price;
+      if (cmp) {
+        if (compare && compare !== price && compare !== '' && compare !== '$0.00') {
+          cmp.textContent = compare;
+          cmp.style.display = '';
+        } else {
+          cmp.style.display = 'none';
+        }
+      }
+    });
+  })();
+</script>

@@ -1,0 +1,15 @@
+<section class="static-page">
+  <div class="container static-narrow article-single">
+    <div class="section-header">
+      <h1>{{ article.title }}</h1>
+      <p>{{ article.published_at | date: "%B %d, %Y" }}{% if article.author != blank %} · by {{ article.author }}{% endif %}</p>
+    </div>
+    {% if article.image %}
+      <img class="article-hero" src="{{ article.image | image_url: width: 1000 }}" alt="{{ article.title | escape }}">
+    {% endif %}
+    <div class="rte article-content">
+      {{ article.content }}
+    </div>
+    <p class="article-back"><a href="{{ blog.url }}">← Back to {{ blog.title }}</a></p>
+  </div>
+</section>

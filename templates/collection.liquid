@@ -1,0 +1,35 @@
+<section class="listing-page">
+  <div class="container">
+    <div class="section-header">
+      <h1>{{ collection.title }}</h1>
+      {% if collection.description != blank %}<p>{{ collection.description }}</p>{% endif %}
+    </div>
+
+    {% paginate collection.products by 12 %}
+      <div class="product-grid">
+        {% for product in collection.products %}
+          <a href="{{ product.url }}" class="product-card">
+            <div class="product-card-img">
+              {% if product.featured_image %}
+                <img src="{{ product.featured_image | image_url: width: 500 }}" alt="{{ product.featured_image.alt | escape | default: product.title }}">
+              {% endif %}
+            </div>
+            <h3>{{ product.title }}</h3>
+            <div class="product-card-price">
+              {% if product.compare_at_price > product.price %}
+                <span class="was">{{ product.compare_at_price | money }}</span>
+              {% endif %}
+              <span class="now">{{ product.price | money }}</span>
+            </div>
+          </a>
+        {% else %}
+          <p>No products found in this collection yet.</p>
+        {% endfor %}
+      </div>
+
+      {% if paginate.pages > 1 %}
+        <div class="pagination">{{ paginate | default_pagination }}</div>
+      {% endif %}
+    {% endpaginate %}
+  </div>
+</section>
