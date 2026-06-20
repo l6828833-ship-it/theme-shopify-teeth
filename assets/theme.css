@@ -1800,3 +1800,38 @@ h3 {
   .hero-notification { display: none; }
   .cta-discount-tag { transition: none; }
 }
+
+
+/* ============================================
+   SEO LONG-FORM CONTENT
+   ============================================ */
+.seo-content {
+  background: linear-gradient(to bottom, #F1EBE2, #FAF7F2);
+  padding: 5rem 0;
+}
+
+.seo-article {
+  max-width: 52rem;
+  margin: 0 auto;
+}
+
+.seo-article h2 {
+  margin-bottom: 1.25rem;
+  text-align: center;
+}
+
+.seo-article h3 {
+  margin-top: 2.25rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.4rem;
+  color: var(--color-charcoal);
+}
+
+.seo-article p {
+  color: var(--color-text-light);
+  font-size: 1.02rem;
+  line-height: 1.85;
+  margin-bottom: 1.1rem;
+}
+
+.seo-article strong { color: var(--color-charcoal); }
