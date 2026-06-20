@@ -109,6 +109,73 @@
   </div>
 </section>
 
+<!-- Flash Sale -->
+<section class="flash-sale">
+  <div class="flash-blob flash-blob-1"></div>
+  <div class="flash-blob flash-blob-2"></div>
+  <div class="container">
+    <div class="flash-card">
+      <div class="flash-badge"><span class="flash-dot"></span> Limited Time Offer</div>
+      <h2>Today Only — Save <span class="highlight">67%</span></h2>
+      <p class="flash-sub">Your brighter smile at the lowest price we've ever offered. When the timer hits zero, the deal is gone.</p>
+      <div class="flash-price">
+        <span class="flash-old"><span class="price-amount" data-amount="29.99"></span></span>
+        <span class="flash-arrow">→</span>
+        <span class="flash-new"><span class="flash-symbol"></span><span class="flash-num" data-from="29.99" data-to="9.99">29.99</span></span>
+      </div>
+      <div class="flash-timer" id="flashTimer" aria-label="Offer countdown timer">
+        <div class="timer-block"><span class="timer-num" data-unit="hours">00</span><span class="timer-label">Hours</span></div>
+        <span class="timer-sep">:</span>
+        <div class="timer-block"><span class="timer-num" data-unit="minutes">00</span><span class="timer-label">Minutes</span></div>
+        <span class="timer-sep">:</span>
+        <div class="timer-block"><span class="timer-num" data-unit="seconds">00</span><span class="timer-label">Seconds</span></div>
+      </div>
+      <button class="cta-button flash-cta" onclick="window.location.href='/cart'">
+        Claim 67% Off Now
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 1.25rem; height: 1.25rem;">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+      <p class="flash-note">🔒 Secure checkout · 30-day money-back guarantee · Free shipping</p>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing -->
+<section class="pricing">
+  <div class="container">
+    <div class="section-header">
+      <h2>Choose Your Bundle &amp; Save More</h2>
+      <p>Sale pricing applied automatically — the more you stock up, the more you save</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <h3>1 Box</h3>
+        <div class="price-was"><span class="price-amount" data-amount="29.99"></span></div>
+        <div class="price"><span class="price-amount" data-amount="9.99"></span></div>
+        <div class="savings">You save <span class="price-amount" data-amount="20"></span></div>
+        <button class="btn btn-primary" onclick="addToCart(1)">Choose Plan</button>
+      </div>
+      <div class="pricing-card popular">
+        <div class="popular-badge">Most Popular</div>
+        <h3>2 Boxes</h3>
+        <div class="price-was"><span class="price-amount" data-amount="59.98"></span></div>
+        <div class="price"><span class="price-amount" data-amount="17.98"></span></div>
+        <div class="savings">You save <span class="price-amount" data-amount="42"></span></div>
+        <button class="btn btn-primary" onclick="addToCart(2)">Choose Plan</button>
+      </div>
+      <div class="pricing-card">
+        <div class="best-badge">Best Value</div>
+        <h3>3 Boxes</h3>
+        <div class="price-was"><span class="price-amount" data-amount="89.97"></span></div>
+        <div class="price"><span class="price-amount" data-amount="24.99"></span></div>
+        <div class="savings">You save <span class="price-amount" data-amount="65"></span></div>
+        <button class="btn btn-primary" onclick="addToCart(3)">Choose Plan</button>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- Benefits Section -->
 <section class="benefits">
   <div class="container">
@@ -464,73 +531,6 @@
             <p>Verified Buyer</p>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Flash Sale -->
-<section class="flash-sale">
-  <div class="flash-blob flash-blob-1"></div>
-  <div class="flash-blob flash-blob-2"></div>
-  <div class="container">
-    <div class="flash-card">
-      <div class="flash-badge"><span class="flash-dot"></span> Limited Time Offer</div>
-      <h2>Today Only — Save <span class="highlight">67%</span></h2>
-      <p class="flash-sub">Your brighter smile at the lowest price we've ever offered. When the timer hits zero, the deal is gone.</p>
-      <div class="flash-price">
-        <span class="flash-old"><span class="price-amount" data-amount="29.99"></span></span>
-        <span class="flash-arrow">→</span>
-        <span class="flash-new"><span class="flash-symbol"></span><span class="flash-num" data-from="29.99" data-to="9.99">29.99</span></span>
-      </div>
-      <div class="flash-timer" id="flashTimer" aria-label="Offer countdown timer">
-        <div class="timer-block"><span class="timer-num" data-unit="hours">00</span><span class="timer-label">Hours</span></div>
-        <span class="timer-sep">:</span>
-        <div class="timer-block"><span class="timer-num" data-unit="minutes">00</span><span class="timer-label">Minutes</span></div>
-        <span class="timer-sep">:</span>
-        <div class="timer-block"><span class="timer-num" data-unit="seconds">00</span><span class="timer-label">Seconds</span></div>
-      </div>
-      <button class="cta-button flash-cta" onclick="window.location.href='/cart'">
-        Claim 67% Off Now
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 1.25rem; height: 1.25rem;">
-          <polyline points="9 18 15 12 9 6"></polyline>
-        </svg>
-      </button>
-      <p class="flash-note">🔒 Secure checkout · 30-day money-back guarantee · Free shipping</p>
-    </div>
-  </div>
-</section>
-
-<!-- Pricing -->
-<section class="pricing">
-  <div class="container">
-    <div class="section-header">
-      <h2>Choose Your Bundle &amp; Save More</h2>
-      <p>Sale pricing applied automatically — the more you stock up, the more you save</p>
-    </div>
-    <div class="pricing-grid">
-      <div class="pricing-card">
-        <h3>1 Box</h3>
-        <div class="price-was"><span class="price-amount" data-amount="29.99"></span></div>
-        <div class="price"><span class="price-amount" data-amount="9.99"></span></div>
-        <div class="savings">You save <span class="price-amount" data-amount="20"></span></div>
-        <button class="btn btn-primary" onclick="addToCart(1)">Choose Plan</button>
-      </div>
-      <div class="pricing-card popular">
-        <div class="popular-badge">Most Popular</div>
-        <h3>2 Boxes</h3>
-        <div class="price-was"><span class="price-amount" data-amount="59.98"></span></div>
-        <div class="price"><span class="price-amount" data-amount="17.98"></span></div>
-        <div class="savings">You save <span class="price-amount" data-amount="42"></span></div>
-        <button class="btn btn-primary" onclick="addToCart(2)">Choose Plan</button>
-      </div>
-      <div class="pricing-card">
-        <div class="best-badge">Best Value</div>
-        <h3>3 Boxes</h3>
-        <div class="price-was"><span class="price-amount" data-amount="89.97"></span></div>
-        <div class="price"><span class="price-amount" data-amount="24.99"></span></div>
-        <div class="savings">You save <span class="price-amount" data-amount="65"></span></div>
-        <button class="btn btn-primary" onclick="addToCart(3)">Choose Plan</button>
       </div>
     </div>
   </div>
