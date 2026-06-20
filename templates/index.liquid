@@ -77,7 +77,7 @@
               <span class="cta-price-was">{{ v1.compare_at_price | money }}</span>
             </div>
           </div>
-          <button type="button" class="cta-secondary hero-order-now" {% if v2 %}onclick="buyNow({{ v2.id }}, 1)"{% else %}onclick="window.location.href='{{ ws_url }}'"{% endif %}>Order Now</button>
+          <button type="button" class="cta-secondary hero-order-now" {% if v1 %}onclick="buyNow({{ v1.id }}, 1)"{% else %}onclick="window.location.href='{{ ws_url }}'"{% endif %}>Order Now</button>
         </div>
 
         <div class="social-proof">
