@@ -41,10 +41,30 @@
 
   <nav class="navbar">
     <div class="container">
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu"><span></span><span></span><span></span></button>
       <a href="/" class="logo" aria-label="3DWhiteningStrips home">
         <img src="https://pub-1271a678a52f4664aa377c2be4276e07.r2.dev/3dwhiteningstrips%20logo.png" alt="3DWhiteningStrips teeth whitening strips logo" class="logo-img">
       </a>
-      <a href="/collections/all" class="btn btn-primary">Shop Whitening Strips</a>
+      <ul class="nav-menu" id="navMenu">
+        {% if linklists.main-menu.links.size > 0 %}
+          {% for link in linklists.main-menu.links %}
+            <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+          {% endfor %}
+        {% else %}
+          <li><a href="/">Home</a></li>
+          <li><a href="/collections/all">Shop</a></li>
+          <li><a href="/pages/faq">FAQ</a></li>
+          <li><a href="/pages/about-us">About</a></li>
+          <li><a href="/pages/contact">Contact</a></li>
+        {% endif %}
+      </ul>
+      <div class="nav-actions">
+        <a href="/collections/all" class="btn btn-primary nav-shop-btn">Shop</a>
+        <button class="nav-cart" id="cartToggle" type="button" aria-label="Open cart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+          <span class="nav-cart-count" id="cartCount">{{ cart.item_count }}</span>
+        </button>
+      </div>
     </div>
   </nav>
 
@@ -118,6 +138,20 @@
       <button class="flash-bar-close" id="flashBarClose" type="button" aria-label="Dismiss offer">✕</button>
     </div>
   </div>
+
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart">
+    <div class="cart-drawer-head">
+      <h3>Your Cart</h3>
+      <button class="cart-drawer-close" id="cartDrawerClose" type="button" aria-label="Close cart">✕</button>
+    </div>
+    <div class="cart-drawer-body" id="cartDrawerBody"></div>
+    <div class="cart-drawer-foot">
+      <div class="cart-drawer-subtotal"><span>Subtotal</span><strong id="cartDrawerSubtotal">—</strong></div>
+      <a href="/checkout" class="cta-button cart-drawer-checkout">Checkout</a>
+      <a href="/cart" class="cart-drawer-viewcart">View full cart</a>
+    </div>
+  </aside>
 
   {{ 'theme.js' | asset_url | script_tag }}
 </body>
