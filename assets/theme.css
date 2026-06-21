@@ -2676,3 +2676,41 @@ body.drawer-open { overflow: hidden; }
 /* PDP Order Now button wrapper (for docking discount tag) */
 .pdp-add-wrap { position: relative; }
 .pdp-add-wrap .cta-discount-tag { right: 0.5rem; }
+
+
+/* ============================================
+   RTL SUPPORT (Arabic)
+   ============================================ */
+[dir="rtl"] .hero-text,
+[dir="rtl"] .feature-content,
+[dir="rtl"] .story-content,
+[dir="rtl"] .pricing-details,
+[dir="rtl"] .footer-section,
+[dir="rtl"] .product-info,
+[dir="rtl"] .rte { text-align: right; }
+
+[dir="rtl"] .feature-list,
+[dir="rtl"] .pricing-features,
+[dir="rtl"] .pricing-details ul,
+[dir="rtl"] .product-trust,
+[dir="rtl"] .rte ul,
+[dir="rtl"] .rte ol,
+[dir="rtl"] .footer-section ul,
+[dir="rtl"] .footer-contact {
+  padding-right: 0;
+  padding-left: 0;
+  list-style-position: inside;
+}
+
+[dir="rtl"] .trust-badge,
+[dir="rtl"] .feature-list li,
+[dir="rtl"] .story-point,
+[dir="rtl"] .social-proof,
+[dir="rtl"] .pdp-option { flex-direction: row-reverse; }
+
+[dir="rtl"] .cta-discount-tag { right: auto; left: -0.9rem; }
+[dir="rtl"] .pdp-add-wrap .cta-discount-tag { left: 0.5rem; right: auto; }
+[dir="rtl"] .pdp-option-price { text-align: left; }
+
+/* Let the slide-out elements feel natural in RTL */
+[dir="rtl"] .hero-notification { right: auto; left: 1.5rem; }

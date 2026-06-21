@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ shop.locale }}">
+<html lang="{{ request.locale.iso_code }}" dir="{% if request.locale.iso_code == 'ar' %}rtl{% else %}ltr{% endif %}">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -51,15 +51,15 @@
             <li><a href="{{ link.url }}">{{ link.title }}</a></li>
           {% endfor %}
         {% else %}
-          <li><a href="/">Home</a></li>
-          <li><a href="/collections/all">Shop</a></li>
-          <li><a href="/pages/faq">FAQ</a></li>
-          <li><a href="/pages/about-us">About</a></li>
-          <li><a href="/pages/contact">Contact</a></li>
+          <li><a href="/">{{ 'nav.home' | t }}</a></li>
+          <li><a href="/collections/all">{{ 'nav.shop' | t }}</a></li>
+          <li><a href="/pages/faq">{{ 'nav.faq' | t }}</a></li>
+          <li><a href="/pages/about-us">{{ 'nav.about' | t }}</a></li>
+          <li><a href="/pages/contact">{{ 'nav.contact' | t }}</a></li>
         {% endif %}
       </ul>
       <div class="nav-actions">
-        <a href="/collections/all" class="btn btn-primary nav-shop-btn">Shop</a>
+        <a href="/collections/all" class="btn btn-primary nav-shop-btn">{{ 'general.shop' | t }}</a>
       </div>
     </div>
   </nav>
@@ -73,45 +73,55 @@
       <div class="footer-grid">
         <div class="footer-section footer-intro">
           <h3>3DWhiteningStrips</h3>
-          <p>3DWhiteningStrips.com is your home for the best teeth whitening strips — dentist-recommended, enamel-safe whitening strips that lift years of coffee, tea, and wine stains for a visibly whiter smile in just 7 days. Gentle, effective, and made for everyday confidence.</p>
+          <p>{{ 'footer.intro' | t }}</p>
           <ul class="footer-contact">
             <li>✉️ <a href="mailto:camilasousa@duck.com">camilasousa@duck.com</a></li>
             <li>📞 <a href="tel:920715535">920715535</a></li>
-            <li>🚚 Free worldwide shipping · delivery in 6–10 days</li>
+            <li>🚚 {{ 'footer.shipping_line' | t }}</li>
+          </ul>
+          {% form 'localization' %}
+            <div class="footer-lang">
+              {{ form.language_html | default: '' }}
+              <select name="locale_code" onchange="this.form.submit()" aria-label="Language">
+                {% for language in localization.available_languages %}
+                  <option value="{{ language.iso_code }}" {% if language.iso_code == localization.language.iso_code %}selected{% endif %}>{{ language.endonym_name | capitalize }}</option>
+                {% endfor %}
+              </select>
+            </div>
+          {% endform %}
+        </div>
+        <div class="footer-section">
+          <h4>{{ 'footer.col_shop' | t }}</h4>
+          <ul>
+            <li><a href="/collections/all">{{ 'footer.shop_all' | t }}</a></li>
+            <li><a href="/#pricing">{{ 'footer.pricing' | t }}</a></li>
+            <li><a href="/#how-it-works">{{ 'footer.how' | t }}</a></li>
           </ul>
         </div>
         <div class="footer-section">
-          <h4>Shop</h4>
+          <h4>{{ 'footer.col_company' | t }}</h4>
           <ul>
-            <li><a href="/collections/all">All Whitening Strips</a></li>
-            <li><a href="/#pricing">Pricing &amp; Bundles</a></li>
-            <li><a href="/#how-it-works">How It Works</a></li>
+            <li><a href="/pages/about-us">{{ 'footer.about' | t }}</a></li>
+            <li><a href="/pages/contact">{{ 'footer.contact' | t }}</a></li>
+            <li><a href="/pages/faq">{{ 'nav.faq' | t }}</a></li>
+            <li><a href="/pages/product-safety">{{ 'footer.product_safety' | t }}</a></li>
+            <li><a href="/blogs/news">{{ 'footer.blog' | t }}</a></li>
           </ul>
         </div>
         <div class="footer-section">
-          <h4>Company</h4>
+          <h4>{{ 'footer.col_legal' | t }}</h4>
           <ul>
-            <li><a href="/pages/about-us">About Us</a></li>
-            <li><a href="/pages/contact">Contact</a></li>
-            <li><a href="/pages/faq">FAQ</a></li>
-            <li><a href="/pages/product-safety">Product Safety</a></li>
-            <li><a href="/blogs/news">Blog</a></li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h4>Help &amp; Legal</h4>
-          <ul>
-            <li><a href="/pages/shipping-policy">Shipping Policy</a></li>
-            <li><a href="/pages/refund-policy">Refund Policy</a></li>
-            <li><a href="/pages/privacy-policy">Privacy Policy</a></li>
-            <li><a href="/pages/cookie-policy">Cookie Policy</a></li>
-            <li><a href="/pages/terms-of-service">Terms of Service</a></li>
-            <li><a href="/pages/disclaimer">Disclaimer</a></li>
+            <li><a href="/pages/shipping-policy">{{ 'footer.shipping_policy' | t }}</a></li>
+            <li><a href="/pages/refund-policy">{{ 'footer.refund_policy' | t }}</a></li>
+            <li><a href="/pages/privacy-policy">{{ 'footer.privacy_policy' | t }}</a></li>
+            <li><a href="/pages/cookie-policy">{{ 'footer.cookie_policy' | t }}</a></li>
+            <li><a href="/pages/terms-of-service">{{ 'footer.terms' | t }}</a></li>
+            <li><a href="/pages/disclaimer">{{ 'footer.disclaimer' | t }}</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; {{ "now" | date: "%Y" }} 3DWhiteningStrips.com. All rights reserved. The best teeth whitening strips online. · <a href="mailto:camilasousa@duck.com">camilasousa@duck.com</a> · 920715535</p>
+        <p>&copy; {{ "now" | date: "%Y" }} 3DWhiteningStrips.com. {{ 'footer.rights' | t }} · <a href="mailto:camilasousa@duck.com">camilasousa@duck.com</a> · 920715535</p>
       </div>
     </div>
   </footer>
@@ -124,7 +134,7 @@
     <div class="flash-bar-inner">
       <span class="flash-bar-icon">🔥</span>
       <div class="flash-bar-text">
-        <strong>Today Only — 67% Off Whitening Strips</strong>
+        <strong>{{ 'flash.title' | t }}</strong>
         <span class="flash-bar-price">
           {% if fb_v1.compare_at_price > fb_v1.price %}<span class="flash-old">{{ fb_v1.compare_at_price | money }}</span>{% endif %}
           <span class="flash-arrow">→</span>
@@ -134,7 +144,7 @@
       <div class="flash-timer flash-bar-timer" id="flashTimer" aria-label="Offer countdown timer">
         <span class="timer-num" data-unit="hours">00</span><span class="timer-colon">:</span><span class="timer-num" data-unit="minutes">00</span><span class="timer-colon">:</span><span class="timer-num" data-unit="seconds">00</span>
       </div>
-      <a href="/products/3dwhiteningstrips-teeth-whitening-strips" class="flash-bar-cta">Claim 67% Off</a>
+      <a href="/products/3dwhiteningstrips-teeth-whitening-strips" class="flash-bar-cta">{{ 'general.claim_offer' | t }}</a>
       <button class="flash-bar-close" id="flashBarClose" type="button" aria-label="Dismiss offer">✕</button>
     </div>
   </div>

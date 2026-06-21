@@ -1,0 +1,153 @@
+{
+  "general": {
+    "shop": "Shop",
+    "order_now": "Jetzt bestellen",
+    "claim_offer": "67% Rabatt sichern",
+    "buy": "Kaufen"
+  },
+  "nav": {
+    "home": "Startseite",
+    "shop": "Shop",
+    "faq": "FAQ",
+    "about": "Über uns",
+    "contact": "Kontakt"
+  },
+  "offers": {
+    "discount": "HEUTE 67% RABATT",
+    "shipping": "KOSTENLOSER WELTWEITER VERSAND",
+    "guarantee": "7 TAGE GELD-ZURÜCK-GARANTIE",
+    "results": "SICHTBARE ERGEBNISSE IN 7 TAGEN",
+    "enamel": "ZAHNSCHMELZSCHONENDE FORMEL"
+  },
+  "flash": {
+    "title": "Nur heute — 67% Rabatt auf Whitening Strips",
+    "secure": "Sicherer Checkout · 7 Tage Geld-zurück-Garantie · Kostenloser Versand"
+  },
+  "hero": {
+    "badge": "Von Zahnärzten empfohlene Whitening Strips",
+    "title": "Die besten Zahnaufhellungsstreifen für ein strahlenderes Lächeln in nur 7 Tagen",
+    "subtitle": "Versteck dein Lächeln nicht länger. 3DWhiteningStrips liefert professionelle, zahnschmelzschonende Whitening Strips, die jahrelange Flecken von Kaffee, Tee, Wein und Rauchen in nur 7 Tagen entfernen – ganz ohne Empfindlichkeit.",
+    "rating": "Zahnschmelzschonende, von Zahnärzten empfohlene Formel",
+    "urgency": "Letzte 48 Stunden für das kostenlose Versandangebot dieser Woche",
+    "choose": "Wähle dein Paket:",
+    "get": "Die besten Whitening Strips holen",
+    "paynote": "Sicherer Checkout · Kostenloser weltweiter Versand · 7 Tage Geld-zurück-Garantie",
+    "proof": "Über 1 Milliarde Tassen Kaffee werden täglich getrunken",
+    "proof_sub": "Jeder Schluck verfärbt deine Zähne – wehr dich mit Whitening Strips und werde Teil unserer Community."
+  },
+  "pricing": {
+    "heading": "Wähle dein Paket & spare mehr",
+    "subtitle": "Wähle dein Paket und gehe direkt zum Checkout. Jede Bestellung wird kostenlos versendet – mit 7 Tage Geld-zurück-Garantie.",
+    "box_one": "1 Box",
+    "box_two": "2 Boxen",
+    "box_three": "3 Boxen",
+    "detail_one": "14 Streifen · 7-Tage-Anwendung",
+    "detail_two": "28 Streifen · 14-Tage-Anwendung",
+    "detail_three": "42 Streifen · 21-Tage-Anwendung",
+    "you_save": "Du sparst",
+    "popular": "Am beliebtesten",
+    "best": "Bestes Angebot",
+    "buy_one": "1 Box kaufen",
+    "buy_two": "2 Boxen kaufen",
+    "buy_three": "3 Boxen kaufen",
+    "checkout_note": "Direkt zum sicheren Checkout",
+    "feat_ship": "Kostenloser weltweiter Versand",
+    "feat_guarantee": "7 Tage Geld-zurück-Garantie",
+    "info_ship_t": "Kostenloser weltweiter Versand",
+    "info_ship_d": "Bei jeder Whitening-Strips-Bestellung",
+    "info_deliv_t": "Weltweite Lieferung",
+    "info_deliv_d": "Ankunft in 6–10 Tagen",
+    "info_back_t": "7 Tage Geld zurück",
+    "info_back_d": "Liebe es oder erhalte dein Geld zurück",
+    "info_secure_t": "Sicherer Checkout",
+    "info_secure_d": "Verschlüsselte & geschützte Zahlung"
+  },
+  "benefits": {
+    "heading": "Warum unsere Whitening Strips wählen",
+    "subtitle": "Für Ergebnisse entwickelt. Für Komfort gemacht. Von Profis empfohlen.",
+    "b1_t": "Entfernt tiefe Verfärbungen",
+    "b1_d": "Bekämpft jahrelange Flecken von Kaffee, Tee, Wein und Rauchen für ein sichtbar strahlenderes Lächeln.",
+    "b2_t": "Sicher für empfindliche Zähne",
+    "b2_d": "Eine sanfte, zahnschmelzschonende Formel, die ohne Reizungen aufhellt.",
+    "b3_t": "Ergebnisse in 7 Tagen",
+    "b3_d": "Sieh deutliche Verbesserungen schon nach einer Woche täglicher Anwendung.",
+    "b4_t": "Profi-Ergebnisse zu Hause",
+    "b4_d": "Aufhelltechnologie in Zahnarztqualität in praktischen Streifen."
+  },
+  "how": {
+    "heading": "So funktioniert's",
+    "subtitle": "Ein strahlenderes Lächeln in drei einfachen Schritten – nur 30 Minuten am Tag",
+    "s1_t": "Streifen anbringen",
+    "s1_d": "Ziehe einen Streifen ab und drücke ihn auf deine oberen und unteren Zähne.",
+    "s1_m": "30 Sekunden",
+    "s2_t": "Entspannen",
+    "s2_d": "Lass die zahnschmelzschonende Formel 30 Minuten lang Flecken lösen.",
+    "s2_m": "30 Minuten",
+    "s3_t": "Enthüllen",
+    "s3_d": "Abziehen, ausspülen und ein sichtbar strahlenderes Lächeln zeigen.",
+    "s3_m": "Sofortiger Glanz"
+  },
+  "transform": {
+    "heading": "Sieh die Verwandlung",
+    "subtitle": "Echte Ergebnisse aus einem einzigen Anwendungszyklus mit unseren Whitening Strips"
+  },
+  "community": {
+    "heading": "Werde Teil der 3DWhiteningStrips-Community",
+    "text": "Sei Teil einer wachsenden Community strahlender Lächeln. Tritt unserer Community bei für Tipps, frühen Zugang zu Flash-Sales und einen exklusiven Willkommensrabatt auf deine erste Bestellung.",
+    "placeholder": "Gib deine E-Mail-Adresse ein",
+    "button": "Der Community beitreten",
+    "note": "Kein Spam, nur strahlendere Lächeln. Jederzeit abbestellbar."
+  },
+  "guarantee": {
+    "heading": "7 Tage Geld-zurück-Garantie",
+    "text": "Teste 3DWhiteningStrips völlig risikofrei. Wenn du dein strahlenderes Lächeln nicht innerhalb von 7 Tagen liebst, erstatten wir dir jeden Cent – ohne Fragen, ohne Aufwand.",
+    "button": "Heute mit dem Aufhellen beginnen"
+  },
+  "faq": {
+    "heading": "Häufig gestellte Fragen"
+  },
+  "finalcta": {
+    "heading": "Bereit für ein strahlenderes Lächeln mit den besten Whitening Strips?",
+    "text": "Werde Teil unserer Community und verwandle dein Lächeln mit 3DWhiteningStrips.",
+    "button": "Heute mit dem Aufhellen beginnen"
+  },
+  "footer": {
+    "intro": "3DWhiteningStrips.com ist deine Anlaufstelle für die besten Zahnaufhellungsstreifen – von Zahnärzten empfohlene, zahnschmelzschonende Whitening Strips, die jahrelange Flecken von Kaffee, Tee und Wein für ein strahlenderes Lächeln in nur 7 Tagen entfernen.",
+    "shipping_line": "Kostenloser weltweiter Versand · Lieferung in 6–10 Tagen",
+    "col_shop": "Shop",
+    "col_company": "Unternehmen",
+    "col_legal": "Hilfe & Rechtliches",
+    "shop_all": "Alle Whitening Strips",
+    "pricing": "Preise & Pakete",
+    "how": "So funktioniert's",
+    "about": "Über uns",
+    "contact": "Kontakt",
+    "product_safety": "Produktsicherheit",
+    "blog": "Blog",
+    "shipping_policy": "Versandrichtlinie",
+    "refund_policy": "Rückerstattungsrichtlinie",
+    "privacy_policy": "Datenschutzrichtlinie",
+    "cookie_policy": "Cookie-Richtlinie",
+    "terms": "AGB",
+    "disclaimer": "Haftungsausschluss",
+    "rights": "Alle Rechte vorbehalten. Die besten Whitening Strips online."
+  },
+  "product": {
+    "badge": "Von Zahnärzten empfohlene Whitening Strips",
+    "subtitle": "Professionelle, zahnschmelzschonende Zahnaufhellungsstreifen, die jahrelange Flecken von Kaffee, Tee und Wein für ein sichtbar strahlenderes Lächeln in nur 7 Tagen entfernen – ohne Empfindlichkeit, ohne Zahnarztrechnung.",
+    "rating": "Zahnschmelzschonende, von Zahnärzten empfohlene Formel",
+    "urgency": "Letzte 48 Stunden für das kostenlose Versandangebot dieser Woche",
+    "choose": "Wähle dein Paket:",
+    "sold_out": "Ausverkauft",
+    "paynote": "Sicherer Checkout · Kostenloser weltweiter Versand · 7 Tage Geld-zurück-Garantie",
+    "sale_now": "Flash Sale: jetzt",
+    "trust_enamel_t": "Zahnschmelzschonend",
+    "trust_enamel_d": "Sanfte Formel",
+    "trust_dentist_t": "Zahnarzt",
+    "trust_dentist_d": "Empfohlen",
+    "trust_days_t": "7 Tage",
+    "trust_days_d": "Bis zum Ergebnis",
+    "trust_strips_t": "14",
+    "trust_strips_d": "Streifen pro Box"
+  }
+}

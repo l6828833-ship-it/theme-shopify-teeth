@@ -1,10 +1,153 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin language editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
-{}
+{
+  "general": {
+    "shop": "Shop",
+    "order_now": "Order Now",
+    "claim_offer": "Claim 67% Off",
+    "buy": "Buy"
+  },
+  "nav": {
+    "home": "Home",
+    "shop": "Shop",
+    "faq": "FAQ",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "offers": {
+    "discount": "67% OFF TODAY",
+    "shipping": "FREE WORLDWIDE SHIPPING",
+    "guarantee": "7-DAY MONEY-BACK GUARANTEE",
+    "results": "VISIBLE RESULTS IN 7 DAYS",
+    "enamel": "ENAMEL-SAFE FORMULA"
+  },
+  "flash": {
+    "title": "Today Only — 67% Off Whitening Strips",
+    "secure": "Secure checkout · 7-day money-back guarantee · Free shipping"
+  },
+  "hero": {
+    "badge": "Dentist Recommended Whitening Strips",
+    "title": "The Best Teeth Whitening Strips for a Whiter Smile in Just 7 Days",
+    "subtitle": "Stop hiding your smile. 3DWhiteningStrips delivers professional-grade teeth whitening strips that erase years of coffee, tea, wine, and smoking stains in just 7 days — with zero sensitivity.",
+    "rating": "Enamel-safe & dentist-recommended formula",
+    "urgency": "Last 48 hours of this week's free shipping offer",
+    "choose": "Choose your package:",
+    "get": "Get The Best Whitening Strips",
+    "paynote": "Secure checkout · Free worldwide shipping · 7-day money-back guarantee",
+    "proof": "Over 1 billion cups of coffee are poured every day",
+    "proof_sub": "Every sip stains your teeth — fight back with whitening strips and join our community."
+  },
+  "pricing": {
+    "heading": "Choose Your Bundle & Save More",
+    "subtitle": "Pick your package and go straight to checkout. Every order ships free with a 7-day money-back guarantee.",
+    "box_one": "1 Box",
+    "box_two": "2 Boxes",
+    "box_three": "3 Boxes",
+    "detail_one": "14 strips · 7-day treatment",
+    "detail_two": "28 strips · 14-day treatment",
+    "detail_three": "42 strips · 21-day treatment",
+    "you_save": "You save",
+    "popular": "Most Popular",
+    "best": "Best Value",
+    "buy_one": "Buy 1 Box",
+    "buy_two": "Buy 2 Boxes",
+    "buy_three": "Buy 3 Boxes",
+    "checkout_note": "Straight to secure checkout",
+    "feat_ship": "Free worldwide shipping",
+    "feat_guarantee": "7-day money-back guarantee",
+    "info_ship_t": "Free Worldwide Shipping",
+    "info_ship_d": "On every whitening strips order",
+    "info_deliv_t": "Worldwide Delivery",
+    "info_deliv_d": "Arrives in 6–10 days",
+    "info_back_t": "7-Day Money-Back",
+    "info_back_d": "Love it or your money back",
+    "info_secure_t": "Secure Checkout",
+    "info_secure_d": "Encrypted & protected payment"
+  },
+  "benefits": {
+    "heading": "Why Choose Our Whitening Strips",
+    "subtitle": "Engineered for results. Designed for comfort. Trusted by professionals.",
+    "b1_t": "Removes Deep Stains",
+    "b1_d": "Targets years of coffee, tea, wine, and smoking stains for a visibly brighter smile.",
+    "b2_t": "Safe for Sensitive Teeth",
+    "b2_d": "A gentle, enamel-safe formula that whitens without irritation.",
+    "b3_t": "Results in 7 Days",
+    "b3_d": "See dramatic improvements in just one week of daily use.",
+    "b4_t": "Pro Results at Home",
+    "b4_d": "Dentist-grade whitening technology in convenient strips."
+  },
+  "how": {
+    "heading": "How It Works",
+    "subtitle": "A brighter smile in three effortless steps — just 30 minutes a day",
+    "s1_t": "Apply Strips",
+    "s1_d": "Peel and press a strip onto your upper and lower teeth.",
+    "s1_m": "30 seconds",
+    "s2_t": "Relax",
+    "s2_d": "Let the enamel-safe formula lift stains for 30 minutes.",
+    "s2_m": "30 minutes",
+    "s3_t": "Reveal",
+    "s3_d": "Peel off, rinse, and reveal a visibly brighter smile.",
+    "s3_m": "Instant glow"
+  },
+  "transform": {
+    "heading": "See the Transformation",
+    "subtitle": "Real results from a single treatment cycle with our teeth whitening strips"
+  },
+  "community": {
+    "heading": "Join the 3DWhiteningStrips Community",
+    "text": "Be part of a growing community of brighter smiles. Join our community for whitening strips tips, early access to flash sales, and an exclusive welcome discount on your first order.",
+    "placeholder": "Enter your email address",
+    "button": "Join Our Community",
+    "note": "No spam, just brighter smiles. Unsubscribe anytime."
+  },
+  "guarantee": {
+    "heading": "7-Day Money Back Guarantee",
+    "text": "Try 3DWhiteningStrips completely risk-free. If you don't love your whiter, brighter smile within 7 days, we'll refund every penny — no questions, no hassle.",
+    "button": "Start Whitening Today"
+  },
+  "faq": {
+    "heading": "Frequently Asked Questions"
+  },
+  "finalcta": {
+    "heading": "Ready for a Brighter Smile With the Best Whitening Strips?",
+    "text": "Join our community and transform your smile with 3DWhiteningStrips teeth whitening strips.",
+    "button": "Start Whitening Today"
+  },
+  "footer": {
+    "intro": "3DWhiteningStrips.com is your home for the best teeth whitening strips — dentist-recommended, enamel-safe whitening strips that lift years of coffee, tea, and wine stains for a visibly whiter smile in just 7 days.",
+    "shipping_line": "Free worldwide shipping · delivery in 6–10 days",
+    "col_shop": "Shop",
+    "col_company": "Company",
+    "col_legal": "Help & Legal",
+    "shop_all": "All Whitening Strips",
+    "pricing": "Pricing & Bundles",
+    "how": "How It Works",
+    "about": "About Us",
+    "contact": "Contact",
+    "product_safety": "Product Safety",
+    "blog": "Blog",
+    "shipping_policy": "Shipping Policy",
+    "refund_policy": "Refund Policy",
+    "privacy_policy": "Privacy Policy",
+    "cookie_policy": "Cookie Policy",
+    "terms": "Terms of Service",
+    "disclaimer": "Disclaimer",
+    "rights": "All rights reserved. The best teeth whitening strips online."
+  },
+  "product": {
+    "badge": "Dentist Recommended Whitening Strips",
+    "subtitle": "Professional-grade, enamel-safe teeth whitening strips that lift years of coffee, tea, and wine stains for a visibly whiter smile in just 7 days — no sensitivity, no dentist bill.",
+    "rating": "Enamel-safe & dentist-recommended formula",
+    "urgency": "Last 48 hours of this week's free shipping offer",
+    "choose": "Choose your package:",
+    "sold_out": "Sold Out",
+    "paynote": "Secure checkout · Free worldwide shipping · 7-day money-back guarantee",
+    "sale_now": "Flash Sale: now",
+    "trust_enamel_t": "Enamel Safe",
+    "trust_enamel_d": "Gentle formula",
+    "trust_dentist_t": "Dentist",
+    "trust_dentist_d": "Recommended",
+    "trust_days_t": "7 Days",
+    "trust_days_d": "To results",
+    "trust_strips_t": "14",
+    "trust_strips_d": "Strips per box"
+  }
+}

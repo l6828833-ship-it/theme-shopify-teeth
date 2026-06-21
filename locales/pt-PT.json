@@ -1,0 +1,153 @@
+{
+  "general": {
+    "shop": "Loja",
+    "order_now": "Encomendar já",
+    "claim_offer": "Obter 67% de desconto",
+    "buy": "Comprar"
+  },
+  "nav": {
+    "home": "Início",
+    "shop": "Loja",
+    "faq": "FAQ",
+    "about": "Sobre nós",
+    "contact": "Contacto"
+  },
+  "offers": {
+    "discount": "HOJE 67% DE DESCONTO",
+    "shipping": "ENVIO GRATUITO PARA TODO O MUNDO",
+    "guarantee": "GARANTIA DE 7 DIAS DEVOLUÇÃO DO DINHEIRO",
+    "results": "RESULTADOS VISÍVEIS EM 7 DIAS",
+    "enamel": "FÓRMULA SEGURA PARA O ESMALTE"
+  },
+  "flash": {
+    "title": "Só hoje — 67% de desconto nas tiras de branqueamento",
+    "secure": "Pagamento seguro · Garantia de 7 dias · Envio gratuito"
+  },
+  "hero": {
+    "badge": "Tiras de branqueamento recomendadas por dentistas",
+    "title": "As melhores tiras de branqueamento dentário para um sorriso mais branco em apenas 7 dias",
+    "subtitle": "Deixa de esconder o teu sorriso. A 3DWhiteningStrips oferece tiras de branqueamento de nível profissional, seguras para o esmalte, que removem anos de manchas de café, chá, vinho e tabaco em apenas 7 dias — sem sensibilidade.",
+    "rating": "Fórmula segura para o esmalte e recomendada por dentistas",
+    "urgency": "Últimas 48 horas da oferta de envio gratuito desta semana",
+    "choose": "Escolhe o teu pacote:",
+    "get": "Obter as melhores tiras de branqueamento",
+    "paynote": "Pagamento seguro · Envio gratuito para todo o mundo · Garantia de 7 dias",
+    "proof": "São servidas mais de mil milhões de chávenas de café por dia",
+    "proof_sub": "Cada gole mancha os teus dentes — reage com as tiras de branqueamento e junta-te à nossa comunidade."
+  },
+  "pricing": {
+    "heading": "Escolhe o teu pacote e poupa mais",
+    "subtitle": "Escolhe o teu pacote e vai diretamente para o checkout. Todas as encomendas têm envio gratuito e garantia de 7 dias.",
+    "box_one": "1 Caixa",
+    "box_two": "2 Caixas",
+    "box_three": "3 Caixas",
+    "detail_one": "14 tiras · tratamento de 7 dias",
+    "detail_two": "28 tiras · tratamento de 14 dias",
+    "detail_three": "42 tiras · tratamento de 21 dias",
+    "you_save": "Poupas",
+    "popular": "Mais Popular",
+    "best": "Melhor Valor",
+    "buy_one": "Comprar 1 Caixa",
+    "buy_two": "Comprar 2 Caixas",
+    "buy_three": "Comprar 3 Caixas",
+    "checkout_note": "Direto para o pagamento seguro",
+    "feat_ship": "Envio gratuito para todo o mundo",
+    "feat_guarantee": "Garantia de 7 dias devolução do dinheiro",
+    "info_ship_t": "Envio Gratuito Mundial",
+    "info_ship_d": "Em todas as encomendas de tiras de branqueamento",
+    "info_deliv_t": "Entrega Mundial",
+    "info_deliv_d": "Chega em 6–10 dias",
+    "info_back_t": "7 Dias Devolução",
+    "info_back_d": "Adora ou recebe o teu dinheiro de volta",
+    "info_secure_t": "Pagamento Seguro",
+    "info_secure_d": "Pagamento encriptado e protegido"
+  },
+  "benefits": {
+    "heading": "Porquê escolher as nossas tiras de branqueamento",
+    "subtitle": "Criadas para resultados. Pensadas para o conforto. Confiadas por profissionais.",
+    "b1_t": "Remove manchas profundas",
+    "b1_d": "Combate anos de manchas de café, chá, vinho e tabaco para um sorriso visivelmente mais brilhante.",
+    "b2_t": "Seguras para dentes sensíveis",
+    "b2_d": "Uma fórmula suave e segura para o esmalte que branqueia sem irritação.",
+    "b3_t": "Resultados em 7 dias",
+    "b3_d": "Vê melhorias notáveis em apenas uma semana de uso diário.",
+    "b4_t": "Resultados profissionais em casa",
+    "b4_d": "Tecnologia de branqueamento de nível dentário em tiras práticas."
+  },
+  "how": {
+    "heading": "Como funciona",
+    "subtitle": "Um sorriso mais brilhante em três passos simples — apenas 30 minutos por dia",
+    "s1_t": "Aplica as tiras",
+    "s1_d": "Descola e pressiona uma tira sobre os dentes superiores e inferiores.",
+    "s1_m": "30 segundos",
+    "s2_t": "Relaxa",
+    "s2_d": "Deixa a fórmula segura para o esmalte agir durante 30 minutos.",
+    "s2_m": "30 minutos",
+    "s3_t": "Revela",
+    "s3_d": "Retira, enxagua e revela um sorriso visivelmente mais brilhante.",
+    "s3_m": "Brilho instantâneo"
+  },
+  "transform": {
+    "heading": "Vê a transformação",
+    "subtitle": "Resultados reais de um único ciclo de tratamento com as nossas tiras de branqueamento"
+  },
+  "community": {
+    "heading": "Junta-te à comunidade 3DWhiteningStrips",
+    "text": "Faz parte de uma comunidade crescente de sorrisos mais brilhantes. Junta-te para receber dicas, acesso antecipado a promoções e um desconto de boas-vindas exclusivo na tua primeira encomenda.",
+    "placeholder": "Introduz o teu e-mail",
+    "button": "Juntar-me à comunidade",
+    "note": "Sem spam, apenas sorrisos mais brilhantes. Cancela quando quiseres."
+  },
+  "guarantee": {
+    "heading": "Garantia de 7 dias devolução do dinheiro",
+    "text": "Experimenta a 3DWhiteningStrips sem qualquer risco. Se não adorares o teu sorriso mais brilhante em 7 dias, devolvemos cada cêntimo — sem perguntas, sem complicações.",
+    "button": "Começar a branquear hoje"
+  },
+  "faq": {
+    "heading": "Perguntas Frequentes"
+  },
+  "finalcta": {
+    "heading": "Pronto para um sorriso mais brilhante com as melhores tiras de branqueamento?",
+    "text": "Junta-te à nossa comunidade e transforma o teu sorriso com a 3DWhiteningStrips.",
+    "button": "Começar a branquear hoje"
+  },
+  "footer": {
+    "intro": "A 3DWhiteningStrips.com é a tua referência para as melhores tiras de branqueamento dentário — recomendadas por dentistas e seguras para o esmalte, removem anos de manchas de café, chá e vinho para um sorriso mais brilhante em apenas 7 dias.",
+    "shipping_line": "Envio gratuito para todo o mundo · entrega em 6–10 dias",
+    "col_shop": "Loja",
+    "col_company": "Empresa",
+    "col_legal": "Ajuda e Legal",
+    "shop_all": "Todas as Tiras de Branqueamento",
+    "pricing": "Preços e Pacotes",
+    "how": "Como funciona",
+    "about": "Sobre nós",
+    "contact": "Contacto",
+    "product_safety": "Segurança do Produto",
+    "blog": "Blog",
+    "shipping_policy": "Política de Envio",
+    "refund_policy": "Política de Reembolso",
+    "privacy_policy": "Política de Privacidade",
+    "cookie_policy": "Política de Cookies",
+    "terms": "Termos de Serviço",
+    "disclaimer": "Aviso Legal",
+    "rights": "Todos os direitos reservados. As melhores tiras de branqueamento online."
+  },
+  "product": {
+    "badge": "Tiras de branqueamento recomendadas por dentistas",
+    "subtitle": "Tiras de branqueamento dentário de nível profissional, seguras para o esmalte, que removem anos de manchas de café, chá e vinho para um sorriso visivelmente mais brilhante em apenas 7 dias — sem sensibilidade, sem ir ao dentista.",
+    "rating": "Fórmula segura para o esmalte e recomendada por dentistas",
+    "urgency": "Últimas 48 horas da oferta de envio gratuito desta semana",
+    "choose": "Escolhe o teu pacote:",
+    "sold_out": "Esgotado",
+    "paynote": "Pagamento seguro · Envio gratuito para todo o mundo · Garantia de 7 dias",
+    "sale_now": "Promoção: agora",
+    "trust_enamel_t": "Seguro p/ Esmalte",
+    "trust_enamel_d": "Fórmula suave",
+    "trust_dentist_t": "Dentista",
+    "trust_dentist_d": "Recomendado",
+    "trust_days_t": "7 Dias",
+    "trust_days_d": "Até aos resultados",
+    "trust_strips_t": "14",
+    "trust_strips_d": "Tiras por caixa"
+  }
+}

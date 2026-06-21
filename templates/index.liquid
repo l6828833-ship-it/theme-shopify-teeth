@@ -14,16 +14,16 @@
 <!-- Offers marquee bar -->
 <div class="offers-bar">
   <div class="offers-track">
-    <span>✨ VISIBLE RESULTS IN 7 DAYS</span>
-    <span>🦷 ENAMEL-SAFE FORMULA</span>
-    <span>🔥 67% OFF TODAY</span>
-    <span>🚚 FREE WORLDWIDE SHIPPING</span>
-    <span>🛡️ 7-DAY MONEY-BACK GUARANTEE</span>
-    <span>✨ VISIBLE RESULTS IN 7 DAYS</span>
-    <span>🦷 ENAMEL-SAFE FORMULA</span>
-    <span>🔥 67% OFF TODAY</span>
-    <span>🚚 FREE WORLDWIDE SHIPPING</span>
-    <span>🛡️ 7-DAY MONEY-BACK GUARANTEE</span>
+    <span>✨ {{ 'offers.results' | t }}</span>
+    <span>🦷 {{ 'offers.enamel' | t }}</span>
+    <span>🔥 {{ 'offers.discount' | t }}</span>
+    <span>🚚 {{ 'offers.shipping' | t }}</span>
+    <span>🛡️ {{ 'offers.guarantee' | t }}</span>
+    <span>✨ {{ 'offers.results' | t }}</span>
+    <span>🦷 {{ 'offers.enamel' | t }}</span>
+    <span>🔥 {{ 'offers.discount' | t }}</span>
+    <span>🚚 {{ 'offers.shipping' | t }}</span>
+    <span>🛡️ {{ 'offers.guarantee' | t }}</span>
   </div>
 </div>
 
@@ -32,41 +32,41 @@
   <div class="container">
     <div class="hero-content">
       <div class="hero-text">
-        <div class="hero-badge">✓ Dentist Recommended Whitening Strips</div>
-        <h1>The Best <span class="highlight">Teeth Whitening Strips</span> for a Whiter Smile in Just 7 Days</h1>
-        <p class="hero-description">Stop hiding your smile. 3DWhiteningStrips delivers professional-grade teeth whitening strips that erase years of coffee, tea, wine, and smoking stains in just 7 days — with zero sensitivity. Wondering "do whitening strips work?" Ours do — and your brighter smile is just 7 days away.</p>
+        <div class="hero-badge">✓ {{ 'hero.badge' | t }}</div>
+        <h1>{{ 'hero.title' | t }}</h1>
+        <p class="hero-description">{{ 'hero.subtitle' | t }}</p>
 
         <div class="trust-badges">
           <div class="trust-badge">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <polyline points="20 6 9 17 4 12"></polyline>
             </svg>
-            <span>Dentist Recommended</span>
+            <span>{{ 'product.trust_dentist_d' | t }}</span>
           </div>
           <div class="trust-badge">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <polyline points="20 6 9 17 4 12"></polyline>
             </svg>
-            <span>Enamel Safe</span>
+            <span>{{ 'product.trust_enamel_t' | t }}</span>
           </div>
           <div class="trust-badge">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <polyline points="20 6 9 17 4 12"></polyline>
             </svg>
-            <span>7-Day Guarantee</span>
+            <span>{{ 'guarantee.heading' | t }}</span>
           </div>
           <div class="trust-badge">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <polyline points="20 6 9 17 4 12"></polyline>
             </svg>
-            <span>Free Shipping</span>
+            <span>{{ 'offers.shipping' | t }}</span>
           </div>
         </div>
 
         <div class="hero-cta-row">
           <div class="cta-form">
             <button type="button" class="cta-button" id="heroCta" onclick="window.location.href='{{ ws_url }}'">
-              Get The Best Whitening Strips
+              {{ 'hero.get' | t }}
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 1.25rem; height: 1.25rem;">
                 <polyline points="9 18 15 12 9 6"></polyline>
               </svg>
@@ -77,14 +77,14 @@
               <span class="cta-price-was">{{ v1.compare_at_price | money }}</span>
             </div>
           </div>
-          <button type="button" class="cta-secondary hero-order-now" {% if v1 %}onclick="buyNow({{ v1.id }}, 1)"{% else %}onclick="window.location.href='{{ ws_url }}'"{% endif %}>Order Now</button>
+          <button type="button" class="cta-secondary hero-order-now" {% if v1 %}onclick="buyNow({{ v1.id }}, 1)"{% else %}onclick="window.location.href='{{ ws_url }}'"{% endif %}>{{ 'general.order_now' | t }}</button>
         </div>
 
         <div class="social-proof">
           <div class="proof-icon">☕</div>
           <div class="proof-text">
-            <h4>Over <span class="proof-highlight">1 billion</span> cups of coffee are poured every day</h4>
-            <p>Every sip stains your teeth — fight back with 3DWhiteningStrips whitening strips and join our community.</p>
+            <h4>{{ 'hero.proof' | t }}</h4>
+            <p>{{ 'hero.proof_sub' | t }}</p>
           </div>
         </div>
       </div>
@@ -112,7 +112,7 @@
   <div class="hero-notification" id="heroNotification" role="status" aria-live="polite">
     <div class="hero-notif-icon">🔥</div>
     <div class="hero-notif-body">
-      <div class="hero-notif-line">Flash Sale: Whitening Kit now <strong class="hero-notif-now">{{ v1.price | money }}</strong></div>
+      <div class="hero-notif-line">{{ 'product.sale_now' | t }} <strong class="hero-notif-now">{{ v1.price | money }}</strong></div>
       <div class="hero-notif-was">{{ v1.compare_at_price | money }}</div>
     </div>
   </div>
@@ -122,20 +122,20 @@
 <section class="before-after" style="opacity: 1; transform: translateY(0px); transition: opacity 0.6s, transform 0.6s;">
   <div class="container">
     <div class="section-header">
-      <h2>See the Transformation From Our Teeth Whitening Strips</h2>
-      <p>Real results from real customers after one treatment cycle with 3DWhiteningStrips teeth whitening strips</p>
+      <h2>{{ 'transform.heading' | t }}</h2>
+      <p>{{ 'transform.subtitle' | t }}</p>
     </div>
     <div class="comparison-image">
       <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663743569624/amyPSPrF2HUmPeJK9rK5RK/before-after-comparison-X9GBvVf2LvMU5MUHgjePtJ.webp" alt="Before and after results using the best teeth whitening strips from 3DWhiteningStrips">
     </div>
     <div class="section-cta">
       <button class="cta-button" onclick="window.location.href='{{ ws_url }}'">
-        Start My Transformation
+        {{ 'finalcta.button' | t }}
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 1.25rem; height: 1.25rem;">
           <polyline points="9 18 15 12 9 6"></polyline>
         </svg>
       </button>
-      <button class="cta-secondary" onclick="document.querySelector('.pricing').scrollIntoView({behavior:'smooth'})">View Pricing</button>
+      <button class="cta-secondary" onclick="document.querySelector('.pricing').scrollIntoView({behavior:'smooth'})">{{ 'footer.pricing' | t }}</button>
     </div>
   </div>
 </section>
@@ -144,75 +144,69 @@
 <section class="pricing">
   <div class="container">
     <div class="section-header">
-      <h2>Whitening Strips Pricing — Choose Your Bundle &amp; Save More</h2>
-      <p>Pick your package and go straight to checkout. Every order ships free with a 7-day money-back guarantee.</p>
+      <h2>{{ 'pricing.heading' | t }}</h2>
+      <p>{{ 'pricing.subtitle' | t }}</p>
     </div>
     <div class="pricing-grid">
       <div class="pricing-card">
-        <h3>1 Box</h3>
-        <p class="pricing-sub">14 strips · 7-day treatment</p>
+        <h3>{{ 'pricing.box_one' | t }}</h3>
+        <p class="pricing-sub">{{ 'pricing.detail_one' | t }}</p>
         {% if v1.compare_at_price > v1.price %}<div class="price-was">{{ v1.compare_at_price | money }}</div>{% endif %}
         <div class="price">{{ v1.price | money }}</div>
-        {% if v1.compare_at_price > v1.price %}<div class="savings">You save {{ v1.compare_at_price | minus: v1.price | money }}</div>{% endif %}
+        {% if v1.compare_at_price > v1.price %}<div class="savings">{{ 'pricing.you_save' | t }} {{ v1.compare_at_price | minus: v1.price | money }}</div>{% endif %}
         <ul class="pricing-features">
-          <li>✓ 14 enamel-safe whitening strips</li>
-          <li>✓ Free worldwide shipping</li>
-          <li>✓ 7-day money-back guarantee</li>
-          <li>✓ Free worldwide shipping (6–10 days)</li>
+          <li>✓ {{ 'pricing.feat_ship' | t }}</li>
+          <li>✓ {{ 'pricing.feat_guarantee' | t }}</li>
         </ul>
-        <button class="btn btn-primary" {% if v1 %}onclick="buyNow({{ v1.id }}, 1)"{% else %}onclick="window.location.href='{{ ws_url }}'"{% endif %}>Buy 1 Box →</button>
-        <p class="pricing-checkout-note">🔒 Straight to secure checkout</p>
+        <button class="btn btn-primary" {% if v1 %}onclick="buyNow({{ v1.id }}, 1)"{% else %}onclick="window.location.href='{{ ws_url }}'"{% endif %}>{{ 'pricing.buy_one' | t }} →</button>
+        <p class="pricing-checkout-note">🔒 {{ 'pricing.checkout_note' | t }}</p>
       </div>
       <div class="pricing-card popular">
-        <div class="popular-badge">Most Popular</div>
-        <h3>2 Boxes</h3>
-        <p class="pricing-sub">28 strips · 14-day treatment</p>
+        <div class="popular-badge">{{ 'pricing.popular' | t }}</div>
+        <h3>{{ 'pricing.box_two' | t }}</h3>
+        <p class="pricing-sub">{{ 'pricing.detail_two' | t }}</p>
         {% if v2.compare_at_price > v2.price %}<div class="price-was">{{ v2.compare_at_price | money }}</div>{% endif %}
         <div class="price">{{ v2.price | money }}</div>
-        {% if v2.compare_at_price > v2.price %}<div class="savings">You save {{ v2.compare_at_price | minus: v2.price | money }}</div>{% endif %}
+        {% if v2.compare_at_price > v2.price %}<div class="savings">{{ 'pricing.you_save' | t }} {{ v2.compare_at_price | minus: v2.price | money }}</div>{% endif %}
         <ul class="pricing-features">
-          <li>✓ 28 enamel-safe whitening strips</li>
-          <li>✓ Free priority shipping</li>
-          <li>✓ 7-day money-back guarantee</li>
-          <li>✓ Best for a full transformation</li>
+          <li>✓ {{ 'pricing.feat_ship' | t }}</li>
+          <li>✓ {{ 'pricing.feat_guarantee' | t }}</li>
         </ul>
-        <button class="btn btn-primary" {% if v2 %}onclick="buyNow({{ v2.id }}, 1)"{% else %}onclick="window.location.href='{{ ws_url }}'"{% endif %}>Buy 2 Boxes →</button>
-        <p class="pricing-checkout-note">🔒 Straight to secure checkout</p>
+        <button class="btn btn-primary" {% if v2 %}onclick="buyNow({{ v2.id }}, 1)"{% else %}onclick="window.location.href='{{ ws_url }}'"{% endif %}>{{ 'pricing.buy_two' | t }} →</button>
+        <p class="pricing-checkout-note">🔒 {{ 'pricing.checkout_note' | t }}</p>
       </div>
       <div class="pricing-card">
-        <div class="best-badge">Best Value</div>
-        <h3>3 Boxes</h3>
-        <p class="pricing-sub">42 strips · 21-day treatment</p>
+        <div class="best-badge">{{ 'pricing.best' | t }}</div>
+        <h3>{{ 'pricing.box_three' | t }}</h3>
+        <p class="pricing-sub">{{ 'pricing.detail_three' | t }}</p>
         {% if v3.compare_at_price > v3.price %}<div class="price-was">{{ v3.compare_at_price | money }}</div>{% endif %}
         <div class="price">{{ v3.price | money }}</div>
-        {% if v3.compare_at_price > v3.price %}<div class="savings">You save {{ v3.compare_at_price | minus: v3.price | money }}</div>{% endif %}
+        {% if v3.compare_at_price > v3.price %}<div class="savings">{{ 'pricing.you_save' | t }} {{ v3.compare_at_price | minus: v3.price | money }}</div>{% endif %}
         <ul class="pricing-features">
-          <li>✓ 42 enamel-safe whitening strips</li>
-          <li>✓ Free priority shipping</li>
-          <li>✓ 7-day money-back guarantee</li>
-          <li>✓ Stock up &amp; share with family</li>
+          <li>✓ {{ 'pricing.feat_ship' | t }}</li>
+          <li>✓ {{ 'pricing.feat_guarantee' | t }}</li>
         </ul>
-        <button class="btn btn-primary" {% if v3 %}onclick="buyNow({{ v3.id }}, 1)"{% else %}onclick="window.location.href='{{ ws_url }}'"{% endif %}>Buy 3 Boxes →</button>
-        <p class="pricing-checkout-note">🔒 Straight to secure checkout</p>
+        <button class="btn btn-primary" {% if v3 %}onclick="buyNow({{ v3.id }}, 1)"{% else %}onclick="window.location.href='{{ ws_url }}'"{% endif %}>{{ 'pricing.buy_three' | t }} →</button>
+        <p class="pricing-checkout-note">🔒 {{ 'pricing.checkout_note' | t }}</p>
       </div>
     </div>
 
     <div class="pricing-info">
       <div class="pricing-info-item">
         <span class="pricing-info-icon">🚚</span>
-        <div><strong>Free Worldwide Shipping</strong><span>On every whitening strips order</span></div>
+        <div><strong>{{ 'pricing.info_ship_t' | t }}</strong><span>{{ 'pricing.info_ship_d' | t }}</span></div>
       </div>
       <div class="pricing-info-item">
         <span class="pricing-info-icon">⏱️</span>
-        <div><strong>Worldwide Delivery</strong><span>Arrives in 6–10 days</span></div>
+        <div><strong>{{ 'pricing.info_deliv_t' | t }}</strong><span>{{ 'pricing.info_deliv_d' | t }}</span></div>
       </div>
       <div class="pricing-info-item">
         <span class="pricing-info-icon">🛡️</span>
-        <div><strong>7-Day Money-Back</strong><span>Love it or your money back</span></div>
+        <div><strong>{{ 'pricing.info_back_t' | t }}</strong><span>{{ 'pricing.info_back_d' | t }}</span></div>
       </div>
       <div class="pricing-info-item">
         <span class="pricing-info-icon">🔒</span>
-        <div><strong>Secure Checkout</strong><span>Encrypted &amp; protected payment</span></div>
+        <div><strong>{{ 'pricing.info_secure_t' | t }}</strong><span>{{ 'pricing.info_secure_d' | t }}</span></div>
       </div>
     </div>
 
@@ -235,29 +229,29 @@
 <section class="benefits">
   <div class="container">
     <div class="section-header">
-      <h2>Why 3DWhiteningStrips Are the Best Whitening Strips</h2>
-      <p>Engineered for results. Designed for comfort. Trusted by professionals. These are the recommended whitening strips for a confident smile.</p>
+      <h2>{{ 'benefits.heading' | t }}</h2>
+      <p>{{ 'benefits.subtitle' | t }}</p>
     </div>
     <div class="benefits-grid">
       <div class="benefit-card">
         <div class="benefit-icon">⚡</div>
-        <h3>Whitening Strips That Remove Deep Stains</h3>
-        <p>Our teeth whitening strips target years of coffee, tea, wine, and smoking stains for a visibly brighter smile.</p>
+        <h3>{{ 'benefits.b1_t' | t }}</h3>
+        <p>{{ 'benefits.b1_d' | t }}</p>
       </div>
       <div class="benefit-card">
         <div class="benefit-icon">🛡️</div>
-        <h3>Safe Whitening Strips for Sensitive Teeth</h3>
-        <p>A gentle, enamel-safe formula makes these the recommended whitening strips for anyone with sensitivity.</p>
+        <h3>{{ 'benefits.b2_t' | t }}</h3>
+        <p>{{ 'benefits.b2_d' | t }}</p>
       </div>
       <div class="benefit-card">
         <div class="benefit-icon">⏱️</div>
-        <h3>Teeth Whitening Strips With Results in 7 Days</h3>
-        <p>See dramatic improvements in just one week — proof that the best whitening strips really do work.</p>
+        <h3>{{ 'benefits.b3_t' | t }}</h3>
+        <p>{{ 'benefits.b3_d' | t }}</p>
       </div>
       <div class="benefit-card">
         <div class="benefit-icon">🏥</div>
-        <h3>Professional Whitening Strips at Home</h3>
-        <p>Dentist-grade technology in convenient teeth whitening strips you can use from the comfort of home.</p>
+        <h3>{{ 'benefits.b4_t' | t }}</h3>
+        <p>{{ 'benefits.b4_d' | t }}</p>
       </div>
     </div>
   </div>
@@ -305,8 +299,8 @@
 <section class="how-it-works">
   <div class="container">
     <div class="section-header">
-      <h2>How Our Teeth Whitening Strips Work</h2>
-      <p>A brighter smile in three effortless steps — our whitening strips need just 30 minutes a day</p>
+      <h2>{{ 'how.heading' | t }}</h2>
+      <p>{{ 'how.subtitle' | t }}</p>
     </div>
     <div class="steps-grid">
       <div class="step-card">
@@ -315,9 +309,9 @@
           <span class="step-emoji">🦷</span>
           <span class="step-number">1</span>
         </div>
-        <h3>Apply Whitening Strips</h3>
-        <p>Peel and press a strip onto your upper and lower teeth — applying our whitening strips takes seconds.</p>
-        <span class="step-meta">⏱️ 30 seconds</span>
+        <h3>{{ 'how.s1_t' | t }}</h3>
+        <p>{{ 'how.s1_d' | t }}</p>
+        <span class="step-meta">⏱️ {{ 'how.s1_m' | t }}</span>
       </div>
       <div class="step-card">
         <span class="step-line"></span>
@@ -325,28 +319,28 @@
           <span class="step-emoji">😌</span>
           <span class="step-number">2</span>
         </div>
-        <h3>Relax</h3>
-        <p>Go about your day while the enamel-safe teeth whitening strips lift stains for 30 minutes.</p>
-        <span class="step-meta">⏳ 30 minutes</span>
+        <h3>{{ 'how.s2_t' | t }}</h3>
+        <p>{{ 'how.s2_d' | t }}</p>
+        <span class="step-meta">⏳ {{ 'how.s2_m' | t }}</span>
       </div>
       <div class="step-card">
         <div class="step-icon-ring">
           <span class="step-emoji">✨</span>
           <span class="step-number">3</span>
         </div>
-        <h3>Reveal</h3>
-        <p>Peel off, rinse, and reveal a visibly brighter, whiter smile from the best whitening strips.</p>
-        <span class="step-meta">🪞 Instant glow</span>
+        <h3>{{ 'how.s3_t' | t }}</h3>
+        <p>{{ 'how.s3_d' | t }}</p>
+        <span class="step-meta">🪞 {{ 'how.s3_m' | t }}</span>
       </div>
     </div>
     <div class="section-cta">
       <button class="cta-button" onclick="window.location.href='{{ ws_url }}'">
-        Try Our Whitening Strips Risk-Free
+        {{ 'general.order_now' | t }}
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 1.25rem; height: 1.25rem;">
           <polyline points="9 18 15 12 9 6"></polyline>
         </svg>
       </button>
-      <button class="cta-secondary" onclick="document.querySelector('.pricing').scrollIntoView({behavior:'smooth'})">See Today's Deal</button>
+      <button class="cta-secondary" onclick="document.querySelector('.pricing').scrollIntoView({behavior:'smooth'})">{{ 'footer.pricing' | t }}</button>
     </div>
   </div>
 </section>
@@ -601,9 +595,9 @@
   <div class="container">
     <div class="guarantee-content">
       <div class="guarantee-icon">🛡️</div>
-      <h2>7-Day Money Back Guarantee on Every Whitening Strips Order</h2>
-      <p>Try 3DWhiteningStrips completely risk-free. If you don't love your whiter, brighter smile within 7 days, we'll refund every penny — no questions, no hassle, no awkward forms. That is how confident we are that these are the best teeth whitening strips you will ever use. The only thing you have to lose is your stains.</p>
-      <button class="cta-button" onclick="window.location.href='{{ ws_url }}'">Start Whitening Today</button>
+      <h2>{{ 'guarantee.heading' | t }}</h2>
+      <p>{{ 'guarantee.text' | t }}</p>
+      <button class="cta-button" onclick="window.location.href='{{ ws_url }}'">{{ 'guarantee.button' | t }}</button>
     </div>
   </div>
 </section>
@@ -612,7 +606,7 @@
 <section class="faq">
   <div class="container">
     <div class="section-header">
-      <h2>Whitening Strips FAQ — Your Questions Answered</h2>
+      <h2>{{ 'faq.heading' | t }}</h2>
     </div>
     <div class="faq-list">
       <div class="faq-item">
@@ -679,21 +673,21 @@
   <div class="container">
     <div class="community-card">
       <div class="community-emoji">✨</div>
-      <h2>Join the 3DWhiteningStrips Community</h2>
-      <p>Be part of a growing community of brighter smiles. Join our community for whitening strips tips, early access to flash sales, and an exclusive welcome discount on your first order.</p>
+      <h2>{{ 'community.heading' | t }}</h2>
+      <p>{{ 'community.text' | t }}</p>
       <form method="post" action="/contact#contact_form" accept-charset="UTF-8" class="community-form">
         <input type="hidden" name="form_type" value="customer">
         <input type="hidden" name="utf8" value="✓">
         <input type="hidden" name="contact[tags]" value="newsletter">
-        <input type="email" name="contact[email]" class="community-input" placeholder="Enter your email address" aria-label="Email address" required>
+        <input type="email" name="contact[email]" class="community-input" placeholder="{{ 'community.placeholder' | t }}" aria-label="Email" required>
         <button type="submit" class="cta-button community-submit">
-          Join Our Community
+          {{ 'community.button' | t }}
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 1.25rem; height: 1.25rem;">
             <polyline points="9 18 15 12 9 6"></polyline>
           </svg>
         </button>
       </form>
-      <p class="community-note">No spam, just brighter smiles. Unsubscribe anytime.</p>
+      <p class="community-note">{{ 'community.note' | t }}</p>
     </div>
   </div>
 </section>
@@ -701,10 +695,10 @@
 <!-- Final CTA -->
 <section class="final-cta">
   <div class="container">
-    <h2>Ready for a Brighter Smile With the Best Whitening Strips?</h2>
-    <p>Join our community and transform your smile with 3DWhiteningStrips teeth whitening strips.</p>
+    <h2>{{ 'finalcta.heading' | t }}</h2>
+    <p>{{ 'finalcta.text' | t }}</p>
     <button class="cta-button" onclick="window.location.href='{{ ws_url }}'">
-      Start Whitening Today
+      {{ 'finalcta.button' | t }}
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 1.25rem; height: 1.25rem;">
         <polyline points="9 18 15 12 9 6"></polyline>
       </svg>

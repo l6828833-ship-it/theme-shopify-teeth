@@ -24,9 +24,9 @@
     <div class="pdp-grid">
       <!-- Left: content + offer selector -->
       <div class="pdp-content">
-        <div class="pdp-eyebrow">✓ Dentist Recommended Whitening Strips</div>
+        <div class="pdp-eyebrow">✓ {{ 'product.badge' | t }}</div>
         <h1>{{ product.title }}</h1>
-        <p class="pdp-sub">Professional-grade, enamel-safe teeth whitening strips that lift years of coffee, tea, and wine stains for a visibly whiter smile in just 7 days — no sensitivity, no dentist bill.</p>
+        <p class="pdp-sub">{{ 'product.subtitle' | t }}</p>
 
         <div class="pdp-rating">
           <div class="pdp-stars">
@@ -36,12 +36,12 @@
             <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
             <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
           </div>
-          <span class="pdp-rating-label">Enamel-safe &amp; dentist-recommended formula</span>
+          <span class="pdp-rating-label">{{ 'product.rating' | t }}</span>
         </div>
 
-        <div class="pdp-urgency">🔥 Last 48 hours of this week's free shipping offer</div>
+        <div class="pdp-urgency">🔥 {{ 'product.urgency' | t }}</div>
 
-        <p class="pdp-choose">Choose your package:</p>
+        <p class="pdp-choose">{{ 'product.choose' | t }}</p>
         {% form 'product', product %}
           <div class="pdp-options">
             {% for variant in product.variants %}
@@ -63,15 +63,15 @@
                   {% if variant.compare_at_price > variant.price %}<span class="pdp-option-was">{{ variant.compare_at_price | money }}</span>{% endif %}
                   <span class="pdp-option-now">{{ variant.price | money }}</span>
                 </span>
-                {% if forloop.index == 2 %}<span class="pdp-option-badge popular">Most Popular</span>{% endif %}
-                {% if forloop.index == 3 %}<span class="pdp-option-badge best">Best Value</span>{% endif %}
+                {% if forloop.index == 2 %}<span class="pdp-option-badge popular">{{ 'pricing.popular' | t }}</span>{% endif %}
+                {% if forloop.index == 3 %}<span class="pdp-option-badge best">{{ 'pricing.best' | t }}</span>{% endif %}
               </label>
             {% endfor %}
           </div>
 
           <div class="pdp-add-wrap">
             <button type="submit" name="add" class="cta-button pdp-add" id="pdpCta"{% unless product.available %} disabled{% endunless %}>
-              {% if product.available %}<span id="pdpBtnLabel">Order Now — {{ product.selected_or_first_available_variant.price | money }}</span>{% else %}Sold Out{% endif %}
+              {% if product.available %}<span id="pdpBtnLabel">{{ 'general.order_now' | t }} — {{ product.selected_or_first_available_variant.price | money }}</span>{% else %}{{ 'product.sold_out' | t }}{% endif %}
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 1.25rem; height: 1.25rem;">
                 <polyline points="9 18 15 12 9 6"></polyline>
               </svg>
@@ -80,7 +80,7 @@
           </div>
         {% endform %}
 
-        <p class="pdp-paynote">🔒 Secure checkout · Free worldwide shipping · 7-day money-back guarantee</p>
+        <p class="pdp-paynote">🔒 {{ 'product.paynote' | t }}</p>
       </div>
 
       <!-- Right: image + trust badges -->
@@ -99,10 +99,10 @@
           </div>
         {% endif %}
         <div class="pdp-trust-badges">
-          <div class="pdp-trust"><strong>Enamel Safe</strong><span>Gentle formula</span></div>
-          <div class="pdp-trust"><strong>Dentist</strong><span>Recommended</span></div>
-          <div class="pdp-trust"><strong>7 Days</strong><span>To results</span></div>
-          <div class="pdp-trust"><strong>14</strong><span>Strips per box</span></div>
+          <div class="pdp-trust"><strong>{{ 'product.trust_enamel_t' | t }}</strong><span>{{ 'product.trust_enamel_d' | t }}</span></div>
+          <div class="pdp-trust"><strong>{{ 'product.trust_dentist_t' | t }}</strong><span>{{ 'product.trust_dentist_d' | t }}</span></div>
+          <div class="pdp-trust"><strong>{{ 'product.trust_days_t' | t }}</strong><span>{{ 'product.trust_days_d' | t }}</span></div>
+          <div class="pdp-trust"><strong>{{ 'product.trust_strips_t' | t }}</strong><span>{{ 'product.trust_strips_d' | t }}</span></div>
         </div>
       </div>
     </div>
@@ -112,7 +112,7 @@
   <div class="hero-notification" id="pdpNotification" role="status" aria-live="polite">
     <div class="hero-notif-icon">🔥</div>
     <div class="hero-notif-body">
-      <div class="hero-notif-line">Flash Sale: now <strong class="hero-notif-now">{{ product.price | money }}</strong></div>
+      <div class="hero-notif-line">{{ 'product.sale_now' | t }} <strong class="hero-notif-now">{{ product.price | money }}</strong></div>
       <div class="hero-notif-was">{{ product.compare_at_price | money }}</div>
     </div>
   </div>
@@ -122,8 +122,8 @@
 <section class="before-after">
   <div class="container">
     <div class="section-header">
-      <h2>See the Transformation</h2>
-      <p>Real results from a single treatment cycle with our teeth whitening strips</p>
+      <h2>{{ 'transform.heading' | t }}</h2>
+      <p>{{ 'transform.subtitle' | t }}</p>
     </div>
     <div class="comparison-image">
       <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663743569624/amyPSPrF2HUmPeJK9rK5RK/before-after-comparison-X9GBvVf2LvMU5MUHgjePtJ.webp" alt="Before and after results using 3DWhiteningStrips teeth whitening strips">
@@ -135,8 +135,8 @@
 <section class="benefits">
   <div class="container">
     <div class="section-header">
-      <h2>Why Choose Our Whitening Strips</h2>
-      <p>Engineered for results. Designed for comfort. Trusted by professionals.</p>
+      <h2>{{ 'benefits.heading' | t }}</h2>
+      <p>{{ 'benefits.subtitle' | t }}</p>
     </div>
     <div class="benefits-grid">
       <div class="benefit-card">
