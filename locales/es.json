@@ -1,0 +1,168 @@
+{
+  "general": {
+    "shop": "Tienda",
+    "order_now": "Comprar ahora",
+    "claim_offer": "Conseguir 67% de descuento",
+    "buy": "Comprar"
+  },
+  "nav": {
+    "home": "Inicio",
+    "shop": "Tienda",
+    "faq": "Preguntas",
+    "about": "Nosotros",
+    "contact": "Contacto"
+  },
+  "offers": {
+    "discount": "HOY 67% DE DESCUENTO",
+    "shipping": "ENVÍO GRATIS A TODO EL MUNDO",
+    "guarantee": "GARANTÍA DE DEVOLUCIÓN DE 7 DÍAS",
+    "results": "RESULTADOS VISIBLES EN 7 DÍAS",
+    "enamel": "FÓRMULA SEGURA PARA EL ESMALTE"
+  },
+  "flash": {
+    "title": "Solo hoy — 67% de descuento en tiras blanqueadoras",
+    "secure": "Pago seguro · Garantía de 7 días · Envío gratis"
+  },
+  "hero": {
+    "badge": "Tiras blanqueadoras recomendadas por dentistas",
+    "title": "Las mejores tiras blanqueadoras dentales para una sonrisa más blanca en solo 7 días",
+    "subtitle": "Deja de esconder tu sonrisa. 3DWhiteningStrips ofrece tiras blanqueadoras de calidad profesional, seguras para el esmalte, que eliminan años de manchas de café, té, vino y tabaco en solo 7 días — sin sensibilidad.",
+    "rating": "Fórmula segura para el esmalte y recomendada por dentistas",
+    "urgency": "Últimas 48 horas de la oferta de envío gratis de esta semana",
+    "choose": "Elige tu paquete:",
+    "get": "Conseguir las mejores tiras blanqueadoras",
+    "paynote": "Pago seguro · Envío gratis a todo el mundo · Garantía de 7 días",
+    "proof": "Cada día se sirven más de mil millones de tazas de café",
+    "proof_sub": "Cada sorbo mancha tus dientes — combátelo con las tiras blanqueadoras y únete a nuestra comunidad."
+  },
+  "pricing": {
+    "heading": "Elige tu paquete y ahorra más",
+    "subtitle": "Elige tu paquete y ve directo al pago. Cada pedido incluye envío gratis y garantía de devolución de 7 días.",
+    "box_one": "1 Caja",
+    "box_two": "2 Cajas",
+    "box_three": "3 Cajas",
+    "detail_one": "14 tiras · tratamiento de 7 días",
+    "detail_two": "28 tiras · tratamiento de 14 días",
+    "detail_three": "42 tiras · tratamiento de 21 días",
+    "you_save": "Ahorras",
+    "popular": "Más Popular",
+    "best": "Mejor Valor",
+    "buy_one": "Comprar 1 Caja",
+    "buy_two": "Comprar 2 Cajas",
+    "buy_three": "Comprar 3 Cajas",
+    "checkout_note": "Directo al pago seguro",
+    "feat_ship": "Envío gratis a todo el mundo",
+    "feat_guarantee": "Garantía de devolución de 7 días",
+    "info_ship_t": "Envío Gratis Mundial",
+    "info_ship_d": "En cada pedido de tiras blanqueadoras",
+    "info_deliv_t": "Entrega Mundial",
+    "info_deliv_d": "Llega en 6–10 días",
+    "info_back_t": "Devolución en 7 Días",
+    "info_back_d": "Te encanta o te devolvemos el dinero",
+    "info_secure_t": "Pago Seguro",
+    "info_secure_d": "Pago cifrado y protegido"
+  },
+  "benefits": {
+    "heading": "Por qué elegir nuestras tiras blanqueadoras",
+    "subtitle": "Diseñadas para resultados. Pensadas para la comodidad. Recomendadas por profesionales.",
+    "b1_t": "Elimina manchas profundas",
+    "b1_d": "Combate años de manchas de café, té, vino y tabaco para una sonrisa visiblemente más brillante.",
+    "b2_t": "Seguras para dientes sensibles",
+    "b2_d": "Una fórmula suave y segura para el esmalte que blanquea sin irritación.",
+    "b3_t": "Resultados en 7 días",
+    "b3_d": "Mira mejoras notables en solo una semana de uso diario.",
+    "b4_t": "Resultados profesionales en casa",
+    "b4_d": "Tecnología de blanqueamiento de nivel dental en cómodas tiras."
+  },
+  "how": {
+    "heading": "Cómo funciona",
+    "subtitle": "Una sonrisa más brillante en tres sencillos pasos — solo 30 minutos al día",
+    "s1_t": "Aplica las tiras",
+    "s1_d": "Despega y presiona una tira sobre los dientes superiores e inferiores.",
+    "s1_m": "30 segundos",
+    "s2_t": "Relájate",
+    "s2_d": "Deja que la fórmula segura para el esmalte actúe durante 30 minutos.",
+    "s2_m": "30 minutos",
+    "s3_t": "Revela",
+    "s3_d": "Retira, enjuaga y revela una sonrisa visiblemente más brillante.",
+    "s3_m": "Brillo instantáneo"
+  },
+  "transform": {
+    "heading": "Mira la transformación",
+    "subtitle": "Resultados reales de un solo ciclo de tratamiento con nuestras tiras blanqueadoras"
+  },
+  "community": {
+    "heading": "Únete a la comunidad 3DWhiteningStrips",
+    "text": "Forma parte de una comunidad creciente de sonrisas más brillantes. Únete para recibir consejos, acceso anticipado a ofertas y un descuento de bienvenida exclusivo en tu primer pedido.",
+    "placeholder": "Introduce tu correo electrónico",
+    "button": "Unirme a la comunidad",
+    "note": "Sin spam, solo sonrisas más brillantes. Cancela cuando quieras."
+  },
+  "guarantee": {
+    "heading": "Garantía de devolución de 7 días",
+    "text": "Prueba 3DWhiteningStrips sin ningún riesgo. Si no te encanta tu sonrisa más brillante en 7 días, te devolvemos hasta el último céntimo — sin preguntas, sin complicaciones.",
+    "button": "Empieza a blanquear hoy"
+  },
+  "faq": {
+    "heading": "Preguntas Frecuentes"
+  },
+  "finalcta": {
+    "heading": "¿Listo para una sonrisa más brillante con las mejores tiras blanqueadoras?",
+    "text": "Únete a nuestra comunidad y transforma tu sonrisa con 3DWhiteningStrips.",
+    "button": "Empieza a blanquear hoy"
+  },
+  "footer": {
+    "intro": "3DWhiteningStrips.com es tu sitio para las mejores tiras blanqueadoras dentales — recomendadas por dentistas y seguras para el esmalte, eliminan años de manchas de café, té y vino para una sonrisa más brillante en solo 7 días.",
+    "shipping_line": "Envío gratis a todo el mundo · entrega en 6–10 días",
+    "col_shop": "Tienda",
+    "col_company": "Empresa",
+    "col_legal": "Ayuda y Legal",
+    "shop_all": "Todas las Tiras Blanqueadoras",
+    "pricing": "Precios y Paquetes",
+    "how": "Cómo funciona",
+    "about": "Nosotros",
+    "contact": "Contacto",
+    "product_safety": "Seguridad del Producto",
+    "blog": "Blog",
+    "shipping_policy": "Política de Envío",
+    "refund_policy": "Política de Reembolso",
+    "privacy_policy": "Política de Privacidad",
+    "cookie_policy": "Política de Cookies",
+    "terms": "Términos del Servicio",
+    "disclaimer": "Aviso Legal",
+    "rights": "Todos los derechos reservados. Las mejores tiras blanqueadoras en línea."
+  },
+  "product": {
+    "badge": "Tiras blanqueadoras recomendadas por dentistas",
+    "subtitle": "Tiras blanqueadoras dentales de calidad profesional, seguras para el esmalte, que eliminan años de manchas de café, té y vino para una sonrisa visiblemente más brillante en solo 7 días — sin sensibilidad, sin ir al dentista.",
+    "rating": "Fórmula segura para el esmalte y recomendada por dentistas",
+    "urgency": "Últimas 48 horas de la oferta de envío gratis de esta semana",
+    "choose": "Elige tu paquete:",
+    "sold_out": "Agotado",
+    "paynote": "Pago seguro · Envío gratis a todo el mundo · Garantía de 7 días",
+    "sale_now": "Oferta: ahora",
+    "trust_enamel_t": "Seguro Esmalte",
+    "trust_enamel_d": "Fórmula suave",
+    "trust_dentist_t": "Dentista",
+    "trust_dentist_d": "Recomendado",
+    "trust_days_t": "7 Días",
+    "trust_days_d": "Para resultados",
+    "trust_strips_t": "14",
+    "trust_strips_d": "Tiras por caja"
+  },
+  "pdp": {
+    "ing_badge": "Qué incluye",
+    "ing_title": "Una fórmula creada para resultados reales y suaves",
+    "ing_lead": "Cada caja de 3DWhiteningStrips está diseñada para ofrecer un blanqueamiento profesional en casa — de forma segura y cómoda.",
+    "ing1": "Gel blanqueador seguro para el esmalte",
+    "ing2": "Tecnología avanzada antideslizante",
+    "ing3": "Menta fresca, fórmula de baja sensibilidad",
+    "ing4": "14 tiras precortadas — un tratamiento completo de 7 días",
+    "faq_q1": "¿Funcionan las tiras blanqueadoras?",
+    "faq_a1": "Sí — nuestras tiras seguras para el esmalte aplican el gel directamente sobre los dientes para eliminar manchas, con una sonrisa visiblemente más blanca tras un solo tratamiento de 7 días.",
+    "faq_q2": "¿Son seguras para dientes sensibles?",
+    "faq_a2": "Sí. Nuestra fórmula equilibrada y segura para el esmalte está diseñada para minimizar la sensibilidad. Si tienes problemas dentales, consulta nuestra página de Seguridad del Producto o a tu dentista.",
+    "faq_q3": "¿Qué tan rápido es el envío?",
+    "faq_a3": "Envío gratis a todo el mundo en cada pedido, normalmente llega en 6–10 días."
+  }
+}

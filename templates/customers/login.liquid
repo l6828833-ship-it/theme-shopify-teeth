@@ -1,0 +1,29 @@
+<section class="static-page">
+  <div class="container static-narrow auth-page">
+    <div class="section-header"><h1>Login</h1></div>
+
+    {% form 'customer_login' %}
+      {{ form.errors | default_errors }}
+      <label for="customer_email">Email</label>
+      <input type="email" name="customer[email]" id="customer_email" autocomplete="email" required>
+      {% if form.password_needed %}
+        <label for="customer_password">Password</label>
+        <input type="password" name="customer[password]" id="customer_password" autocomplete="current-password" required>
+        <p><a href="#recover" onclick="document.getElementById('recover').style.display='block';return false;">Forgot your password?</a></p>
+      {% endif %}
+      <button type="submit" class="cta-button">Sign In</button>
+    {% endform %}
+
+    <div id="recover" style="display:none; margin-top:1.5rem;">
+      <h3>Reset your password</h3>
+      {% form 'recover_customer_password' %}
+        {{ form.errors | default_errors }}
+        <label for="recover_email">Email</label>
+        <input type="email" name="email" id="recover_email">
+        <button type="submit" class="cta-secondary">Send reset email</button>
+      {% endform %}
+    </div>
+
+    <p class="auth-switch">New customer? <a href="/account/register">Create an account</a></p>
+  </div>
+</section>

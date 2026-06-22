@@ -1,0 +1,23 @@
+<section class="static-page">
+  <div class="container">
+    <div class="section-header">
+      <h1>{{ blog.title }}</h1>
+    </div>
+    <div class="article-list">
+      {% for article in blog.articles %}
+        <a href="{{ article.url }}" class="article-card">
+          {% if article.image %}
+            <div class="article-card-img"><img src="{{ article.image | image_url: width: 600 }}" alt="{{ article.title | escape }}"></div>
+          {% endif %}
+          <div class="article-card-body">
+            <h3>{{ article.title }}</h3>
+            <p class="article-card-meta">{{ article.published_at | date: "%B %d, %Y" }}</p>
+            <p>{{ article.excerpt_or_content | strip_html | truncate: 150 }}</p>
+          </div>
+        </a>
+      {% else %}
+        <p>No articles yet. Check back soon for whitening strips tips and guides.</p>
+      {% endfor %}
+    </div>
+  </div>
+</section>

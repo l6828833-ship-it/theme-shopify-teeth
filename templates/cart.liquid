@@ -1,0 +1,19 @@
+<section class="static-page">
+  <div class="container static-narrow" style="text-align:center;">
+    <div class="section-header"><h1>Taking you to checkout…</h1></div>
+    <a href="/checkout" class="cta-button">Continue to Checkout</a>
+  </div>
+</section>
+
+<script>
+  // This store skips the cart page — go straight to checkout (locale-aware).
+  (function () {
+    var root = (window.Shopify && window.Shopify.routes && window.Shopify.routes.root) ? window.Shopify.routes.root : '/';
+    fetch(root + 'cart.js')
+      .then(function (r) { return r.json(); })
+      .then(function (cart) {
+        window.location.replace(cart.item_count > 0 ? (root + 'checkout') : root);
+      })
+      .catch(function () { window.location.replace(root); });
+  })();
+</script>

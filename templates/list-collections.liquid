@@ -1,0 +1,21 @@
+<section class="listing-page">
+  <div class="container">
+    <div class="section-header">
+      <h1>Collections</h1>
+    </div>
+    <div class="product-grid">
+      {% for collection in collections %}
+        <a href="{{ collection.url }}" class="product-card">
+          <div class="product-card-img">
+            {% if collection.image %}
+              <img src="{{ collection.image | image_url: width: 500 }}" alt="{{ collection.title | escape }}">
+            {% elsif collection.products.first.featured_image %}
+              <img src="{{ collection.products.first.featured_image | image_url: width: 500 }}" alt="{{ collection.title | escape }}">
+            {% endif %}
+          </div>
+          <h3>{{ collection.title }}</h3>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>

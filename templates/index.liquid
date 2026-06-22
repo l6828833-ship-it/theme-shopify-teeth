@@ -1,74 +1,96 @@
-<!-- Navigation -->
-<nav class="navbar">
-  <div class="container">
-    <div class="logo">
-      <div class="logo-icon">✨</div>
-      <span>{{ shop.name }}</span>
-    </div>
-    <a href="/cart" class="btn btn-primary">Shop Now</a>
+{%- assign ws_product = all_products['3dwhiteningstrips-teeth-whitening-strips'] -%}
+{%- if ws_product == blank -%}{%- assign ws_product = collections.all.products.first -%}{%- endif -%}
+{%- assign ws_url = ws_product.url | default: '/collections/all' -%}
+{%- assign v1 = blank -%}{%- assign v2 = blank -%}{%- assign v3 = blank -%}
+{%- for v in ws_product.variants -%}
+  {%- if v.title contains '1 Box' -%}{%- assign v1 = v -%}{%- endif -%}
+  {%- if v.title contains '2 Box' -%}{%- assign v2 = v -%}{%- endif -%}
+  {%- if v.title contains '3 Box' -%}{%- assign v3 = v -%}{%- endif -%}
+{%- endfor -%}
+{%- if v1 == blank -%}{%- assign v1 = ws_product.variants[0] -%}{%- endif -%}
+{%- if v2 == blank -%}{%- assign v2 = ws_product.variants[1] -%}{%- endif -%}
+{%- if v3 == blank -%}{%- assign v3 = ws_product.variants[2] -%}{%- endif -%}
+
+<!-- Offers marquee bar -->
+<div class="offers-bar">
+  <div class="offers-track">
+    <span>✨ {{ 'offers.results' | t }}</span>
+    <span>🦷 {{ 'offers.enamel' | t }}</span>
+    <span>🔥 {{ 'offers.discount' | t }}</span>
+    <span>🚚 {{ 'offers.shipping' | t }}</span>
+    <span>🛡️ {{ 'offers.guarantee' | t }}</span>
+    <span>✨ {{ 'offers.results' | t }}</span>
+    <span>🦷 {{ 'offers.enamel' | t }}</span>
+    <span>🔥 {{ 'offers.discount' | t }}</span>
+    <span>🚚 {{ 'offers.shipping' | t }}</span>
+    <span>🛡️ {{ 'offers.guarantee' | t }}</span>
   </div>
-</nav>
+</div>
 
 <!-- Hero Section -->
 <section class="hero">
   <div class="container">
     <div class="hero-content">
       <div class="hero-text">
-        <div class="hero-badge">✓ Dentist Recommended</div>
-        <h1>Whiter Teeth in Just <span class="highlight">7 Days</span></h1>
-        <p class="hero-description">Professional-grade whitening strips that remove years of stains from coffee, tea, wine, and smoking — without sensitivity.</p>
-        
+        <div class="hero-badge">✓ {{ 'hero.badge' | t }}</div>
+        <h1>{{ 'hero.title' | t }}</h1>
+        <p class="hero-description">{{ 'hero.subtitle' | t }}</p>
+
         <div class="trust-badges">
           <div class="trust-badge">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <polyline points="20 6 9 17 4 12"></polyline>
             </svg>
-            <span>Dentist Recommended</span>
+            <span>{{ 'product.trust_dentist_d' | t }}</span>
           </div>
           <div class="trust-badge">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <polyline points="20 6 9 17 4 12"></polyline>
             </svg>
-            <span>Enamel Safe</span>
+            <span>{{ 'product.trust_enamel_t' | t }}</span>
           </div>
           <div class="trust-badge">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <polyline points="20 6 9 17 4 12"></polyline>
             </svg>
-            <span>30-Day Guarantee</span>
+            <span>{{ 'guarantee.heading' | t }}</span>
           </div>
           <div class="trust-badge">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <polyline points="20 6 9 17 4 12"></polyline>
             </svg>
-            <span>Free Shipping</span>
+            <span>{{ 'offers.shipping' | t }}</span>
           </div>
         </div>
 
-        <form method="post" action="/cart/add" class="cta-form">
-          <button type="submit" class="cta-button">
-            Get Your Whitening Kit
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 1.25rem; height: 1.25rem;">
-              <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
-          </button>
-        </form>
+        <div class="hero-cta-row">
+          <div class="cta-form">
+            <button type="button" class="cta-button" id="heroCta" onclick="window.location.href='{{ ws_url }}'">
+              {{ 'hero.get' | t }}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 1.25rem; height: 1.25rem;">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+            <span class="cta-discount-tag" id="ctaTag" aria-hidden="true">-67%</span>
+            <div class="cta-price-drop" id="ctaPriceDrop" aria-hidden="true">
+              <span class="cta-price-now">{{ v1.price | money }}</span>
+              <span class="cta-price-was">{{ v1.compare_at_price | money }}</span>
+            </div>
+          </div>
+          <button type="button" class="cta-secondary hero-order-now" {% if v1 %}onclick="buyNow({{ v1.id }}, 1)"{% else %}onclick="window.location.href='{{ ws_url }}'"{% endif %}>{{ 'general.order_now' | t }}</button>
+        </div>
 
         <div class="social-proof">
-          <div class="avatars">
-            <div class="avatar">1</div>
-            <div class="avatar">2</div>
-            <div class="avatar">3</div>
-          </div>
+          <div class="proof-icon">☕</div>
           <div class="proof-text">
-            <h4>Over 50,000 Happy Customers</h4>
-            <p>Rated 4.9/5 by verified buyers</p>
+            <h4>{{ 'hero.proof' | t }}</h4>
+            <p>{{ 'hero.proof_sub' | t }}</p>
           </div>
         </div>
       </div>
 
       <div class="product-showcase">
-        <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663743569624/amyPSPrF2HUmPeJK9rK5RK/product-showcase-K8meYjWUxGZjQjXQB37PeW.webp" alt="Luxury teeth whitening strips in premium packaging">
+        <img src="https://pub-1271a678a52f4664aa377c2be4276e07.r2.dev/teeth%20whitening%20strips%20(3).png" alt="Best teeth whitening strips from 3DWhiteningStrips in premium packaging">
         <div class="product-badge">
           <div class="product-badge-stars">
             <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
@@ -78,145 +100,42 @@
             <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
           </div>
           <div class="product-badge-text">
-            <h4>5.0 Rating</h4>
-            <p>10,000+ verified reviews</p>
+            <h4>Dentist Recommended</h4>
+            <p>Join our whitening community</p>
           </div>
         </div>
       </div>
     </div>
   </div>
-</section>
 
-<!-- Benefits Section -->
-<section class="benefits">
-  <div class="container">
-    <div class="section-header">
-      <h2>Why Choose Our Whitening?</h2>
-      <p>Engineered for results. Designed for comfort. Trusted by professionals.</p>
-    </div>
-    <div class="benefits-grid">
-      <div class="benefit-card">
-        <div class="benefit-icon">⚡</div>
-        <h3>Removes Deep Stains</h3>
-        <p>Targets years of coffee, tea, wine, and smoking stains</p>
-      </div>
-      <div class="benefit-card">
-        <div class="benefit-icon">🛡️</div>
-        <h3>Safe for Sensitive Teeth</h3>
-        <p>Gentle formula that whitens without irritation</p>
-      </div>
-      <div class="benefit-card">
-        <div class="benefit-icon">⏱️</div>
-        <h3>Visible Results in 7 Days</h3>
-        <p>See dramatic improvements in just one week</p>
-      </div>
-      <div class="benefit-card">
-        <div class="benefit-icon">🏥</div>
-        <h3>Professional Results at Home</h3>
-        <p>Dentist-grade technology in convenient strips</p>
-      </div>
+  <!-- Slide-in flash sale notification that docks onto the CTA -->
+  <div class="hero-notification" id="heroNotification" role="status" aria-live="polite">
+    <div class="hero-notif-icon">🔥</div>
+    <div class="hero-notif-body">
+      <div class="hero-notif-line">{{ 'product.sale_now' | t }} <strong class="hero-notif-now">{{ v1.price | money }}</strong></div>
+      <div class="hero-notif-was">{{ v1.compare_at_price | money }}</div>
     </div>
   </div>
 </section>
 
 <!-- Before & After -->
-<section class="before-after">
+<section class="before-after" style="opacity: 1; transform: translateY(0px); transition: opacity 0.6s, transform 0.6s;">
   <div class="container">
     <div class="section-header">
-      <h2>See the Transformation</h2>
-      <p>Real results from real customers after one treatment cycle</p>
+      <h2>{{ 'transform.heading' | t }}</h2>
+      <p>{{ 'transform.subtitle' | t }}</p>
     </div>
     <div class="comparison-image">
-      <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663743569624/amyPSPrF2HUmPeJK9rK5RK/before-after-comparison-X9GBvVf2LvMU5MUHgjePtJ.webp" alt="Before and after teeth whitening results">
+      <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663743569624/amyPSPrF2HUmPeJK9rK5RK/before-after-comparison-X9GBvVf2LvMU5MUHgjePtJ.webp" alt="Before and after results using the best teeth whitening strips from 3DWhiteningStrips">
     </div>
-  </div>
-</section>
-
-<!-- How It Works -->
-<section class="how-it-works">
-  <div class="container">
-    <div class="section-header">
-      <h2>Simple 3-Step Process</h2>
-    </div>
-    <div class="steps-grid">
-      <div class="step-card">
-        <div class="step-number">1</div>
-        <h3>Apply Strips</h3>
-        <p>Apply strips for 30 minutes</p>
-      </div>
-      <div class="step-card">
-        <div class="step-number">2</div>
-        <h3>Relax</h3>
-        <p>Whitening technology works while you relax</p>
-      </div>
-      <div class="step-card">
-        <div class="step-number">3</div>
-        <h3>Reveal</h3>
-        <p>Remove and reveal a brighter smile</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Testimonials -->
-<section class="testimonials">
-  <div class="container">
-    <div class="section-header">
-      <h2>What Customers Say</h2>
-      <p>Rated 4.9/5 by 10,000+ verified customers</p>
-    </div>
-    <div class="testimonials-grid">
-      <div class="testimonial-card">
-        <div class="stars">
-          <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        </div>
-        <p class="testimonial-text">"My teeth are noticeably whiter after only one week. Highly recommend!"</p>
-        <div class="testimonial-author">
-          <div class="author-avatar">S</div>
-          <div class="author-info">
-            <h4>Sarah M.</h4>
-            <p>Verified Buyer</p>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial-card">
-        <div class="stars">
-          <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        </div>
-        <p class="testimonial-text">"Better than expensive dental treatments. Love the results!"</p>
-        <div class="testimonial-author">
-          <div class="author-avatar">J</div>
-          <div class="author-info">
-            <h4>Jessica L.</h4>
-            <p>Verified Buyer</p>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial-card">
-        <div class="stars">
-          <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        </div>
-        <p class="testimonial-text">"No sensitivity and amazing results. Best purchase ever!"</p>
-        <div class="testimonial-author">
-          <div class="author-avatar">E</div>
-          <div class="author-info">
-            <h4>Emily R.</h4>
-            <p>Verified Buyer</p>
-          </div>
-        </div>
-      </div>
+    <div class="section-cta">
+      <button class="cta-button" onclick="window.location.href='{{ ws_url }}'">
+        {{ 'finalcta.button' | t }}
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 1.25rem; height: 1.25rem;">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+      <button class="cta-secondary" onclick="document.querySelector('.pricing').scrollIntoView({behavior:'smooth'})">{{ 'footer.pricing' | t }}</button>
     </div>
   </div>
 </section>
@@ -225,27 +144,447 @@
 <section class="pricing">
   <div class="container">
     <div class="section-header">
-      <h2>Simple Pricing</h2>
-      <p>Choose the plan that works for you</p>
+      <h2>{{ 'pricing.heading' | t }}</h2>
+      <p>{{ 'pricing.subtitle' | t }}</p>
     </div>
     <div class="pricing-grid">
       <div class="pricing-card">
-        <h3>1 Box</h3>
-        <div class="price">$29.99</div>
-        <button class="btn btn-primary" onclick="addToCart(1)">Choose Plan</button>
+        <h3>{{ 'pricing.box_one' | t }}</h3>
+        <p class="pricing-sub">{{ 'pricing.detail_one' | t }}</p>
+        {% if v1.compare_at_price > v1.price %}<div class="price-was">{{ v1.compare_at_price | money }}</div>{% endif %}
+        <div class="price">{{ v1.price | money }}</div>
+        {% if v1.compare_at_price > v1.price %}<div class="savings">{{ 'pricing.you_save' | t }} {{ v1.compare_at_price | minus: v1.price | money }}</div>{% endif %}
+        <ul class="pricing-features">
+          <li>✓ {{ 'pricing.feat_ship' | t }}</li>
+          <li>✓ {{ 'pricing.feat_guarantee' | t }}</li>
+        </ul>
+        <button class="btn btn-primary" {% if v1 %}onclick="buyNow({{ v1.id }}, 1)"{% else %}onclick="window.location.href='{{ ws_url }}'"{% endif %}>{{ 'pricing.buy_one' | t }} →</button>
+        <p class="pricing-checkout-note">🔒 {{ 'pricing.checkout_note' | t }}</p>
       </div>
       <div class="pricing-card popular">
-        <div class="popular-badge">Most Popular</div>
-        <h3>2 Boxes</h3>
-        <div class="price">$49.99</div>
-        <div class="savings">Save $10</div>
-        <button class="btn btn-primary" onclick="addToCart(2)">Choose Plan</button>
+        <div class="popular-badge">{{ 'pricing.popular' | t }}</div>
+        <h3>{{ 'pricing.box_two' | t }}</h3>
+        <p class="pricing-sub">{{ 'pricing.detail_two' | t }}</p>
+        {% if v2.compare_at_price > v2.price %}<div class="price-was">{{ v2.compare_at_price | money }}</div>{% endif %}
+        <div class="price">{{ v2.price | money }}</div>
+        {% if v2.compare_at_price > v2.price %}<div class="savings">{{ 'pricing.you_save' | t }} {{ v2.compare_at_price | minus: v2.price | money }}</div>{% endif %}
+        <ul class="pricing-features">
+          <li>✓ {{ 'pricing.feat_ship' | t }}</li>
+          <li>✓ {{ 'pricing.feat_guarantee' | t }}</li>
+        </ul>
+        <button class="btn btn-primary" {% if v2 %}onclick="buyNow({{ v2.id }}, 1)"{% else %}onclick="window.location.href='{{ ws_url }}'"{% endif %}>{{ 'pricing.buy_two' | t }} →</button>
+        <p class="pricing-checkout-note">🔒 {{ 'pricing.checkout_note' | t }}</p>
       </div>
       <div class="pricing-card">
-        <h3>3 Boxes</h3>
-        <div class="price">$69.99</div>
-        <div class="savings">Save $20</div>
-        <button class="btn btn-primary" onclick="addToCart(3)">Choose Plan</button>
+        <div class="best-badge">{{ 'pricing.best' | t }}</div>
+        <h3>{{ 'pricing.box_three' | t }}</h3>
+        <p class="pricing-sub">{{ 'pricing.detail_three' | t }}</p>
+        {% if v3.compare_at_price > v3.price %}<div class="price-was">{{ v3.compare_at_price | money }}</div>{% endif %}
+        <div class="price">{{ v3.price | money }}</div>
+        {% if v3.compare_at_price > v3.price %}<div class="savings">{{ 'pricing.you_save' | t }} {{ v3.compare_at_price | minus: v3.price | money }}</div>{% endif %}
+        <ul class="pricing-features">
+          <li>✓ {{ 'pricing.feat_ship' | t }}</li>
+          <li>✓ {{ 'pricing.feat_guarantee' | t }}</li>
+        </ul>
+        <button class="btn btn-primary" {% if v3 %}onclick="buyNow({{ v3.id }}, 1)"{% else %}onclick="window.location.href='{{ ws_url }}'"{% endif %}>{{ 'pricing.buy_three' | t }} →</button>
+        <p class="pricing-checkout-note">🔒 {{ 'pricing.checkout_note' | t }}</p>
+      </div>
+    </div>
+
+    <div class="pricing-info">
+      <div class="pricing-info-item">
+        <span class="pricing-info-icon">🚚</span>
+        <div><strong>{{ 'pricing.info_ship_t' | t }}</strong><span>{{ 'pricing.info_ship_d' | t }}</span></div>
+      </div>
+      <div class="pricing-info-item">
+        <span class="pricing-info-icon">⏱️</span>
+        <div><strong>{{ 'pricing.info_deliv_t' | t }}</strong><span>{{ 'pricing.info_deliv_d' | t }}</span></div>
+      </div>
+      <div class="pricing-info-item">
+        <span class="pricing-info-icon">🛡️</span>
+        <div><strong>{{ 'pricing.info_back_t' | t }}</strong><span>{{ 'pricing.info_back_d' | t }}</span></div>
+      </div>
+      <div class="pricing-info-item">
+        <span class="pricing-info-icon">🔒</span>
+        <div><strong>{{ 'pricing.info_secure_t' | t }}</strong><span>{{ 'pricing.info_secure_d' | t }}</span></div>
+      </div>
+    </div>
+
+    <div class="pricing-details">
+      <h3>Product &amp; Shipping Details</h3>
+      <ul>
+        <li><strong>What's inside:</strong> 14 pre-cut whitening strips per box (upper &amp; lower) — a full 7-day treatment.</li>
+        <li><strong>Formula:</strong> enamel-safe, dentist-recommended whitening gel with a gentle, low-sensitivity concentration.</li>
+        <li><strong>Flavor:</strong> fresh mint, with advanced no-slip grip technology.</li>
+        <li><strong>How to use:</strong> apply once daily for 30 minutes — most people see visible results within 7 days.</li>
+        <li><strong>Suitable for:</strong> sensitive teeth and everyday coffee, tea, wine, and smoking stains.</li>
+        <li><strong>Shipping:</strong> free worldwide, typically arriving in 6–10 days.</li>
+        <li><strong>Guarantee:</strong> backed by a 7-day money-back guarantee — no questions asked.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Benefits Section -->
+<section class="benefits">
+  <div class="container">
+    <div class="section-header">
+      <h2>{{ 'benefits.heading' | t }}</h2>
+      <p>{{ 'benefits.subtitle' | t }}</p>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="benefit-icon">⚡</div>
+        <h3>{{ 'benefits.b1_t' | t }}</h3>
+        <p>{{ 'benefits.b1_d' | t }}</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">🛡️</div>
+        <h3>{{ 'benefits.b2_t' | t }}</h3>
+        <p>{{ 'benefits.b2_d' | t }}</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">⏱️</div>
+        <h3>{{ 'benefits.b3_t' | t }}</h3>
+        <p>{{ 'benefits.b3_d' | t }}</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">🏥</div>
+        <h3>{{ 'benefits.b4_t' | t }}</h3>
+        <p>{{ 'benefits.b4_d' | t }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Product Feature -->
+<section class="product-feature">
+  <div class="feature-blob feature-blob-1"></div>
+  <div class="feature-blob feature-blob-2"></div>
+  <div class="container">
+    <div class="feature-grid">
+      <div class="feature-visual reveal-left">
+        <div class="feature-glow"></div>
+        <img src="https://pub-1271a678a52f4664aa377c2be4276e07.r2.dev/teeth%20whitening%20strips.png" alt="Woman using the best whitening strips kit from 3DWhiteningStrips">
+        <div class="feature-float-tag">
+          <span class="feature-float-num">7</span>
+          <span class="feature-float-label">Day Results</span>
+        </div>
+      </div>
+      <div class="feature-content reveal-right">
+        <div class="hero-badge">The Complete Whitening Strips Kit</div>
+        <h2>Everything You Need in the <span class="highlight">Best Teeth Whitening Strips</span> Kit</h2>
+        <p class="feature-lead">Dentist-grade teeth whitening strips in a sleek, travel-ready package designed to fit effortlessly into your daily routine. This is why customers call 3DWhiteningStrips the best whitening strips on the market.</p>
+        <ul class="feature-list">
+          <li><span class="feature-check">✓</span> 14 enamel-safe whitening strips (7-day treatment)</li>
+          <li><span class="feature-check">✓</span> Advanced no-slip grip technology</li>
+          <li><span class="feature-check">✓</span> Mint-fresh, comfortable formula</li>
+          <li><span class="feature-check">✓</span> Visible results in just 7 days</li>
+        </ul>
+        <div class="feature-cta-row">
+          <button class="cta-button" onclick="window.location.href='{{ ws_url }}'">
+            Shop the Whitening Kit
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 1.25rem; height: 1.25rem;">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+          <button class="cta-secondary" onclick="document.querySelector('.pricing').scrollIntoView({behavior:'smooth'})">See Pricing</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- How It Works -->
+<section class="how-it-works">
+  <div class="container">
+    <div class="section-header">
+      <h2>{{ 'how.heading' | t }}</h2>
+      <p>{{ 'how.subtitle' | t }}</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <span class="step-line"></span>
+        <div class="step-icon-ring">
+          <span class="step-emoji">🦷</span>
+          <span class="step-number">1</span>
+        </div>
+        <h3>{{ 'how.s1_t' | t }}</h3>
+        <p>{{ 'how.s1_d' | t }}</p>
+        <span class="step-meta">⏱️ {{ 'how.s1_m' | t }}</span>
+      </div>
+      <div class="step-card">
+        <span class="step-line"></span>
+        <div class="step-icon-ring">
+          <span class="step-emoji">😌</span>
+          <span class="step-number">2</span>
+        </div>
+        <h3>{{ 'how.s2_t' | t }}</h3>
+        <p>{{ 'how.s2_d' | t }}</p>
+        <span class="step-meta">⏳ {{ 'how.s2_m' | t }}</span>
+      </div>
+      <div class="step-card">
+        <div class="step-icon-ring">
+          <span class="step-emoji">✨</span>
+          <span class="step-number">3</span>
+        </div>
+        <h3>{{ 'how.s3_t' | t }}</h3>
+        <p>{{ 'how.s3_d' | t }}</p>
+        <span class="step-meta">🪞 {{ 'how.s3_m' | t }}</span>
+      </div>
+    </div>
+    <div class="section-cta">
+      <button class="cta-button" onclick="window.location.href='{{ ws_url }}'">
+        {{ 'general.order_now' | t }}
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 1.25rem; height: 1.25rem;">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+      <button class="cta-secondary" onclick="document.querySelector('.pricing').scrollIntoView({behavior:'smooth'})">{{ 'footer.pricing' | t }}</button>
+    </div>
+  </div>
+</section>
+
+<!-- Story 1: Application -->
+<section class="story">
+  <div class="story-decor story-decor-1"></div>
+  <div class="container">
+    <div class="story-grid">
+      <div class="story-visual reveal-left">
+        <div class="story-glow"></div>
+        <img src="https://pub-1271a678a52f4664aa377c2be4276e07.r2.dev/teeth%20whitening%20strips%20(2).png" alt="Woman applying 3DWhiteningStrips teeth whitening strips">
+        <div class="story-float-badge">
+          <span class="story-float-num">30s</span>
+          <span class="story-float-label">to apply</span>
+        </div>
+      </div>
+      <div class="story-content reveal-right">
+        <div class="story-eyebrow">Step 1 · Effortless Application</div>
+        <h2>Whitening Strips You Apply in Seconds — <span class="highlight">No Mess, No Fuss</span></h2>
+        <p class="story-lead">Just peel, press, and smile. Our ultra-thin teeth whitening strips mold perfectly to your teeth and stay put — so you can keep talking, working, or scrolling while these whitening strips go to work.</p>
+        <div class="story-bars">
+          <div class="stat-bar">
+            <div class="stat-bar-head">
+              <span class="stat-bar-label">Comfortable Fit</span>
+              <span class="stat-bar-value">98%</span>
+            </div>
+            <div class="stat-bar-track"><div class="stat-bar-fill" data-value="98"></div></div>
+          </div>
+          <div class="stat-bar">
+            <div class="stat-bar-head">
+              <span class="stat-bar-label">No-Slip Grip</span>
+              <span class="stat-bar-value">95%</span>
+            </div>
+            <div class="stat-bar-track"><div class="stat-bar-fill" data-value="95"></div></div>
+          </div>
+          <div class="stat-bar">
+            <div class="stat-bar-head">
+              <span class="stat-bar-label">Mess-Free Experience</span>
+              <span class="stat-bar-value">100%</span>
+            </div>
+            <div class="stat-bar-track"><div class="stat-bar-fill" data-value="100"></div></div>
+          </div>
+        </div>
+        <div class="story-points">
+          <div class="story-point"><span class="story-point-icon">✓</span> Pre-cut whitening strips — no trimming required</div>
+          <div class="story-point"><span class="story-point-icon">✓</span> Flexible film hugs every tooth</div>
+          <div class="story-point"><span class="story-point-icon">✓</span> Wear these teeth whitening strips hands-free for 30 minutes</div>
+        </div>
+        <div class="story-cta">
+          <button class="cta-button" onclick="window.location.href='{{ ws_url }}'">
+            Start Whitening Today
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 1.25rem; height: 1.25rem;">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+          <button class="cta-secondary" onclick="document.querySelector('.how-it-works').scrollIntoView({behavior:'smooth'})">See How It Works</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Story 2: Daily Routine -->
+<section class="story story--reverse">
+  <div class="story-decor story-decor-2"></div>
+  <div class="container">
+    <div class="story-grid">
+      <div class="story-visual reveal-right">
+        <div class="story-glow"></div>
+        <img src="https://pub-1271a678a52f4664aa377c2be4276e07.r2.dev/teeth%20whitening%20strips%20(5).png" alt="Woman holding the best teeth whitening strips kit from 3DWhiteningStrips">
+        <div class="story-float-badge">
+          <span class="story-float-num">14</span>
+          <span class="story-float-label">strips / kit</span>
+        </div>
+      </div>
+      <div class="story-content reveal-left">
+        <div class="story-eyebrow">Step 2 · Fits Your Life</div>
+        <h2>Teeth Whitening Strips That Slip Into <span class="highlight">Your Daily Ritual</span></h2>
+        <p class="story-lead">Sleek, travel-ready, and built for real life. Keep your whitening strips on your nightstand or toss them in your bag — your brighter smile routine goes wherever you do, with zero disruption.</p>
+        <div class="story-bars">
+          <div class="stat-bar">
+            <div class="stat-bar-head">
+              <span class="stat-bar-label">Comfortable All-Day Wear</span>
+              <span class="stat-bar-value">92%</span>
+            </div>
+            <div class="stat-bar-track"><div class="stat-bar-fill" data-value="92"></div></div>
+          </div>
+          <div class="stat-bar">
+            <div class="stat-bar-head">
+              <span class="stat-bar-label">Easy to Travel With</span>
+              <span class="stat-bar-value">96%</span>
+            </div>
+            <div class="stat-bar-track"><div class="stat-bar-fill" data-value="96"></div></div>
+          </div>
+          <div class="stat-bar">
+            <div class="stat-bar-head">
+              <span class="stat-bar-label">Fits a Busy Schedule</span>
+              <span class="stat-bar-value">90%</span>
+            </div>
+            <div class="stat-bar-track"><div class="stat-bar-fill" data-value="90"></div></div>
+          </div>
+        </div>
+        <div class="story-points">
+          <div class="story-point"><span class="story-point-icon">✓</span> A full 7-day treatment in every box (14 strips)</div>
+          <div class="story-point"><span class="story-point-icon">✓</span> Compact, leak-proof, TSA-friendly packaging</div>
+          <div class="story-point"><span class="story-point-icon">✓</span> Use your whitening strips morning or night — whenever suits you</div>
+        </div>
+        <div class="story-cta">
+          <button class="cta-button" onclick="window.location.href='{{ ws_url }}'">
+            Get My Kit Now
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 1.25rem; height: 1.25rem;">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+          <button class="cta-secondary" onclick="document.querySelector('.pricing').scrollIntoView({behavior:'smooth'})">View Pricing</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Story 3: Results & Confidence -->
+<section class="story">
+  <div class="story-decor story-decor-3"></div>
+  <div class="container">
+    <div class="story-grid">
+      <div class="story-visual reveal-left">
+        <div class="story-glow"></div>
+        <img src="https://pub-1271a678a52f4664aa377c2be4276e07.r2.dev/teeth%20whitening%20strips%20(4)%20(1).png" alt="Premium 3DWhiteningStrips teeth whitening strips kit">
+        <div class="story-float-badge">
+          <span class="story-float-num">4.9★</span>
+          <span class="story-float-label">avg rating</span>
+        </div>
+      </div>
+      <div class="story-content reveal-right">
+        <div class="story-eyebrow">Step 3 · Real Results</div>
+        <h2>Confidence You Can <span class="highlight">See in the Mirror</span></h2>
+        <p class="story-lead">Lift years of coffee, tea, and wine stains for a noticeably whiter smile — without the sensitivity. So when people ask do whitening strips work, you can show them the glow-up these teeth whitening strips deliver.</p>
+        <div class="story-bars">
+          <div class="stat-bar">
+            <div class="stat-bar-head">
+              <span class="stat-bar-label">Visible Whitening Power</span>
+              <span class="stat-bar-value">94%</span>
+            </div>
+            <div class="stat-bar-track"><div class="stat-bar-fill" data-value="94"></div></div>
+          </div>
+          <div class="stat-bar">
+            <div class="stat-bar-head">
+              <span class="stat-bar-label">Gentle, Low-Sensitivity</span>
+              <span class="stat-bar-value">99%</span>
+            </div>
+            <div class="stat-bar-track"><div class="stat-bar-fill" data-value="99"></div></div>
+          </div>
+          <div class="stat-bar">
+            <div class="stat-bar-head">
+              <span class="stat-bar-label">Smile Confidence Boost</span>
+              <span class="stat-bar-value">97%</span>
+            </div>
+            <div class="stat-bar-track"><div class="stat-bar-fill" data-value="97"></div></div>
+          </div>
+        </div>
+        <div class="story-points">
+          <div class="story-point"><span class="story-point-icon">✓</span> Visible difference in as little as 7 days</div>
+          <div class="story-point"><span class="story-point-icon">✓</span> Enamel-safe, low-sensitivity whitening strips formula</div>
+          <div class="story-point"><span class="story-point-icon">✓</span> Backed by a 7-day money-back guarantee</div>
+        </div>
+        <div class="story-cta">
+          <button class="cta-button" onclick="window.location.href='{{ ws_url }}'">
+            Claim My Brighter Smile
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 1.25rem; height: 1.25rem;">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+          <button class="cta-secondary" onclick="document.querySelector('.testimonials').scrollIntoView({behavior:'smooth'})">Read Reviews</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEO Long-Form Content -->
+<section class="seo-content">
+  <div class="container">
+    <article class="seo-article">
+      <h2>The Complete Guide to Whitening Strips From 3DWhiteningStrips</h2>
+      <p>If you are searching for the best whitening strips, you have arrived at the right place. At <strong>3DWhiteningStrips.com</strong>, we have made it our mission to create teeth whitening strips that deliver professional, dentist-quality results from the comfort of your own home. Whether you are brand new to whitening strips or you are a seasoned user looking for recommended whitening strips that finally live up to the hype, this guide will walk you through everything you need to know about teeth whitening strips, how they work, and why so many customers consider 3DWhiteningStrips the best teeth whitening strips available today.</p>
+
+      <h3>Do Whitening Strips Work? The Honest Answer</h3>
+      <p>It is the question we hear most often: do whitening strips work? The short answer is yes — when they are designed correctly, whitening strips work remarkably well. Teeth whitening strips are thin, flexible pieces of film coated with a peroxide-based whitening gel. When you press the strips against your teeth, the gel goes to work breaking down the stain molecules that have built up over years of drinking coffee, tea, red wine, and soda, or from smoking. The best whitening strips lift both surface stains and deeper discoloration, gradually revealing the naturally whiter enamel underneath.</p>
+      <p>The reason some people doubt whether whitening strips work is that not all teeth whitening strips are created equal. Cheap, poorly made strips slip around, deliver an uneven dose of gel, and often cause sensitivity. That is exactly why we engineered the 3DWhiteningStrips formula differently. Our whitening strips use an advanced no-slip grip that keeps the gel in contact with every tooth, an enamel-safe concentration that minimizes sensitivity, and a precise, even coating that produces consistent results. In our own testing, the enamel-safe formula lifted visible stains after a single 7-day treatment — proof that the right whitening strips really do work.</p>
+
+      <h3>What Makes 3DWhiteningStrips the Best Whitening Strips?</h3>
+      <p>There are countless teeth whitening strips on the market, so what makes ours the best whitening strips for your smile? It comes down to four things: safety, comfort, speed, and value. Our whitening strips are dentist recommended and made with an enamel-safe formula, so you get a brighter smile without damaging your teeth. They are comfortable, thanks to a flexible film and no-slip grip that lets you wear your teeth whitening strips hands-free while you work, exercise, or relax. They are fast, delivering visible results in as little as seven days. And with bundle pricing on 3DWhiteningStrips.com, they are an incredible value compared to a single in-office whitening appointment that can cost hundreds.</p>
+      <p>When customers compare 3DWhiteningStrips to other teeth whitening strips, the difference is clear. Many call us the best teeth whitening strips they have ever tried because our whitening strips combine professional-grade whitening power with a gentle, low-sensitivity experience. That balance is rare, and it is exactly why we are so frequently named the recommended whitening strips by people who have struggled with harsher products in the past.</p>
+
+      <h3>How to Choose the Best Teeth Whitening Strips</h3>
+      <p>Choosing the best teeth whitening strips can feel overwhelming, but a few simple criteria make it easy. First, look for whitening strips with an enamel-safe, peroxide-based gel — this is the active ingredient that actually removes stains. Second, prioritize teeth whitening strips that grip securely; strips that slip waste gel and produce uneven results. Third, check the treatment length and number of strips so you know you are getting a complete course. Our kit includes 14 whitening strips, a full 7-day treatment, so you have everything you need to see real results. Finally, look for transparency: the best whitening strips clearly list their ingredients, peroxide content, and treatment length — exactly what you will find on every box of 3DWhiteningStrips teeth whitening strips.</p>
+
+      <h3>Recommended Whitening Strips for Sensitive Teeth</h3>
+      <p>If you have sensitive teeth, you may have avoided whitening strips in the past, worried about discomfort. We designed our teeth whitening strips specifically with sensitivity in mind. The 3DWhiteningStrips formula uses a carefully balanced peroxide concentration and protective compounds that whiten effectively while keeping sensitivity to a minimum, so you can whiten comfortably even with sensitive teeth. That is why we designed these as the recommended whitening strips for anyone who wants a whiter smile without the sting.</p>
+
+      <h3>Whitening Strips vs. Other Teeth Whitening Methods</h3>
+      <p>There are many ways to whiten your teeth — whitening toothpaste, LED kits, charcoal powders, in-office treatments, and of course whitening strips. So how do teeth whitening strips compare? Whitening toothpaste only removes light surface stains and works slowly. Charcoal powders can be abrasive and may harm enamel over time. In-office whitening is effective but expensive and inconvenient. Teeth whitening strips hit the sweet spot: they deliver professional-strength whitening gel directly to your teeth, they are affordable, and you can use them at home on your own schedule. Among all the at-home options, the best whitening strips consistently produce the most noticeable, longest-lasting results — and 3DWhiteningStrips is proud to offer some of the best teeth whitening strips you can buy.</p>
+
+      <h3>How to Use Your 3DWhiteningStrips Teeth Whitening Strips</h3>
+      <p>Getting the most out of your whitening strips is simple. Peel a strip from its backing and press it gently onto your upper teeth, then repeat with a strip for your lower teeth. Smooth the strips down so the gel makes full contact with the enamel. Leave your teeth whitening strips in place for 30 minutes while you go about your day, then peel them off and rinse. For the best results, use your whitening strips once a day for the full 7-day treatment, and avoid eating or drinking for 30 minutes afterward. Most people notice a difference within three to five days, with optimal results after a full week — a routine that makes 3DWhiteningStrips the easiest and best whitening strips to fit into a busy life.</p>
+
+      <h3>Why Choose 3DWhiteningStrips</h3>
+      <p>We built 3DWhiteningStrips for people who want a brighter, more confident smile without the dentist price tag. We stand behind every single box with a 7-day money-back guarantee and free shipping, because we know our whitening strips will become a permanent part of your routine. When you want whitening strips that are safe, comfortable, fast, and genuinely effective, 3DWhiteningStrips gives you the best teeth whitening strips experience from first application to final reveal. Order your whitening strips today and join a growing community of brighter smiles.</p>
+    </article>
+    <div class="section-cta">
+      <button class="cta-button" onclick="window.location.href='{{ ws_url }}'">
+        Shop the Best Whitening Strips
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 1.25rem; height: 1.25rem;">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Why Switch / Community -->
+<section class="testimonials">
+  <div class="container">
+    <div class="section-header">
+      <h2>Join the 3DWhiteningStrips Movement</h2>
+      <p>Be part of a growing community fighting back against everyday stains with the best whitening strips</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="benefit-icon">☕</div>
+        <h3>Beat Everyday Stains</h3>
+        <p class="testimonial-text">Coffee, tea, and wine stain your teeth a little more every day. Our teeth whitening strips fight back and lift years of buildup.</p>
+      </div>
+      <div class="testimonial-card">
+        <div class="benefit-icon">💎</div>
+        <h3>Premium &amp; Enamel-Safe</h3>
+        <p class="testimonial-text">Dentist-recommended whitening strips with a gentle, enamel-safe formula designed for comfort and real, visible results in 7 days.</p>
+      </div>
+      <div class="testimonial-card">
+        <div class="benefit-icon">🤝</div>
+        <h3>Join Our Community</h3>
+        <p class="testimonial-text">Get whitening strips tips, early access to flash sales, and member-only perks when you join the 3DWhiteningStrips community.</p>
       </div>
     </div>
   </div>
@@ -256,9 +595,9 @@
   <div class="container">
     <div class="guarantee-content">
       <div class="guarantee-icon">🛡️</div>
-      <h2>30-Day Money Back Guarantee</h2>
-      <p>We're confident you'll love your results or we'll refund your purchase. No questions asked. Your satisfaction is our priority.</p>
-      <button class="cta-button" onclick="window.location.href='/cart'">Start Whitening Today</button>
+      <h2>{{ 'guarantee.heading' | t }}</h2>
+      <p>{{ 'guarantee.text' | t }}</p>
+      <button class="cta-button" onclick="window.location.href='{{ ws_url }}'">{{ 'guarantee.button' | t }}</button>
     </div>
   </div>
 </section>
@@ -267,54 +606,88 @@
 <section class="faq">
   <div class="container">
     <div class="section-header">
-      <h2>Frequently Asked Questions</h2>
+      <h2>{{ 'faq.heading' | t }}</h2>
     </div>
     <div class="faq-list">
       <div class="faq-item">
         <button class="faq-question active" onclick="toggleFaq(this)">
-          <span>How long do results last?</span>
+          <span>Do whitening strips work?</span>
           <svg class="faq-toggle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
         <div class="faq-answer open">
-          <p>Results typically last 6-12 months with proper maintenance. Touch-up treatments can extend results indefinitely.</p>
+          <p>Yes — whitening strips work by delivering an enamel-safe whitening gel directly to your teeth to break down stains. 3DWhiteningStrips teeth whitening strips are designed to give a visibly whiter smile after a single 7-day treatment, which is what makes them the best whitening strips for everyday stains.</p>
         </div>
       </div>
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)">
-          <span>Is it safe for sensitive teeth?</span>
+          <span>What makes these the best teeth whitening strips?</span>
           <svg class="faq-toggle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
         <div class="faq-answer">
-          <p>Yes! Our formula is specifically designed for sensitive teeth with a lower peroxide concentration and protective compounds.</p>
+          <p>3DWhiteningStrips combines a dentist-recommended, enamel-safe formula with no-slip grip technology and fast 7-day results. That balance of safety, comfort, and whitening power is what makes our whitening strips the recommended whitening strips for a brighter smile.</p>
         </div>
       </div>
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)">
-          <span>How quickly will I see results?</span>
+          <span>Are these whitening strips safe for sensitive teeth?</span>
           <svg class="faq-toggle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
         <div class="faq-answer">
-          <p>Most users see visible results within 3-5 days, with optimal results after 7 days of consistent use.</p>
+          <p>Yes! Our teeth whitening strips are specifically designed for sensitive teeth with a balanced peroxide concentration and protective compounds, making these the recommended whitening strips for sensitive smiles.</p>
         </div>
       </div>
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)">
-          <span>Can I drink coffee afterward?</span>
+          <span>How quickly will I see results from the whitening strips?</span>
           <svg class="faq-toggle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
         <div class="faq-answer">
-          <p>We recommend waiting 30 minutes after application before eating or drinking to maximize effectiveness.</p>
+          <p>Most users see visible results within 3-5 days, with optimal results after the full 7-day treatment of consistent use with our teeth whitening strips.</p>
         </div>
       </div>
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)">
-          <span>Is shipping free?</span>
+          <span>How long do whitening strips results last?</span>
           <svg class="faq-toggle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
         <div class="faq-answer">
-          <p>Yes! All orders include free shipping worldwide. Orders typically arrive within 5-7 business days.</p>
+          <p>Results from our whitening strips typically last 6-12 months with proper maintenance. Touch-up treatments with 3DWhiteningStrips teeth whitening strips can extend your brighter smile indefinitely.</p>
         </div>
       </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>Is shipping free on 3DWhiteningStrips orders?</span>
+          <svg class="faq-toggle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="faq-answer">
+          <p>Yes! All whitening strips orders include free shipping worldwide. Your teeth whitening strips typically arrive within 6–10 days, backed by our 7-day money-back guarantee.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Join Our Community -->
+<section class="community">
+  <div class="community-decor"></div>
+  <div class="container">
+    <div class="community-card">
+      <div class="community-emoji">✨</div>
+      <h2>{{ 'community.heading' | t }}</h2>
+      <p>{{ 'community.text' | t }}</p>
+      <form method="post" action="/contact#contact_form" accept-charset="UTF-8" class="community-form">
+        <input type="hidden" name="form_type" value="customer">
+        <input type="hidden" name="utf8" value="✓">
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <input type="email" name="contact[email]" class="community-input" placeholder="{{ 'community.placeholder' | t }}" aria-label="Email" required>
+        <button type="submit" class="cta-button community-submit">
+          {{ 'community.button' | t }}
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 1.25rem; height: 1.25rem;">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </form>
+      <p class="community-note">{{ 'community.note' | t }}</p>
     </div>
   </div>
 </section>
@@ -322,13 +695,55 @@
 <!-- Final CTA -->
 <section class="final-cta">
   <div class="container">
-    <h2>Ready for a Brighter Smile?</h2>
-    <p>Join thousands of customers who transformed their smile.</p>
-    <button class="cta-button" onclick="window.location.href='/cart'">
-      Start Whitening Today
+    <h2>{{ 'finalcta.heading' | t }}</h2>
+    <p>{{ 'finalcta.text' | t }}</p>
+    <button class="cta-button" onclick="window.location.href='{{ ws_url }}'">
+      {{ 'finalcta.button' | t }}
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 1.25rem; height: 1.25rem;">
         <polyline points="9 18 15 12 9 6"></polyline>
       </svg>
     </button>
   </div>
 </section>
+
+<!-- SEO: Structured data for whitening strips product and FAQ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "3DWhiteningStrips Teeth Whitening Strips",
+  "image": "https://pub-1271a678a52f4664aa377c2be4276e07.r2.dev/teeth%20whitening%20strips%20(4)%20(1).png",
+  "description": "The best teeth whitening strips from 3DWhiteningStrips. Dentist-recommended, enamel-safe whitening strips that deliver a visibly whiter smile in 7 days.",
+  "brand": { "@type": "Brand", "name": "3DWhiteningStrips" },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://3dwhiteningstrips.com",
+    "priceCurrency": "USD",
+    "price": "9.99",
+    "availability": "https://schema.org/InStock"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do whitening strips work?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes, whitening strips work by delivering an enamel-safe whitening gel directly to your teeth to break down stains. 3DWhiteningStrips teeth whitening strips are designed to give a visibly whiter smile after a single 7-day treatment." }
+    },
+    {
+      "@type": "Question",
+      "name": "What makes these the best teeth whitening strips?",
+      "acceptedAnswer": { "@type": "Answer", "text": "3DWhiteningStrips combines a dentist-recommended, enamel-safe formula with no-slip grip technology and fast 7-day results, making them the recommended whitening strips for a brighter smile." }
+    },
+    {
+      "@type": "Question",
+      "name": "Are these whitening strips safe for sensitive teeth?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes, our teeth whitening strips are designed for sensitive teeth with a balanced peroxide concentration and protective compounds to keep sensitivity to a minimum." }
+    }
+  ]
+}
+</script>

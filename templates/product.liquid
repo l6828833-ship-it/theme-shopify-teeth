@@ -1,0 +1,268 @@
+{%- assign img_product = product.featured_image | default: 'https://pub-1271a678a52f4664aa377c2be4276e07.r2.dev/teeth%20whitening%20strips%20(4)%20(1).png' -%}
+
+<!-- Offers marquee bar -->
+<div class="offers-bar">
+  <div class="offers-track">
+    <span>🔥 67% OFF TODAY</span>
+    <span>🚚 FREE WORLDWIDE SHIPPING</span>
+    <span>🛡️ 7-DAY MONEY-BACK GUARANTEE</span>
+    <span>✨ VISIBLE RESULTS IN 7 DAYS</span>
+    <span>🦷 ENAMEL-SAFE FORMULA</span>
+    <span>🔥 67% OFF TODAY</span>
+    <span>🚚 FREE WORLDWIDE SHIPPING</span>
+    <span>🛡️ 7-DAY MONEY-BACK GUARANTEE</span>
+    <span>✨ VISIBLE RESULTS IN 7 DAYS</span>
+    <span>🦷 ENAMEL-SAFE FORMULA</span>
+  </div>
+</div>
+
+<!-- PDP Hero -->
+<section class="pdp-hero">
+  <div class="pdp-blob pdp-blob-1"></div>
+  <div class="pdp-blob pdp-blob-2"></div>
+  <div class="container">
+    <div class="pdp-grid">
+      <!-- Left: content + offer selector -->
+      <div class="pdp-content">
+        <div class="pdp-eyebrow">✓ {{ 'product.badge' | t }}</div>
+        <h1>{{ product.title }}</h1>
+        <p class="pdp-sub">{{ 'product.subtitle' | t }}</p>
+
+        <div class="pdp-rating">
+          <div class="pdp-stars">
+            <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <span class="pdp-rating-label">{{ 'product.rating' | t }}</span>
+        </div>
+
+        <div class="pdp-urgency">🔥 {{ 'product.urgency' | t }}</div>
+
+        <p class="pdp-choose">{{ 'product.choose' | t }}</p>
+        {% form 'product', product %}
+          <div class="pdp-options">
+            {% for variant in product.variants %}
+              <label class="pdp-option{% if forloop.first %} selected{% endif %}">
+                <input type="radio" name="id" value="{{ variant.id }}" data-price="{{ variant.price | money }}" {% if forloop.first %}checked{% endif %}>
+                <span class="pdp-option-radio"></span>
+                <span class="pdp-option-main">
+                  <span class="pdp-option-title">{{ variant.title }}</span>
+                  <span class="pdp-option-detail">
+                    {%- case forloop.index -%}
+                      {%- when 1 -%}14 strips · 7-day treatment
+                      {%- when 2 -%}28 strips · 14-day treatment
+                      {%- when 3 -%}42 strips · 21-day treatment
+                      {%- else -%}{{ variant.title }}
+                    {%- endcase -%}
+                  </span>
+                </span>
+                <span class="pdp-option-price">
+                  {% if variant.compare_at_price > variant.price %}<span class="pdp-option-was">{{ variant.compare_at_price | money }}</span>{% endif %}
+                  <span class="pdp-option-now">{{ variant.price | money }}</span>
+                </span>
+                {% if forloop.index == 2 %}<span class="pdp-option-badge popular">{{ 'pricing.popular' | t }}</span>{% endif %}
+                {% if forloop.index == 3 %}<span class="pdp-option-badge best">{{ 'pricing.best' | t }}</span>{% endif %}
+              </label>
+            {% endfor %}
+          </div>
+
+          <div class="pdp-add-wrap">
+            <button type="submit" name="add" class="cta-button pdp-add" id="pdpCta"{% unless product.available %} disabled{% endunless %}>
+              {% if product.available %}<span id="pdpBtnLabel">{{ 'general.order_now' | t }} — {{ product.selected_or_first_available_variant.price | money }}</span>{% else %}{{ 'product.sold_out' | t }}{% endif %}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 1.25rem; height: 1.25rem;">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+            <span class="cta-discount-tag" id="pdpTag" aria-hidden="true">-67%</span>
+          </div>
+        {% endform %}
+
+        <p class="pdp-paynote">🔒 {{ 'product.paynote' | t }}</p>
+      </div>
+
+      <!-- Right: image + trust badges -->
+      <div class="pdp-media">
+        <div class="pdp-image">
+          <div class="pdp-glow"></div>
+          <img id="pdpMainImage" src="{{ img_product | image_url: width: 800 }}" alt="{{ product.featured_image.alt | escape | default: product.title }}">
+        </div>
+        {% if product.images.size > 1 %}
+          <div class="pdp-thumbs">
+            {% for image in product.images %}
+              <button type="button" class="pdp-thumb" onclick="document.getElementById('pdpMainImage').src='{{ image | image_url: width: 800 }}'">
+                <img src="{{ image | image_url: width: 160 }}" alt="{{ image.alt | escape | default: product.title }}">
+              </button>
+            {% endfor %}
+          </div>
+        {% endif %}
+        <div class="pdp-trust-badges">
+          <div class="pdp-trust"><strong>{{ 'product.trust_enamel_t' | t }}</strong><span>{{ 'product.trust_enamel_d' | t }}</span></div>
+          <div class="pdp-trust"><strong>{{ 'product.trust_dentist_t' | t }}</strong><span>{{ 'product.trust_dentist_d' | t }}</span></div>
+          <div class="pdp-trust"><strong>{{ 'product.trust_days_t' | t }}</strong><span>{{ 'product.trust_days_d' | t }}</span></div>
+          <div class="pdp-trust"><strong>{{ 'product.trust_strips_t' | t }}</strong><span>{{ 'product.trust_strips_d' | t }}</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide-in offer notification that docks onto the Order Now button -->
+  <div class="hero-notification" id="pdpNotification" role="status" aria-live="polite">
+    <div class="hero-notif-icon">🔥</div>
+    <div class="hero-notif-body">
+      <div class="hero-notif-line">{{ 'product.sale_now' | t }} <strong class="hero-notif-now">{{ product.price | money }}</strong></div>
+      <div class="hero-notif-was">{{ product.compare_at_price | money }}</div>
+    </div>
+  </div>
+</section>
+
+<!-- Before & After -->
+<section class="before-after">
+  <div class="container">
+    <div class="section-header">
+      <h2>{{ 'transform.heading' | t }}</h2>
+      <p>{{ 'transform.subtitle' | t }}</p>
+    </div>
+    <div class="comparison-image">
+      <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663743569624/amyPSPrF2HUmPeJK9rK5RK/before-after-comparison-X9GBvVf2LvMU5MUHgjePtJ.webp" alt="Before and after results using 3DWhiteningStrips teeth whitening strips">
+    </div>
+  </div>
+</section>
+
+<!-- Benefits -->
+<section class="benefits">
+  <div class="container">
+    <div class="section-header">
+      <h2>{{ 'benefits.heading' | t }}</h2>
+      <p>{{ 'benefits.subtitle' | t }}</p>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="benefit-icon">⚡</div>
+        <h3>{{ 'benefits.b1_t' | t }}</h3>
+        <p>{{ 'benefits.b1_d' | t }}</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">🛡️</div>
+        <h3>{{ 'benefits.b2_t' | t }}</h3>
+        <p>{{ 'benefits.b2_d' | t }}</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">⏱️</div>
+        <h3>{{ 'benefits.b3_t' | t }}</h3>
+        <p>{{ 'benefits.b3_d' | t }}</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">🏥</div>
+        <h3>{{ 'benefits.b4_t' | t }}</h3>
+        <p>{{ 'benefits.b4_d' | t }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- How It Works -->
+<section class="how-it-works">
+  <div class="container">
+    <div class="section-header">
+      <h2>{{ 'how.heading' | t }}</h2>
+      <p>{{ 'how.subtitle' | t }}</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <span class="step-line"></span>
+        <div class="step-icon-ring"><span class="step-emoji">🦷</span><span class="step-number">1</span></div>
+        <h3>{{ 'how.s1_t' | t }}</h3>
+        <p>{{ 'how.s1_d' | t }}</p>
+        <span class="step-meta">⏱️ {{ 'how.s1_m' | t }}</span>
+      </div>
+      <div class="step-card">
+        <span class="step-line"></span>
+        <div class="step-icon-ring"><span class="step-emoji">😌</span><span class="step-number">2</span></div>
+        <h3>{{ 'how.s2_t' | t }}</h3>
+        <p>{{ 'how.s2_d' | t }}</p>
+        <span class="step-meta">⏳ {{ 'how.s2_m' | t }}</span>
+      </div>
+      <div class="step-card">
+        <div class="step-icon-ring"><span class="step-emoji">✨</span><span class="step-number">3</span></div>
+        <h3>{{ 'how.s3_t' | t }}</h3>
+        <p>{{ 'how.s3_d' | t }}</p>
+        <span class="step-meta">🪞 {{ 'how.s3_m' | t }}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Ingredients / What's Inside -->
+<section class="pdp-ingredients">
+  <div class="container">
+    <div class="feature-grid">
+      <div class="feature-visual">
+        <div class="feature-glow"></div>
+        <img src="https://pub-1271a678a52f4664aa377c2be4276e07.r2.dev/teeth%20whitening%20strips.png" alt="3DWhiteningStrips whitening strips kit and formula">
+      </div>
+      <div class="feature-content">
+        <div class="hero-badge">{{ 'pdp.ing_badge' | t }}</div>
+        <h2>{{ 'pdp.ing_title' | t }}</h2>
+        <p class="feature-lead">{{ 'pdp.ing_lead' | t }}</p>
+        <ul class="feature-list">
+          <li><span class="feature-check">✓</span> {{ 'pdp.ing1' | t }}</li>
+          <li><span class="feature-check">✓</span> {{ 'pdp.ing2' | t }}</li>
+          <li><span class="feature-check">✓</span> {{ 'pdp.ing3' | t }}</li>
+          <li><span class="feature-check">✓</span> {{ 'pdp.ing4' | t }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Guarantee -->
+<section class="guarantee">
+  <div class="container">
+    <div class="guarantee-content">
+      <div class="guarantee-icon">🛡️</div>
+      <h2>{{ 'guarantee.heading' | t }}</h2>
+      <p>{{ 'guarantee.text' | t }}</p>
+      <a href="#top" class="cta-button" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">{{ 'guarantee.button' | t }}</a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="container">
+    <div class="section-header"><h2>{{ 'faq.heading' | t }}</h2></div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question active" onclick="toggleFaq(this)"><span>{{ 'pdp.faq_q1' | t }}</span><svg class="faq-toggle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+        <div class="faq-answer open"><p>{{ 'pdp.faq_a1' | t }}</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)"><span>{{ 'pdp.faq_q2' | t }}</span><svg class="faq-toggle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+        <div class="faq-answer"><p>{{ 'pdp.faq_a2' | t }}</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)"><span>{{ 'pdp.faq_q3' | t }}</span><svg class="faq-toggle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+        <div class="faq-answer"><p>{{ 'pdp.faq_a3' | t }}</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    var options = document.querySelectorAll('.pdp-option input[type="radio"]');
+    var label = document.getElementById('pdpBtnLabel');
+    var orderNow = {{ 'general.order_now' | t | json }};
+    options.forEach(function (input) {
+      input.addEventListener('change', function () {
+        document.querySelectorAll('.pdp-option').forEach(function (l) { l.classList.remove('selected'); });
+        var lbl = input.closest('.pdp-option');
+        if (lbl) lbl.classList.add('selected');
+        if (label) label.textContent = orderNow + ' — ' + input.getAttribute('data-price');
+      });
+    });
+  })();
+</script>
