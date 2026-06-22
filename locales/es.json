@@ -149,5 +149,20 @@
     "trust_days_d": "Para resultados",
     "trust_strips_t": "14",
     "trust_strips_d": "Tiras por caja"
+  },
+  "pdp": {
+    "ing_badge": "Qué incluye",
+    "ing_title": "Una fórmula creada para resultados reales y suaves",
+    "ing_lead": "Cada caja de 3DWhiteningStrips está diseñada para ofrecer un blanqueamiento profesional en casa — de forma segura y cómoda.",
+    "ing1": "Gel blanqueador seguro para el esmalte",
+    "ing2": "Tecnología avanzada antideslizante",
+    "ing3": "Menta fresca, fórmula de baja sensibilidad",
+    "ing4": "14 tiras precortadas — un tratamiento completo de 7 días",
+    "faq_q1": "¿Funcionan las tiras blanqueadoras?",
+    "faq_a1": "Sí — nuestras tiras seguras para el esmalte aplican el gel directamente sobre los dientes para eliminar manchas, con una sonrisa visiblemente más blanca tras un solo tratamiento de 7 días.",
+    "faq_q2": "¿Son seguras para dientes sensibles?",
+    "faq_a2": "Sí. Nuestra fórmula equilibrada y segura para el esmalte está diseñada para minimizar la sensibilidad. Si tienes problemas dentales, consulta nuestra página de Seguridad del Producto o a tu dentista.",
+    "faq_q3": "¿Qué tan rápido es el envío?",
+    "faq_a3": "Envío gratis a todo el mundo en cada pedido, normalmente llega en 6–10 días."
   }
 }

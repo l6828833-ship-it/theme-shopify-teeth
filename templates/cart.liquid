@@ -6,14 +6,14 @@
 </section>
 
 <script>
-  // This store skips the cart page entirely — go straight to checkout if there
-  // are items, otherwise back to the homepage to choose a package.
+  // This store skips the cart page — go straight to checkout (locale-aware).
   (function () {
-    fetch('/cart.js')
+    var root = (window.Shopify && window.Shopify.routes && window.Shopify.routes.root) ? window.Shopify.routes.root : '/';
+    fetch(root + 'cart.js')
       .then(function (r) { return r.json(); })
       .then(function (cart) {
-        window.location.replace(cart.item_count > 0 ? '/checkout' : '/');
+        window.location.replace(cart.item_count > 0 ? (root + 'checkout') : root);
       })
-      .catch(function () { window.location.replace('/'); });
+      .catch(function () { window.location.replace(root); });
   })();
 </script>

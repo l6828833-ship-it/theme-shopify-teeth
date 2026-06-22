@@ -149,5 +149,20 @@
     "trust_days_d": "Até aos resultados",
     "trust_strips_t": "14",
     "trust_strips_d": "Tiras por caixa"
+  },
+  "pdp": {
+    "ing_badge": "O que contém",
+    "ing_title": "Uma fórmula criada para resultados reais e suaves",
+    "ing_lead": "Cada caixa da 3DWhiteningStrips foi pensada para oferecer um branqueamento profissional em casa — com segurança e conforto.",
+    "ing1": "Gel de branqueamento seguro para o esmalte",
+    "ing2": "Tecnologia avançada antideslizante",
+    "ing3": "Menta fresca, fórmula de baixa sensibilidade",
+    "ing4": "14 tiras pré-cortadas — um tratamento completo de 7 dias",
+    "faq_q1": "As tiras de branqueamento funcionam?",
+    "faq_a1": "Sim — as nossas tiras seguras para o esmalte aplicam o gel diretamente nos dentes para remover manchas, com um sorriso visivelmente mais branco após um único tratamento de 7 dias.",
+    "faq_q2": "São seguras para dentes sensíveis?",
+    "faq_a2": "Sim. A nossa fórmula equilibrada e segura para o esmalte foi concebida para minimizar a sensibilidade. Em caso de preocupações dentárias, consulta a página de Segurança do Produto ou o teu dentista.",
+    "faq_q3": "Qual é a rapidez do envio?",
+    "faq_a3": "Envio gratuito para todo o mundo em todas as encomendas, normalmente a chegar em 6–10 dias."
   }
 }

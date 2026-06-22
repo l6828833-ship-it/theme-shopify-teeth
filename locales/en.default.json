@@ -149,5 +149,20 @@
     "trust_days_d": "To results",
     "trust_strips_t": "14",
     "trust_strips_d": "Strips per box"
+  },
+  "pdp": {
+    "ing_badge": "What's Inside",
+    "ing_title": "A Formula Built for Real, Gentle Results",
+    "ing_lead": "Every box of 3DWhiteningStrips is designed to deliver professional whitening at home — safely and comfortably.",
+    "ing1": "Enamel-safe whitening gel",
+    "ing2": "Advanced no-slip grip technology",
+    "ing3": "Fresh mint, low-sensitivity formula",
+    "ing4": "14 pre-cut strips — a full 7-day treatment",
+    "faq_q1": "Do whitening strips work?",
+    "faq_a1": "Yes — our enamel-safe strips deliver whitening gel directly to your teeth to break down stains, with a visibly whiter smile after a single 7-day treatment.",
+    "faq_q2": "Are they safe for sensitive teeth?",
+    "faq_a2": "Yes. Our balanced, enamel-safe formula is designed to minimize sensitivity. If you have dental concerns, review our Product Safety page or consult your dentist.",
+    "faq_q3": "How fast is shipping?",
+    "faq_a3": "Free worldwide shipping on every order, typically arriving within 6–10 days."
   }
 }

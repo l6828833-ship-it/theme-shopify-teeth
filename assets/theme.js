@@ -19,18 +19,23 @@ function toggleFaq(button) {
 }
 
 // Buy a specific variant immediately: clear cart, add it, go straight to checkout
+// Locale-aware: preserves the active language (e.g. /de) through cart + checkout
+function shopRoot() {
+  return (window.Shopify && window.Shopify.routes && window.Shopify.routes.root) ? window.Shopify.routes.root : '/';
+}
 function buyNow(variantId, quantity) {
-  if (!variantId) { window.location.href = '/cart'; return; }
-  fetch('/cart/clear.js', { method: 'POST' })
+  var root = shopRoot();
+  if (!variantId) { window.location.href = root; return; }
+  fetch(root + 'cart/clear.js', { method: 'POST' })
     .then(function () {
-      return fetch('/cart/add.js', {
+      return fetch(root + 'cart/add.js', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ items: [{ id: variantId, quantity: quantity || 1 }] })
       });
     })
-    .then(function () { window.location.href = '/checkout'; })
-    .catch(function () { window.location.href = '/cart'; });
+    .then(function () { window.location.href = root + 'checkout'; })
+    .catch(function () { window.location.href = root + 'cart'; });
 }
 
 // Add to cart functionality
